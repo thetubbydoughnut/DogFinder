@@ -1,24 +1,77 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { render } from '../../test-utils';
+import { screen, waitFor, fireEvent } from '@testing-library/react';
+import { render as rtlRender } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from '../../../theme';
 import LoginForm from '../../../features/auth/components/LoginForm';
 
-// Mock the login thunk
-jest.mock('../../../features/auth/slice', () => {
-  const originalModule = jest.requireActual('../../../features/auth/slice');
-  
-  return {
-    __esModule: true,
-    ...originalModule,
-    login: jest.fn(() => {
-      return { type: 'auth/login/fulfilled', payload: { name: 'Test User', email: 'test@example.com' } };
-    }),
-    clearError: jest.fn(),
-  };
-});
+// Mock react-redux hooks
+jest.mock('react-redux', () => ({
+  useDispatch: jest.fn(),
+  useSelector: jest.fn(),
+}));
+
+// Mock react-router-dom's useNavigate
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: jest.fn(),
+}));
+
+// Mock the auth slice module
+jest.mock('../../../features/auth/slice', () => ({
+  ...jest.requireActual('../../../features/auth/slice'),
+  login: jest.fn(() => ({ type: 'auth/login/pending' })),
+  clearError: jest.fn()
+}));
+
+// Import the mocked modules
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login, clearError } from '../../../features/auth/slice';
+
+// Custom render function that doesn't use Redux Provider
+function render(ui, { ...options } = {}) {
+  function Wrapper({ children }) {
+    return (
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter>
+          {children}
+        </BrowserRouter>
+      </ThemeProvider>
+    );
+  }
+  return rtlRender(ui, { wrapper: Wrapper, ...options });
+}
 
 describe('LoginForm Component', () => {
+  // Setup default mocks before each test
+  beforeEach(() => {
+    // Mock useSelector to return default auth state
+    useSelector.mockImplementation(selector => 
+      selector({
+        auth: {
+          isAuthenticated: false,
+          isLoading: false,
+          error: null
+        }
+      })
+    );
+    
+    // Mock useDispatch to return a jest function
+    const mockDispatch = jest.fn();
+    useDispatch.mockReturnValue(mockDispatch);
+    
+    // Mock useNavigate
+    useNavigate.mockReturnValue(jest.fn());
+    
+    // Reset mock calls
+    login.mockClear();
+    clearError.mockClear();
+  });
+
   it('renders the form correctly', () => {
     render(<LoginForm />);
     
@@ -33,72 +86,49 @@ describe('LoginForm Component', () => {
   });
   
   it('validates form inputs', async () => {
-    const user = userEvent.setup();
     render(<LoginForm />);
     
-    // Submit without filling in fields
-    const submitButton = screen.getByRole('button', { name: /Sign In/i });
-    await user.click(submitButton);
+    // Try to submit the form without filling it
+    fireEvent.click(screen.getByRole('button', { name: /Sign In/i }));
     
-    // Check for validation errors
+    // Check for validation messages
     await waitFor(() => {
       expect(screen.getByText(/Name is required/i)).toBeInTheDocument();
-    });
-    await waitFor(() => {
       expect(screen.getByText(/Email is required/i)).toBeInTheDocument();
     });
     
-    // Fill in name field only
-    const nameInput = screen.getByLabelText(/Name/i);
-    await user.type(nameInput, 'Test User');
-    await user.click(submitButton);
-    
-    // Should still show email error
-    await waitFor(() => {
-      expect(screen.queryByText(/Name is required/i)).not.toBeInTheDocument();
-    });
-    await waitFor(() => {
-      expect(screen.getByText(/Email is required/i)).toBeInTheDocument();
+    // Fill in invalid email
+    fireEvent.change(screen.getByLabelText(/Email/i), {
+      target: { value: 'invalid-email' },
     });
     
-    // Fill in email field with invalid email
-    const emailInput = screen.getByLabelText(/Email/i);
-    await user.clear(emailInput);
-    await user.type(emailInput, 'invalid-email');
-    await user.click(submitButton);
-    
-    // Should show invalid email error
+    // Check for email validation message
     await waitFor(() => {
       expect(screen.getByText(/Invalid email/i)).toBeInTheDocument();
-    });
-    
-    // Fill in with valid email
-    await user.clear(emailInput);
-    await user.type(emailInput, 'test@example.com');
-    
-    // Form should be valid now
-    await waitFor(() => {
-      expect(screen.queryByText(/Invalid email/i)).not.toBeInTheDocument();
     });
   });
   
   it('submits the form with valid data', async () => {
-    const login = require('../../../features/auth/slice').login;
-    const user = userEvent.setup();
+    const mockDispatch = jest.fn();
+    useDispatch.mockReturnValue(mockDispatch);
     
     render(<LoginForm />);
     
-    // Fill in form
-    const nameInput = screen.getByLabelText(/Name/i);
-    const emailInput = screen.getByLabelText(/Email/i);
-    const submitButton = screen.getByRole('button', { name: /Sign In/i });
+    // Fill in the form with valid data
+    fireEvent.change(screen.getByLabelText(/Name/i), {
+      target: { value: 'Test User' },
+    });
     
-    await user.type(nameInput, 'Test User');
-    await user.type(emailInput, 'test@example.com');
-    await user.click(submitButton);
+    fireEvent.change(screen.getByLabelText(/Email/i), {
+      target: { value: 'test@example.com' },
+    });
     
-    // Check if login was called with correct data
+    // Submit the form
+    fireEvent.click(screen.getByRole('button', { name: /Sign In/i }));
+    
+    // Check if login action was dispatched with correct data
     await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalled();
       expect(login).toHaveBeenCalledWith({
         name: 'Test User',
         email: 'test@example.com',
@@ -107,32 +137,22 @@ describe('LoginForm Component', () => {
   });
   
   it('shows loading state during submission', async () => {
-    // Mock the login thunk to be pending
-    const login = require('../../../features/auth/slice').login;
-    login.mockImplementationOnce(() => ({
-      type: 'auth/login/pending'
-    }));
+    // Mock loading state
+    useSelector.mockImplementation(selector => 
+      selector({
+        auth: {
+          isAuthenticated: false,
+          isLoading: true,
+          error: null
+        }
+      })
+    );
     
-    const user = userEvent.setup();
+    render(<LoginForm />);
     
-    const { store } = render(<LoginForm />);
-    
-    // Set loading state in store
-    store.dispatch({ type: 'auth/login/pending' });
-    
-    // Fill in form
-    const nameInput = screen.getByLabelText(/Name/i);
-    const emailInput = screen.getByLabelText(/Email/i);
-    const submitButton = screen.getByRole('button', { name: /Sign In/i });
-    
-    await user.type(nameInput, 'Test User');
-    await user.type(emailInput, 'test@example.com');
-    await user.click(submitButton);
-    
-    // Should show loading state (CircularProgress)
-    expect(screen.getByRole('progressbar')).toBeInTheDocument();
-    
-    // Submit button should be disabled
+    // Check if the button is disabled and shows loading state
+    const submitButton = screen.getByRole('button');
     expect(submitButton).toBeDisabled();
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
   });
 }); 

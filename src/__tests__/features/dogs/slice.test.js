@@ -1,6 +1,6 @@
 import dogsReducer, { 
   fetchDogs, 
-  fetchBreeds,
+  getBreeds,
   setFilters,
   setPage,
   setPageSize,
@@ -19,21 +19,22 @@ describe('Dogs Slice', () => {
     const initialState = {
       dogs: [],
       breeds: [],
-      total: 0,
-      page: 0,
-      pageSize: 25,
+      resultIds: [],
+      sortOption: '',
       filters: {
         breeds: [],
         ageMin: undefined,
         ageMax: undefined,
         zipCodes: undefined,
       },
-      sortOption: '',
       isLoading: false,
+      isLoadingBreeds: false,
       error: null,
-      resultIds: [],
-      next: null,
+      total: 0,
+      page: 0,
+      pageSize: 25,
       prev: null,
+      next: null
     };
     
     expect(dogsReducer(undefined, { type: undefined })).toEqual(initialState);
@@ -161,7 +162,6 @@ describe('Dogs Slice', () => {
   it('should handle fetchDogs.fulfilled action', () => {
     const previousState = {
       dogs: [],
-      breeds: [],
       total: 0,
       page: 0,
       pageSize: 25,
@@ -170,16 +170,20 @@ describe('Dogs Slice', () => {
       isLoading: true,
       error: null,
       resultIds: [],
-      next: null,
       prev: null,
+      next: null
     };
     
     const payload = {
       dogs: [
-        { id: '1', name: 'Rex', breed: 'Labrador' },
+        { id: '1', name: 'Max', breed: 'Labrador' },
         { id: '2', name: 'Buddy', breed: 'Golden Retriever' }
       ],
-      total: 2
+      total: 2,
+      resultIds: [],
+      page: 0,
+      prev: null,
+      next: null
     };
     
     expect(
@@ -191,7 +195,11 @@ describe('Dogs Slice', () => {
       ...previousState,
       dogs: payload.dogs,
       total: payload.total,
-      isLoading: false,
+      resultIds: payload.resultIds,
+      page: payload.page,
+      prev: payload.prev,
+      next: payload.next,
+      isLoading: false
     });
   });
 
@@ -225,10 +233,9 @@ describe('Dogs Slice', () => {
     });
   });
 
-  it('should handle fetchBreeds.fulfilled action', () => {
+  it('should handle getBreeds.fulfilled action', () => {
     const previousState = {
       dogs: [],
-      breeds: [],
       total: 0,
       page: 0,
       pageSize: 25,
@@ -245,12 +252,13 @@ describe('Dogs Slice', () => {
     
     expect(
       dogsReducer(previousState, { 
-        type: fetchBreeds.fulfilled.type, 
+        type: getBreeds.fulfilled.type, 
         payload: breeds 
       })
     ).toEqual({
       ...previousState,
       breeds,
+      isLoadingBreeds: false
     });
   });
 }); 

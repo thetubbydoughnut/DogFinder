@@ -7,27 +7,10 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '../theme';
 
-// Import reducers - we'll directly import to avoid circular dependencies
-const authReducer = (state = { isAuthenticated: false, user: null, isLoading: false, error: null }, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
-const dogsReducer = (state = { dogs: [], isLoading: false }, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
-const favoritesReducer = (state = { favorites: [], favoriteDogs: [], match: null, isLoading: false }, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+// Import the real reducer slices to make tests more accurate
+import authReducer from '../features/auth/slice';
+import dogsReducer from '../features/dogs/slice';
+import favoritesReducer from '../features/favorites/slice';
 
 function render(
   ui,
@@ -40,6 +23,7 @@ function render(
         favorites: favoritesReducer,
       },
       preloadedState,
+      // Redux Toolkit includes thunk middleware by default
     }),
     ...renderOptions
   } = {}
@@ -66,4 +50,11 @@ function render(
 export * from '@testing-library/react';
 
 // Override render method
-export { render }; 
+export { render };
+
+// Add a simple test to prevent this file from being treated as a test suite without tests
+describe('test-utils', () => {
+  it('exports a render function', () => {
+    expect(typeof render).toBe('function');
+  });
+}); 
