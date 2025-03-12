@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
@@ -14,6 +14,8 @@ import {
   Paper,
   useTheme,
 } from '@mui/material';
+import { FixedSizeGrid } from 'react-window';
+import AutoSizer from 'react-virtualized-auto-sizer';
 import DogCard from '../features/dogs/components/DogCard';
 import DogFilter from '../features/dogs/components/DogFilter';
 import SortSelector from '../features/dogs/components/SortSelector';
@@ -31,6 +33,8 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   
   // Use memoized selectors
   const dogs = useSelector(selectFilteredDogs);
@@ -68,6 +72,35 @@ const SearchPage = () => {
 
   // Calculate total pages
   const totalPages = Math.ceil(total / pageSize);
+
+  // Calculate grid layout based on screen size
+  const getColumnCount = () => {
+    if (isMobile) return 1;
+    if (isTablet) return 2;
+    if (isDesktop) return 3;
+    return 4; // xl screens
+  };
+
+  // Cell renderer for virtualized grid
+  const Cell = useCallback(({ columnIndex, rowIndex, style }) => {
+    const columnCount = getColumnCount();
+    const index = rowIndex * columnCount + columnIndex;
+    
+    if (index >= dogs.length) {
+      return null;
+    }
+    
+    const dog = dogs[index];
+    
+    return (
+      <div style={{
+        ...style,
+        padding: 16,
+      }}>
+        <DogCard dog={dog} />
+      </div>
+    );
+  }, [dogs, getColumnCount]);
 
   return (
     <Container maxWidth="xl">
@@ -135,16 +168,32 @@ const SearchPage = () => {
             </Alert>
           ) : null}
 
-          {/* Dog grid */}
+          {/* Virtualized Dog Grid */}
           {!isLoading && !error && dogs.length > 0 ? (
             <>
-              <Grid container spacing={3}>
-                {dogs.map((dog) => (
-                  <Grid item key={dog.id} xs={12} sm={6} md={6} lg={4} xl={3}>
-                    <DogCard dog={dog} />
-                  </Grid>
-                ))}
-              </Grid>
+              <Paper elevation={1} sx={{ height: 800, mb: 3, borderRadius: 2, overflow: 'hidden' }}>
+                <AutoSizer>
+                  {({ height, width }) => {
+                    const columnCount = getColumnCount();
+                    const rowCount = Math.ceil(dogs.length / columnCount);
+                    const columnWidth = width / columnCount;
+                    const rowHeight = 450; // Adjust based on your card height
+                    
+                    return (
+                      <FixedSizeGrid
+                        columnCount={columnCount}
+                        columnWidth={columnWidth}
+                        height={height}
+                        rowCount={rowCount}
+                        rowHeight={rowHeight}
+                        width={width}
+                      >
+                        {Cell}
+                      </FixedSizeGrid>
+                    );
+                  }}
+                </AutoSizer>
+              </Paper>
 
               {/* Pagination */}
               {totalPages > 1 && (
@@ -174,4 +223,4 @@ const SearchPage = () => {
   );
 };
 
-export default SearchPage;
+export default React.memo(SearchPage);

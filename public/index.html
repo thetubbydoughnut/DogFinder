@@ -3,22 +3,90 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#3f51b5" />
     <meta
       name="description"
-      content="Fetch Dog Finder - Find your perfect dog match"
+      content="Fetch Dog Finder - Find your perfect dog match from our database of shelter dogs. Browse, filter, and search for your next furry companion."
     />
+    <meta name="keywords" content="dog adoption, shelter dogs, find a dog, pet adoption, rescue dogs" />
+    <meta name="author" content="Fetch Dog Finder" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%PUBLIC_URL%" />
+    <meta property="og:title" content="Fetch Dog Finder - Find Your Perfect Dog Match" />
+    <meta property="og:description" content="Browse our database of shelter dogs and find your perfect companion." />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="%PUBLIC_URL%" />
+    <meta property="twitter:title" content="Fetch Dog Finder - Find Your Perfect Dog Match" />
+    <meta property="twitter:description" content="Browse our database of shelter dogs and find your perfect companion." />
+    <meta property="twitter:image" content="%PUBLIC_URL%/og-image.jpg" />
+    
+    <!-- PWA support -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preconnect to API domain to improve performance -->
+    <link rel="preconnect" href="https://frontend-take-home-service.fetch.com" />
+    
+    <!-- Preload critical fonts -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      />
+    </noscript>
+    
+    <!-- Improve performance by loading deferred CSS -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      media="print"
+      onload="this.media='all'"
     />
-    <title>Fetch Dog Finder</title>
+    
+    <title>Fetch Dog Finder - Find Your Perfect Dog Match</title>
+    
+    <!-- Inline critical CSS for faster paint -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .app-loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Initial loading state for better perceived performance -->
+      <div class="app-loading">
+        <img src="%PUBLIC_URL%/logo192.png" alt="Loading Fetch Dog Finder" width="96" height="96" />
+      </div>
+    </div>
   </body>
 </html> 

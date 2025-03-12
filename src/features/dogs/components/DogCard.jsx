@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Card,
@@ -14,6 +14,7 @@ import {
   Zoom,
   Grow,
   Link,
+  Skeleton,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -28,6 +29,39 @@ const DogCard = ({ dog }) => {
   const isFavorite = favorites.includes(dog.id);
   
   const [favoriteHover, setFavoriteHover] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Generate a random placeholder image based on dog id for consistency
+  const getImageUrl = () => {
+    // Use the first characters of the dog ID to generate a consistent random image
+    const seed = dog.id.substring(0, 8);
+    return `https://placedog.net/500/280?id=${seed}`;
+  };
+
+  // Handle image load event
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  // Handle image error
+  const handleImageError = () => {
+    setImageError(true);
+    setImageLoaded(true); // Consider it "loaded" even though it failed, to remove skeleton
+  };
+
+  // Preload image
+  useEffect(() => {
+    const img = new Image();
+    img.src = dog.img || getImageUrl();
+    img.onload = handleImageLoad;
+    img.onerror = handleImageError;
+
+    return () => {
+      img.onload = null;
+      img.onerror = null;
+    };
+  }, [dog.img]);
 
   const handleToggleFavorite = (e) => {
     e.preventDefault(); // Prevent card click navigation if clicking favorite button
@@ -52,13 +86,6 @@ const DogCard = ({ dog }) => {
     }
   };
 
-  // Generate a random placeholder image based on dog id for consistency
-  const getImageUrl = () => {
-    // Use the first characters of the dog ID to generate a consistent random image
-    const seed = dog.id.substring(0, 8);
-    return `https://placedog.net/500/280?id=${seed}`;
-  };
-
   return (
     <Grow in={true} timeout={300}>
       <Card
@@ -80,19 +107,32 @@ const DogCard = ({ dog }) => {
         to={`/dogs/${dog.id}`}
         style={{ textDecoration: 'none' }}
       >
-        <Box sx={{ position: 'relative' }}>
+        <Box sx={{ position: 'relative', height: 200 }}>
+          {!imageLoaded && (
+            <Skeleton 
+              variant="rectangular" 
+              width="100%" 
+              height={200} 
+              animation="wave"
+              sx={{ position: 'absolute', top: 0, left: 0 }} 
+            />
+          )}
           <CardMedia
             component="img"
             height="200"
-            image={dog.img || getImageUrl()}
+            image={imageError ? getImageUrl() : (dog.img || getImageUrl())}
             alt={`A photo of ${dog.name}, a ${dog.breed} dog`}
             sx={{ 
               objectFit: 'cover',
               transition: 'transform 0.3s ease-in-out',
               '&:hover': {
                 transform: 'scale(1.05)',
-              }
+              },
+              display: imageLoaded ? 'block' : 'none'
             }}
+            onLoad={handleImageLoad}
+            onError={handleImageError}
+            loading="lazy"
           />
           <Tooltip
             title={isFavorite ? "Remove from favorites" : "Add to favorites"}

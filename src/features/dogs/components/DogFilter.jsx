@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useTransition } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { debounce } from 'lodash';
 import { 
@@ -18,6 +18,7 @@ import {
   IconButton,
   Collapse,
   Tooltip,
+  CircularProgress,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
@@ -46,23 +47,26 @@ const DogFilter = ({ onFilterChange }) => {
   
   const [breeds, setBreeds] = useState([]);
   const [selectedBreeds, setSelectedBreeds] = useState(filters.breeds || []);
-  const [ageRange, setAgeRange] = useState(filters.ageRange || [0, 192]); // 0 to 16 years in months
+  const [ageRange, setAgeRange] = useState([0, 192]); // 0 to 16 years in months
   const [zipCode, setZipCode] = useState(filters.zipCode || '');
   const [zipCodeError, setZipCodeError] = useState('');
   const [showFilters, setShowFilters] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   // Create debounced filter change handler
   const debouncedFilterChange = useCallback(
     debounce((newFilters) => {
-      onFilterChange(newFilters);
+      startTransition(() => {
+        onFilterChange(newFilters);
+      });
     }, 300),
-    [onFilterChange]
+    [onFilterChange, startTransition]
   );
 
   // Update this handler to use debouncing
   const handleFilterChange = (newFilters) => {
-    setLocalFilters(newFilters);
+    // Apply filter changes directly
     debouncedFilterChange(newFilters);
   };
 
@@ -83,7 +87,7 @@ const DogFilter = ({ onFilterChange }) => {
     fetchBreeds();
   }, []);
 
-  // Handle form submission
+  // Handle form submission with startTransition
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -104,7 +108,9 @@ const DogFilter = ({ onFilterChange }) => {
       zipCodes: zipCode ? [zipCode] : undefined,
     };
     
-    dispatch(setFilters(newFilters));
+    startTransition(() => {
+      dispatch(setFilters(newFilters));
+    });
   };
 
   // Handle reset filters
@@ -131,6 +137,8 @@ const DogFilter = ({ onFilterChange }) => {
         position: 'sticky',
         top: 80,
         zIndex: 10,
+        opacity: isPending ? 0.7 : 1,
+        transition: 'opacity 0.2s'
       }}
     >
       {/* Header */}
@@ -296,8 +304,29 @@ const DogFilter = ({ onFilterChange }) => {
           </Box>
         </form>
       </Collapse>
+
+      {/* Show pending indicator when transitioning */}
+      {isPending && (
+        <Box 
+          sx={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            right: 0, 
+            bottom: 0, 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            backgroundColor: 'rgba(255,255,255,0.5)',
+            zIndex: 20,
+            borderRadius: 2
+          }}
+        >
+          <CircularProgress size={24} />
+        </Box>
+      )}
     </Paper>
   );
 };
 
-export default DogFilter; 
+export default React.memo(DogFilter); 
