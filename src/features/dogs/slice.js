@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { searchDogs, getDogsByIds, getBreeds as fetchBreeds } from '../../api/dogsApi';
+import dogService from '../../services/dogService';
 
 // Fetch dogs with filters
 export const fetchDogs = createAsyncThunk(
@@ -7,7 +7,7 @@ export const fetchDogs = createAsyncThunk(
   async ({ filters, page, size, sort }, { rejectWithValue }) => {
     try {
       // Call the search API to get dog IDs
-      const searchResults = await searchDogs(filters, page, size, sort);
+      const searchResults = await dogService.searchDogs(filters, page, size, sort);
       
       if (!searchResults.resultIds || searchResults.resultIds.length === 0) {
         return {
@@ -20,7 +20,7 @@ export const fetchDogs = createAsyncThunk(
       }
       
       // Fetch details for each dog ID
-      const dogs = await getDogsByIds(searchResults.resultIds);
+      const dogs = await dogService.getDogsByIds(searchResults.resultIds);
       
       return {
         dogs,
@@ -40,7 +40,7 @@ export const getBreeds = createAsyncThunk(
   'dogs/getBreeds',
   async (_, { rejectWithValue }) => {
     try {
-      const breeds = await fetchBreeds();
+      const breeds = await dogService.getBreeds();
       return breeds;
     } catch (error) {
       return rejectWithValue('Failed to fetch breeds. Please try again later.');

@@ -27,7 +27,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { setFilters, clearFilters } from '../slice';
-import { getBreeds } from '../../../api/dogsApi';
+import dogService from '../../../services/dogService';
 
 // Helper function to format age display
 const formatAge = (age) => {
@@ -56,7 +56,7 @@ const DogFilter = () => {
     const fetchBreeds = async () => {
       try {
         setIsLoading(true);
-        const breedsList = await getBreeds();
+        const breedsList = await dogService.getBreeds();
         setBreeds(breedsList);
       } catch (error) {
         console.error('Error fetching dog breeds:', error);

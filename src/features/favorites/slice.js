@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getDogsByIds } from '../../api/dogsApi';
+import dogService from '../../services/dogService';
 
 // Local storage key for favorites
 const FAVORITES_KEY = 'fetch_dog_finder_favorites';
@@ -24,7 +24,7 @@ export const getFavoriteDogs = createAsyncThunk(
   'favorites/getFavoriteDogs',
   async (dogIds, { rejectWithValue }) => {
     try {
-      const dogs = await getDogsByIds(dogIds);
+      const dogs = await dogService.getDogsByIds(dogIds);
       return dogs;
     } catch (error) {
       return rejectWithValue('Failed to fetch favorite dogs. Please try again later.');

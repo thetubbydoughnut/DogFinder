@@ -25,7 +25,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PetsIcon from '@mui/icons-material/Pets';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { addToFavorites, removeFromFavorites } from '../features/favorites/slice';
-import { getDogsByIds } from '../api/dogsApi';
+import dogService from '../services/dogService';
 
 // Styled components
 const DetailLabel = styled(Typography)(({ theme }) => ({
@@ -54,7 +54,7 @@ const DogDetailsPage = () => {
     const fetchDogDetails = async () => {
       try {
         setLoading(true);
-        const dogs = await getDogsByIds([id]);
+        const dogs = await dogService.getDogsByIds([id]);
         if (dogs && dogs.length > 0) {
           setDog(dogs[0]);
         } else {

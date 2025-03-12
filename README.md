@@ -80,8 +80,8 @@ src/
 │   ├── LoginPage.jsx     # Login page
 │   ├── SearchPage.jsx    # Dog search page
 │   └── FavoritesPage.jsx # Favorites page
-├── App.jsx               # Main app component with routing
-├── index.jsx             # Entry point
+├── App.tsx               # Main app component with routing
+├── index.tsx             # Entry point
 └── theme.js              # Material-UI theme configuration
 ```
 
