@@ -9,13 +9,13 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "https://placedog.net/192/192",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "logo512.png",
+      "src": "https://placedog.net/512/512",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"

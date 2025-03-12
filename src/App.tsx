@@ -26,10 +26,11 @@ function App() {
         <CssBaseline />
         <Box sx={{ display: 'flex', minHeight: '100vh' }}>
           <Routes>
+            <Route path="/" element={<LoginPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route element={<ProtectedRoute />}>
               <Route
-                path="/"
+                path="/search"
                 element={
                   <Layout>
                     <ErrorBoundary>
