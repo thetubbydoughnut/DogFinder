@@ -12,10 +12,10 @@ import {
   IconButton,
   Tooltip,
   Zoom,
-  Grow,
   Skeleton,
   useTheme,
 } from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -24,6 +24,42 @@ import CakeIcon from '@mui/icons-material/Cake';
 import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import { addToFavorites, removeFromFavorites } from '../../favorites/slice';
 import { Link as RouterLink } from 'react-router-dom';
+
+const MotionCard = motion(Card);
+const MotionCardMedia = motion(CardMedia);
+const MotionIconButton = motion(IconButton);
+
+const cardVariants = {
+  hover: { 
+    y: -8, 
+    boxShadow: '0px 10px 20px rgba(0,0,0,0.1)',
+    transition: { 
+      type: 'spring', 
+      stiffness: 400, 
+      damping: 17 
+    }
+  }
+};
+
+const favoriteButtonVariants = {
+  initial: { scale: 1 },
+  hover: { scale: 1.2 },
+  tap: { scale: 0.95 },
+  favorited: { 
+    scale: [1, 1.5, 1], 
+    transition: { 
+      duration: 0.5,
+      ease: "easeInOut" 
+    }
+  }
+};
+
+const flipButtonVariants = {
+  hover: { 
+    rotate: 180,
+    transition: { duration: 0.3 }
+  }
+};
 
 const DogCard = ({ dog, hideActions = false }) => {
   const theme = useTheme();
@@ -107,167 +143,158 @@ const DogCard = ({ dog, hideActions = false }) => {
   const ageCategory = getAgeCategory(dog.age);
 
   return (
-    <Grow in={true} timeout={300}>
-      <Box
-        sx={{
+    <motion.div
+      style={{
+        height: '100%',
+        perspective: '1000px',
+        width: '100%',
+      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <motion.div
+        style={{
           height: '100%',
-          perspective: '1000px',
+          position: 'relative',
+          transformStyle: 'preserve-3d',
           width: '100%',
         }}
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, type: "spring", stiffness: 300, damping: 20 }}
       >
-        <Card
+        {/* Front of card */}
+        <MotionCard
           sx={{
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
-            position: 'relative',
-            transition: 'transform 0.6s ease-in-out, box-shadow 0.2s ease-in-out',
-            transformStyle: 'preserve-3d',
-            transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0)',
+            position: 'absolute',
+            width: '100%',
+            backfaceVisibility: 'hidden',
             borderRadius: 2,
             overflow: 'hidden',
-            boxShadow: isFlipped ? theme.shadows[8] : theme.shadows[3],
-            '&:hover': {
-              transform: isFlipped 
-                ? 'rotateY(180deg) translateY(-4px)' 
-                : 'rotateY(0) translateY(-4px)',
-              boxShadow: theme.shadows[8],
-            },
           }}
           component={RouterLink}
           to={`/dogs/${dog.id}`}
           style={{ textDecoration: 'none' }}
+          whileHover="hover"
+          variants={cardVariants}
         >
-          {/* Front Side of Card */}
-          <Box
-            sx={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              backfaceVisibility: 'hidden',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <Box sx={{ position: 'relative', height: 200 }}>
-              {!imageLoaded && (
-                <Skeleton 
-                  variant="rectangular" 
-                  width="100%" 
-                  height={200} 
-                  animation="wave"
-                  sx={{ position: 'absolute', top: 0, left: 0 }} 
-                />
-              )}
-              <CardMedia
-                component="img"
-                height="200"
-                image={imageError ? getImageUrl() : (dog.img || getImageUrl())}
-                alt={`A photo of ${dog.name}, a ${dog.breed} dog`}
-                sx={{ 
-                  objectFit: 'cover',
-                  transition: 'transform 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'scale(1.05)',
-                  },
-                  display: imageLoaded ? 'block' : 'none'
-                }}
-                onLoad={handleImageLoad}
-                onError={handleImageError}
-                loading="lazy"
+          <Box sx={{ position: 'relative', height: 200 }}>
+            {!imageLoaded && (
+              <Skeleton 
+                variant="rectangular" 
+                width="100%" 
+                height={200} 
+                animation="wave"
+                sx={{ position: 'absolute', top: 0, left: 0 }} 
               />
-              
-              {/* Age Badge */}
-              <Box
+            )}
+            <MotionCardMedia
+              component="img"
+              height="200"
+              image={imageError ? getImageUrl() : (dog.img || getImageUrl())}
+              alt={`A photo of ${dog.name}, a ${dog.breed} dog`}
+              sx={{ 
+                objectFit: 'cover',
+                display: imageLoaded ? 'block' : 'none'
+              }}
+              onLoad={handleImageLoad}
+              onError={handleImageError}
+              loading="lazy"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            />
+            
+            {/* Age Badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
+              style={{
+                position: 'absolute',
+                top: 8,
+                left: 8,
+                zIndex: 2,
+              }}
+            >
+              <Chip
+                label={ageCategory.label}
+                size="small"
+                sx={{
+                  backgroundColor: `${ageCategory.color}`,
+                  color: '#fff',
+                  fontWeight: 'bold',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                }}
+              />
+            </motion.div>
+            
+            {/* Favorite Button */}
+            <Tooltip
+              title={isFavorite ? "Remove from favorites" : "Add to favorites"}
+              placement="top"
+              TransitionComponent={Zoom}
+              arrow
+            >
+              <MotionIconButton
+                color={isFavorite ? 'error' : 'default'}
                 sx={{
                   position: 'absolute',
                   top: 8,
-                  left: 8,
+                  right: 8,
+                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
                   zIndex: 2,
                 }}
+                onClick={handleToggleFavorite}
+                onMouseEnter={() => setFavoriteHover(true)}
+                onMouseLeave={() => setFavoriteHover(false)}
+                aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                size="small"
+                variants={favoriteButtonVariants}
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
+                animate={isFavorite ? "favorited" : "initial"}
               >
-                <Chip
-                  label={ageCategory.label}
-                  size="small"
-                  sx={{
-                    backgroundColor: `${ageCategory.color}`,
-                    color: '#fff',
-                    fontWeight: 'bold',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-                  }}
-                />
-              </Box>
-              
-              {/* Favorite Button */}
-              <Tooltip
-                title={isFavorite ? "Remove from favorites" : "Add to favorites"}
-                placement="top"
-                TransitionComponent={Zoom}
-                arrow
-              >
-                <IconButton
-                  color={isFavorite ? 'error' : 'default'}
-                  sx={{
-                    position: 'absolute',
-                    top: 8,
-                    right: 8,
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                      transform: favoriteHover ? 'scale(1.2)' : 'scale(1.1)',
-                    },
-                    zIndex: 2,
-                    transition: 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                    animation: isFavorite ? 'heartbeat 1.5s ease-in-out 1' : 'none',
-                    '@keyframes heartbeat': {
-                      '0%': { transform: 'scale(1)' },
-                      '25%': { transform: 'scale(1.2)' },
-                      '50%': { transform: 'scale(1)' },
-                      '75%': { transform: 'scale(1.2)' },
-                      '100%': { transform: 'scale(1)' },
-                    },
-                  }}
-                  onClick={handleToggleFavorite}
-                  onMouseEnter={() => setFavoriteHover(true)}
-                  onMouseLeave={() => setFavoriteHover(false)}
-                  aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-                  size="small"
-                >
-                  {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                </IconButton>
-              </Tooltip>
+                {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+              </MotionIconButton>
+            </Tooltip>
 
-              {/* Flip Card Button */}
-              <Tooltip
-                title="See more details"
-                placement="left"
-                TransitionComponent={Zoom}
-                arrow
+            {/* Flip Card Button */}
+            <Tooltip
+              title="See more details"
+              placement="left"
+              TransitionComponent={Zoom}
+              arrow
+            >
+              <MotionIconButton
+                color="primary"
+                sx={{
+                  position: 'absolute',
+                  bottom: 8,
+                  right: 8,
+                  backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                  zIndex: 2,
+                }}
+                onClick={handleFlipCard}
+                aria-label="Flip card"
+                size="small"
+                variants={flipButtonVariants}
+                whileHover="hover"
               >
-                <IconButton
-                  color="primary"
-                  sx={{
-                    position: 'absolute',
-                    bottom: 8,
-                    right: 8,
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                      transform: 'rotate(180deg)',
-                    },
-                    zIndex: 2,
-                    transition: 'transform 0.3s ease',
-                  }}
-                  onClick={handleFlipCard}
-                  aria-label="Flip card"
-                  size="small"
-                >
-                  <FlipCameraAndroidIcon />
-                </IconButton>
-              </Tooltip>
-            </Box>
+                <FlipCameraAndroidIcon />
+              </MotionIconButton>
+            </Tooltip>
+          </Box>
 
-            <CardContent sx={{ flexGrow: 1, p: 2 }}>
+          <CardContent sx={{ flexGrow: 1, p: 2 }}>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
+            >
               <Typography gutterBottom variant="h5" component="h2" sx={{ 
                 fontWeight: 'bold',
                 overflow: 'hidden',
@@ -276,7 +303,13 @@ const DogCard = ({ dog, hideActions = false }) => {
               }}>
                 {dog.name}
               </Typography>
+            </motion.div>
 
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.3 }}
+            >
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 1.5 }}>
                 <Chip
                   icon={<PetsIcon />}
@@ -293,73 +326,85 @@ const DogCard = ({ dog, hideActions = false }) => {
                   sx={{ mr: 0.5, mb: 0.5 }}
                 />
               </Box>
+            </motion.div>
 
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.3 }}
+            >
               <Box display="flex" alignItems="center">
                 <LocationOnIcon fontSize="small" color="action" sx={{ mr: 0.5 }} />
                 <Typography variant="body2" color="text.secondary">
                   {dog.zip_code}
                 </Typography>
               </Box>
-            </CardContent>
+            </motion.div>
+          </CardContent>
 
-            {/* Only show card actions if hideActions is false */}
-            {!hideActions && (
-              <CardActions sx={{ 
-                justifyContent: 'space-between', 
-                p: 2,
-                backgroundColor: isFlipped ? 'background.paper' : 'inherit'
-              }}>
+          {/* Only show card actions if hideActions is false */}
+          {!hideActions && (
+            <CardActions sx={{ 
+              justifyContent: 'space-between', 
+              p: 2,
+            }}>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Tooltip title={isFavorite ? "Remove from favorites" : "Add to favorites"} arrow>
                   <IconButton 
                     onClick={handleToggleFavorite}
                     color={isFavorite ? "error" : "default"}
-                    sx={{
-                      transition: 'transform 0.2s',
-                      '&:hover': {
-                        transform: 'scale(1.1)',
-                      },
-                    }}
                   >
                     {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                   </IconButton>
                 </Tooltip>
-                
+              </motion.div>
+              
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                 <Tooltip title="Flip card for more info" arrow>
                   <IconButton 
                     onClick={handleFlipCard}
                     color="primary"
-                    sx={{
-                      transition: 'transform 0.2s',
-                      '&:hover': {
-                        transform: 'scale(1.1)',
-                      },
-                    }}
                   >
                     <FlipCameraAndroidIcon />
                   </IconButton>
                 </Tooltip>
-              </CardActions>
-            )}
-          </Box>
-          
-          {/* Back Side of Card */}
-          <Box
-            sx={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              backfaceVisibility: 'hidden',
-              transform: 'rotateY(180deg)',
-              display: 'flex',
-              flexDirection: 'column',
-              backgroundColor: theme.palette.background.paper,
-              p: 3,
-            }}
+              </motion.div>
+            </CardActions>
+          )}
+        </MotionCard>
+
+        {/* Back of card */}
+        <MotionCard
+          sx={{
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'absolute',
+            width: '100%',
+            backfaceVisibility: 'hidden',
+            transform: 'rotateY(180deg)',
+            backgroundColor: theme.palette.background.paper,
+            p: 3,
+            borderRadius: 2,
+          }}
+          whileHover="hover"
+          variants={cardVariants}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.3 }}
           >
             <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
               About {dog.name}
             </Typography>
-            
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.3 }}
+          >
             <Box sx={{ mb: 2 }}>
               <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'medium' }}>
                 Breed
@@ -368,7 +413,13 @@ const DogCard = ({ dog, hideActions = false }) => {
                 {dog.breed}
               </Typography>
             </Box>
-            
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.3 }}
+          >
             <Box sx={{ mb: 2 }}>
               <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'medium' }}>
                 Age
@@ -388,17 +439,25 @@ const DogCard = ({ dog, hideActions = false }) => {
                     overflow: 'hidden',
                   }}
                 >
-                  <Box
-                    sx={{
-                      width: `${Math.min(100, (dog.age / (365 * 15)) * 100)}%`,
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${Math.min(100, (dog.age / (365 * 15)) * 100)}%` }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                    style={{
                       height: '100%',
-                      bgcolor: ageCategory.color,
+                      backgroundColor: ageCategory.color,
                     }}
                   />
                 </Box>
               </Box>
             </Box>
-            
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.3 }}
+          >
             <Box sx={{ mb: 2 }}>
               <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'medium' }}>
                 Location
@@ -410,8 +469,10 @@ const DogCard = ({ dog, hideActions = false }) => {
                 </Typography>
               </Box>
             </Box>
-            
-            <Box sx={{ mt: 'auto' }}>
+          </motion.div>
+          
+          <Box sx={{ mt: 'auto' }}>
+            <motion.div whileHover={{ y: -2 }} whileTap={{ y: 2 }}>
               <Button
                 variant="outlined"
                 color="primary"
@@ -420,19 +481,15 @@ const DogCard = ({ dog, hideActions = false }) => {
                 sx={{ 
                   mt: 2,
                   borderRadius: 2,
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                  },
-                  transition: 'transform 0.2s ease',
                 }}
               >
                 Back to Photo
               </Button>
-            </Box>
+            </motion.div>
           </Box>
-        </Card>
-      </Box>
-    </Grow>
+        </MotionCard>
+      </motion.div>
+    </motion.div>
   );
 };
 

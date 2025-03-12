@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
@@ -10,8 +10,7 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-import { FixedSizeGrid } from 'react-window';
-import AutoSizer from 'react-virtualized-auto-sizer';
+import { motion, AnimatePresence } from 'framer-motion';
 import DogCard from '../features/dogs/components/DogCard';
 import DogCardSkeleton from '../features/dogs/components/DogCardSkeleton';
 import DogFilter from '../features/dogs/components/DogFilter';
@@ -29,12 +28,86 @@ import {
   selectPagination
 } from '../features/dogs/slice';
 
+// Animation variants for framer-motion
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      when: "beforeChildren"
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 20,
+    scale: 0.95
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 20
+    }
+  }
+};
+
+// Header animation variants
+const headerVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      delay: 0.2,
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
+// Filter panel animation variants
+const filterVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: {
+      delay: 0.3,
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
+// Page transition variants
+const pageVariants = {
+  initial: { opacity: 0 },
+  in: { 
+    opacity: 1,
+    transition: { duration: 0.3 }
+  },
+  out: { 
+    opacity: 0,
+    transition: { duration: 0.3 }
+  }
+};
+
 const SearchPage = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
+  
+  // Local state for animations
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   
   // Use API error handler hook
   const { retryApiCall } = useApiErrorHandler({
@@ -60,7 +133,12 @@ const SearchPage = () => {
       size: pageSize, 
       sort: sortOption 
     }));
-  }, [dispatch, filters, page, pageSize, sortOption]);
+    
+    // Mark initial load as completed after first fetch
+    if (isInitialLoad) {
+      setTimeout(() => setIsInitialLoad(false), 1000);
+    }
+  }, [dispatch, filters, page, pageSize, sortOption, isInitialLoad]);
 
   // Handle page change with useCallback
   const handlePageChange = useCallback((event, value) => {
@@ -101,50 +179,34 @@ const SearchPage = () => {
   // Calculate total pages
   const totalPages = Math.ceil(total / pageSize);
 
-  // Calculate grid layout based on screen size - wrapped in useCallback
-  const getColumnCount = useCallback(() => {
-    if (isMobile) return 1;
-    if (isTablet) return 2;
-    if (isDesktop) return 3;
-    return 4; // xl screens
-  }, [isMobile, isTablet, isDesktop]);
-
-  // Cell renderer for virtualized grid
-  const Cell = useCallback(({ columnIndex, rowIndex, style }) => {
-    const columnCount = getColumnCount();
-    const index = rowIndex * columnCount + columnIndex;
-    
-    if (index >= dogs.length) {
-      return null;
-    }
-    
-    const dog = dogs[index];
-    
-    return (
-      <div style={{
-        ...style,
-        padding: 16,
-      }}>
-        <DogCard dog={dog} />
-      </div>
-    );
-  }, [dogs, getColumnCount]);
-
   // Generate a skeleton loading grid based on screen size
   const renderSkeletons = () => {
+    const getColumnCount = () => {
+      if (isMobile) return 1;
+      if (isTablet) return 2;
+      if (isLargeScreen) return 3;
+      return 4;
+    };
+    
     const columnCount = getColumnCount();
     const skeletonCount = columnCount * 2; // Show 2 rows of skeletons
     
     return (
-      <Paper elevation={1} sx={{ p: 2, mb: 3, borderRadius: 2 }}>
-        <Grid container spacing={2}>
-          {Array.from(new Array(skeletonCount)).map((_, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={`skeleton-${index}`}>
-              <DogCardSkeleton />
-            </Grid>
-          ))}
-        </Grid>
-      </Paper>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Paper elevation={1} sx={{ p: 2, mb: 3, borderRadius: 2 }}>
+          <Grid container spacing={2}>
+            {Array.from(new Array(skeletonCount)).map((_, index) => (
+              <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={`skeleton-${index}`}>
+                <DogCardSkeleton />
+              </Grid>
+            ))}
+          </Grid>
+        </Paper>
+      </motion.div>
     );
   };
 
@@ -164,124 +226,195 @@ const SearchPage = () => {
   };
 
   return (
-    <Container maxWidth="xl">
-      <Typography variant="h4" component="h1" gutterBottom mt={3}>
-        Find Your Perfect Dog
-      </Typography>
-      
-      <Grid container spacing={3}>
-        {/* Sidebar with filters */}
-        <Grid item xs={12} md={3} lg={3}>
-          <DogFilter onFilterChange={handleFilterChange} />
-        </Grid>
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+    >
+      <Container maxWidth="xl">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={headerVariants}
+        >
+          <Typography variant="h4" component="h1" gutterBottom mt={3}>
+            Find Your Perfect Dog
+          </Typography>
+        </motion.div>
+        
+        <Grid container spacing={3}>
+          {/* Sidebar with filters */}
+          <Grid item xs={12} md={3} lg={3}>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={filterVariants}
+            >
+              <DogFilter onFilterChange={handleFilterChange} />
+            </motion.div>
+          </Grid>
 
-        {/* Main content with dog cards */}
-        <Grid item xs={12} md={9} lg={9}>
-          {/* Results header with count and sorting */}
-          <Paper 
-            elevation={2} 
-            sx={{ 
-              p: 2, 
-              mb: 3, 
-              display: 'flex', 
-              flexDirection: isMobile ? 'column' : 'row',
-              justifyContent: 'space-between',
-              alignItems: isMobile ? 'flex-start' : 'center',
-              gap: 2,
-              borderRadius: 2
-            }}
-          >
-            <Typography variant="body1" color="text.secondary">
-              {isLoading ? (
-                'Searching for dogs...'
-              ) : error ? (
-                'Unable to display results'
-              ) : total === 0 ? (
-                'No dogs found. Try adjusting your filters.'
-              ) : (
-                `Found ${total} dog${total !== 1 ? 's' : ''}`
-              )}
-            </Typography>
-            
-            <SortSelector />
-          </Paper>
-
-          {/* Loading skeletons */}
-          {isLoading && renderSkeletons()}
-
-          {/* Error message */}
-          {error && !isLoading && (
-            <ErrorState 
-              type={getErrorType(error)}
-              message={error}
-              onRetry={handleRetry}
-              actionText="Try Again"
-            />
-          )}
-
-          {/* No results message */}
-          {!isLoading && !error && dogs.length === 0 && (
-            <EmptyState 
-              type="dogs"
-              primaryAction={handleResetFilters}
-              primaryActionText="Reset Filters"
-              message="We couldn't find any dogs matching your search criteria. Try adjusting your filters to broaden your search."
-            />
-          )}
-
-          {/* Virtualized Dog Grid */}
-          {!isLoading && !error && dogs.length > 0 && (
-            <>
-              <Paper elevation={1} sx={{ height: 800, mb: 3, borderRadius: 2, overflow: 'hidden' }}>
-                <AutoSizer>
-                  {({ height, width }) => {
-                    const columnCount = getColumnCount();
-                    const rowCount = Math.ceil(dogs.length / columnCount);
-                    const columnWidth = width / columnCount;
-                    const rowHeight = 450; // Adjust based on your card height
-                    
-                    return (
-                      <FixedSizeGrid
-                        columnCount={columnCount}
-                        columnWidth={columnWidth}
-                        height={height}
-                        rowCount={rowCount}
-                        rowHeight={rowHeight}
-                        width={width}
-                      >
-                        {Cell}
-                      </FixedSizeGrid>
-                    );
-                  }}
-                </AutoSizer>
+          {/* Main content with dog cards */}
+          <Grid item xs={12} md={9} lg={9}>
+            {/* Results header with count and sorting */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
+            >
+              <Paper 
+                elevation={2} 
+                sx={{ 
+                  p: 2, 
+                  mb: 3, 
+                  display: 'flex', 
+                  flexDirection: isMobile ? 'column' : 'row',
+                  justifyContent: 'space-between',
+                  alignItems: isMobile ? 'flex-start' : 'center',
+                  gap: 2,
+                  borderRadius: 2
+                }}
+              >
+                <Typography variant="body1" color="text.secondary">
+                  {isLoading ? (
+                    'Searching for dogs...'
+                  ) : error ? (
+                    'Unable to display results'
+                  ) : total === 0 ? (
+                    'No dogs found. Try adjusting your filters.'
+                  ) : (
+                    `Found ${total} dog${total !== 1 ? 's' : ''}`
+                  )}
+                </Typography>
+                
+                <SortSelector />
               </Paper>
+            </motion.div>
 
-              {/* Pagination */}
-              {totalPages > 1 && (
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    padding: '30px 0',
+            {/* Loading skeletons */}
+            <AnimatePresence>
+              {isLoading && renderSkeletons()}
+            </AnimatePresence>
+
+            {/* Error message */}
+            <AnimatePresence>
+              {error && !isLoading && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ErrorState 
+                    type={getErrorType(error)}
+                    message={error}
+                    onRetry={handleRetry}
+                    actionText="Try Again"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* No results message */}
+            <AnimatePresence>
+              {!isLoading && !error && dogs.length === 0 && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <EmptyState 
+                    type="dogs"
+                    primaryAction={handleResetFilters}
+                    primaryActionText="Reset Filters"
+                    message="We couldn't find any dogs matching your search criteria. Try adjusting your filters to broaden your search."
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Dog Grid with Framer Motion */}
+            <AnimatePresence>
+              {!isLoading && !error && dogs.length > 0 && (
+                <Paper 
+                  elevation={1} 
+                  sx={{ 
+                    p: 2, 
+                    mb: 3, 
+                    borderRadius: 2, 
+                    minHeight: 300,
+                    overflow: 'hidden'
                   }}
                 >
-                  <Pagination
-                    count={totalPages}
-                    page={page + 1} // Convert 0-indexed to 1-indexed for UI
-                    onChange={handlePageChange}
-                    color="primary"
-                    showFirstButton
-                    showLastButton
-                    siblingCount={1}
-                  />
-                </Box>
+                  <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    <Grid container spacing={3}>
+                      {dogs.map((dog, index) => (
+                        <Grid item xs={12} sm={6} md={6} lg={4} xl={3} key={dog.id}>
+                          <motion.div
+                            variants={itemVariants}
+                            layout
+                            transition={{
+                              layout: { duration: 0.3, type: "spring" }
+                            }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 20 }}
+                          >
+                            <DogCard dog={dog} />
+                          </motion.div>
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </motion.div>
+                </Paper>
               )}
-            </>
-          )}
+            </AnimatePresence>
+
+            {/* Pagination */}
+            <AnimatePresence>
+              {!isLoading && !error && totalPages > 1 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ 
+                    duration: 0.5,
+                    delay: 0.2
+                  }}
+                >
+                  <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4, mb: 6 }}>
+                    <Pagination 
+                      count={totalPages} 
+                      page={page + 1} // API is 0-indexed, UI is 1-indexed
+                      onChange={handlePageChange} 
+                      color="primary"
+                      size={isMobile ? "small" : "medium"}
+                      showFirstButton
+                      showLastButton
+                      sx={{
+                        '& .MuiPaginationItem-root': {
+                          transition: 'transform 0.2s',
+                          '&:hover': {
+                            transform: 'scale(1.1)',
+                          },
+                        },
+                      }}
+                    />
+                  </Box>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </motion.div>
   );
 };
 
-export default React.memo(SearchPage);
+export default SearchPage;
