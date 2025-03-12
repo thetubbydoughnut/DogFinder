@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback, useTransition } from 'react';
+import React, { useState, useEffect, useTransition } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { debounce } from 'lodash';
 import { 
   Box, 
   Typography, 
@@ -51,17 +50,6 @@ const DogFilter = ({ onFilterChange }) => {
   const [showFilters, setShowFilters] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isPending, startTransition] = useTransition();
-
-  // Create debounced filter change handler - not used in this component but kept for future use
-  // eslint-disable-next-line no-unused-vars, react-hooks/exhaustive-deps
-  const debouncedFilterChange = useCallback(
-    debounce((newFilters) => {
-      startTransition(() => {
-        onFilterChange(newFilters);
-      });
-    }, 300),
-    [onFilterChange]
-  );
 
   // Update local state handlers
   const handleBreedChange = (event, newValue) => {

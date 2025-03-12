@@ -43,6 +43,8 @@ describe('LoginForm Component', () => {
     // Check for validation errors
     await waitFor(() => {
       expect(screen.getByText(/Name is required/i)).toBeInTheDocument();
+    });
+    await waitFor(() => {
       expect(screen.getByText(/Email is required/i)).toBeInTheDocument();
     });
     
@@ -54,6 +56,8 @@ describe('LoginForm Component', () => {
     // Should still show email error
     await waitFor(() => {
       expect(screen.queryByText(/Name is required/i)).not.toBeInTheDocument();
+    });
+    await waitFor(() => {
       expect(screen.getByText(/Email is required/i)).toBeInTheDocument();
     });
     

@@ -45,15 +45,14 @@ describe('DogCard Component', () => {
     expect(image).toHaveAttribute('alt', 'Max');
   });
 
-  it('adds a dog to favorites when not favorited', () => {
-    // Set up initial state with no favorites
+  it('should add dog to favorites when favorite button is clicked', () => {
     const initialState = {
       favorites: {
         favorites: [],
       },
     };
     
-    const { store } = render(<DogCard dog={mockDog} />, { preloadedState: initialState });
+    render(<DogCard dog={mockDog} />, { preloadedState: initialState });
     
     // Find and click the favorite button
     const favoriteButton = screen.getByLabelText(/add to favorites/i);
@@ -63,15 +62,14 @@ describe('DogCard Component', () => {
     expect(addToFavorites).toHaveBeenCalledWith('dog1');
   });
 
-  it('removes a dog from favorites when already favorited', () => {
-    // Set up initial state with the dog already in favorites
+  it('should remove dog from favorites when favorite button is clicked for a dog that is already favorited', () => {
     const initialState = {
       favorites: {
         favorites: ['dog1'],
       },
     };
     
-    const { store } = render(<DogCard dog={mockDog} />, { preloadedState: initialState });
+    render(<DogCard dog={mockDog} />, { preloadedState: initialState });
     
     // Find and click the favorite button
     const favoriteButton = screen.getByLabelText(/remove from favorites/i);

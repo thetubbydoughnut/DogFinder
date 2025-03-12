@@ -1,5 +1,3 @@
-import { MetricType, ReportHandler } from 'web-vitals';
-
 // Function to send metrics to an analytics service
 export const sendToAnalytics = (metric: {
   id: string;
