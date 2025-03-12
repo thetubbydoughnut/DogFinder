@@ -1,7 +1,8 @@
 import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { ThemeProvider, CssBaseline, CircularProgress, Box } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
-import theme from './theme';
+import { createAppTheme } from './theme';
+import { ThemeProvider as CustomThemeProvider, useTheme } from './context/ThemeContext';
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './features/auth/components/ProtectedRoute';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -20,7 +21,14 @@ const LoadingFallback = () => (
   </Box>
 );
 
-function App() {
+// App with theme support
+function AppWithTheme() {
+  // Get theme mode from context
+  const { mode } = useTheme();
+  
+  // Create theme based on current mode
+  const theme = createAppTheme(mode);
+  
   // State to track if the app is loading
   const [isLoading, setIsLoading] = useState(true);
 
@@ -89,6 +97,15 @@ function App() {
         </Box>
       </ThemeProvider>
     </ErrorBoundary>
+  );
+}
+
+// Main App component wrapped with ThemeContext
+function App() {
+  return (
+    <CustomThemeProvider>
+      <AppWithTheme />
+    </CustomThemeProvider>
   );
 }
 

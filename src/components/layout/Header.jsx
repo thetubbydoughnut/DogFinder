@@ -14,7 +14,7 @@ import {
   Menu,
   MenuItem,
   Tooltip,
-  useTheme,
+  useTheme as useMuiTheme,
   useScrollTrigger,
   useMediaQuery,
   Slide,
@@ -25,6 +25,7 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
+  Switch,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PetsIcon from '@mui/icons-material/Pets';
@@ -33,7 +34,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import CloseIcon from '@mui/icons-material/Close';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { logout } from '../../features/auth/slice';
+import { useTheme } from '../../context/ThemeContext';
 
 // Hide AppBar on scroll down, show on scroll up
 function HideOnScroll(props) {
@@ -48,11 +52,12 @@ function HideOnScroll(props) {
 }
 
 const Header = (props) => {
-  const theme = useTheme();
+  const muiTheme = useMuiTheme();
+  const { mode, toggleTheme } = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(muiTheme.breakpoints.down('md'));
   
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const { favorites } = useSelector((state) => state.favorites);
@@ -104,9 +109,9 @@ const Header = (props) => {
           position="sticky" 
           elevation={0}
           sx={{
-            bgcolor: theme.palette.background.paper,
-            color: theme.palette.text.primary,
-            borderBottom: `1px solid ${theme.palette.divider}`,
+            bgcolor: muiTheme.palette.background.paper,
+            color: muiTheme.palette.text.primary,
+            borderBottom: `1px solid ${muiTheme.palette.divider}`,
             backdropFilter: 'blur(20px)',
             transition: 'all 0.3s ease',
           }}
@@ -125,7 +130,7 @@ const Header = (props) => {
                   <PetsIcon 
                     sx={{ 
                       mr: 1, 
-                      color: theme.palette.primary.main,
+                      color: muiTheme.palette.primary.main,
                       fontSize: { xs: 28, md: 32 },
                       animation: 'bounce 2s infinite',
                       '@keyframes bounce': {
@@ -141,7 +146,7 @@ const Header = (props) => {
                     sx={{
                       fontFamily: 'Poppins, sans-serif',
                       fontWeight: 600,
-                      color: theme.palette.primary.main,
+                      color: muiTheme.palette.primary.main,
                       textDecoration: 'none',
                       letterSpacing: '-0.5px',
                       fontSize: { xs: '1.2rem', sm: '1.5rem' },
@@ -155,6 +160,17 @@ const Header = (props) => {
               {/* Mobile Menu Toggle - Only on mobile when authenticated */}
               {isAuthenticated && isMobile && (
                 <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center' }}>
+                  {/* Theme Toggle - Mobile */}
+                  <Tooltip title={mode === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
+                    <IconButton 
+                      onClick={toggleTheme}
+                      color="inherit"
+                      sx={{ mr: 1 }}
+                    >
+                      {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                    </IconButton>
+                  </Tooltip>
+                  
                   {/* Favorites Button on Mobile */}
                   <Tooltip title="Your Favorites">
                     <IconButton
@@ -211,14 +227,14 @@ const Header = (props) => {
                       sx={{ 
                         mr: 2,
                         fontWeight: 500,
-                        color: isActive('/search') ? theme.palette.primary.main : theme.palette.text.primary,
-                        borderBottom: isActive('/search') ? `2px solid ${theme.palette.primary.main}` : '2px solid transparent',
+                        color: isActive('/search') ? muiTheme.palette.primary.main : muiTheme.palette.text.primary,
+                        borderBottom: isActive('/search') ? `2px solid ${muiTheme.palette.primary.main}` : '2px solid transparent',
                         borderRadius: 0,
                         paddingBottom: '4px',
                         paddingTop: '4px',
                         '&:hover': {
                           backgroundColor: 'transparent',
-                          borderBottom: `2px solid ${theme.palette.primary.light}`,
+                          borderBottom: `2px solid ${muiTheme.palette.primary.light}`,
                         },
                         transition: 'all 0.2s',
                       }}
@@ -249,14 +265,14 @@ const Header = (props) => {
                       }
                       sx={{ 
                         fontWeight: 500,
-                        color: isActive('/favorites') ? theme.palette.primary.main : theme.palette.text.primary,
-                        borderBottom: isActive('/favorites') ? `2px solid ${theme.palette.primary.main}` : '2px solid transparent',
+                        color: isActive('/favorites') ? muiTheme.palette.primary.main : muiTheme.palette.text.primary,
+                        borderBottom: isActive('/favorites') ? `2px solid ${muiTheme.palette.primary.main}` : '2px solid transparent',
                         borderRadius: 0,
                         paddingBottom: '4px',
                         paddingTop: '4px',
                         '&:hover': {
                           backgroundColor: 'transparent',
-                          borderBottom: `2px solid ${theme.palette.primary.light}`,
+                          borderBottom: `2px solid ${muiTheme.palette.primary.light}`,
                         },
                         transition: 'all 0.2s',
                       }}
@@ -265,6 +281,31 @@ const Header = (props) => {
                     </Button>
                   </Box>
                 </Fade>
+              )}
+
+              {/* Theme Toggle - Desktop */}
+              {!isMobile && (
+                <Tooltip title={mode === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
+                  <IconButton 
+                    onClick={toggleTheme}
+                    color="inherit"
+                    sx={{ 
+                      ml: 2,
+                      transition: 'all 0.3s ease',
+                      animation: mounted ? 'rotate 1s ease-out' : 'none',
+                      '@keyframes rotate': {
+                        '0%': { transform: 'rotate(-30deg)' },
+                        '100%': { transform: 'rotate(0deg)' },
+                      }
+                    }}
+                  >
+                    {mode === 'dark' ? (
+                      <Brightness7Icon sx={{ color: '#FFC107' }} />
+                    ) : (
+                      <Brightness4Icon sx={{ color: '#5C6BC0' }} />
+                    )}
+                  </IconButton>
+                </Tooltip>
               )}
 
               {/* User Menu - Only on desktop when authenticated */}
@@ -290,7 +331,7 @@ const Header = (props) => {
                           sx={{ 
                             width: 40, 
                             height: 40,
-                            bgcolor: theme.palette.primary.main,
+                            bgcolor: muiTheme.palette.primary.main,
                             fontWeight: 'bold',
                           }}
                         >
@@ -341,6 +382,22 @@ const Header = (props) => {
                         />
                       </MenuItem>
                       <Divider />
+                      <MenuItem sx={{ py: 1 }}>
+                        <ListItemIcon>
+                          {mode === 'dark' ? (
+                            <Brightness7Icon fontSize="small" sx={{ color: '#FFC107' }} />
+                          ) : (
+                            <Brightness4Icon fontSize="small" sx={{ color: '#5C6BC0' }} />
+                          )}
+                        </ListItemIcon>
+                        <Typography>{mode === 'dark' ? 'Light' : 'Dark'} Mode</Typography>
+                        <Switch 
+                          checked={mode === 'dark'}
+                          onChange={toggleTheme}
+                          size="small"
+                          sx={{ ml: 'auto' }}
+                        />
+                      </MenuItem>
                       <MenuItem onClick={handleLogout} sx={{ py: 1.5 }}>
                         <ListItemIcon>
                           <LogoutIcon fontSize="small" color="error" />
@@ -354,27 +411,51 @@ const Header = (props) => {
 
               {/* Login Button - Only when not authenticated */}
               {!isAuthenticated && (
-                <Fade in={mounted} timeout={1000}>
-                  <Button 
-                    variant="contained" 
-                    component={RouterLink}
-                    to="/"
-                    sx={{ 
-                      ml: 'auto',
-                      fontWeight: 600,
-                      borderRadius: '8px',
-                      px: 3,
-                      boxShadow: 2,
-                      transition: 'all 0.2s ease',
-                      '&:hover': {
-                        transform: 'translateY(-2px)',
-                        boxShadow: 4,
-                      },
-                    }}
-                  >
-                    Sign In
-                  </Button>
-                </Fade>
+                <Box sx={{ ml: 'auto', display: 'flex', alignItems: 'center' }}>
+                  {/* Theme Toggle for Not Authenticated */}
+                  <Tooltip title={mode === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
+                    <IconButton 
+                      onClick={toggleTheme}
+                      color="inherit"
+                      sx={{ 
+                        mr: 2,
+                        transition: 'all 0.3s ease',
+                        animation: mounted ? 'rotate 1s ease-out' : 'none',
+                        '@keyframes rotate': {
+                          '0%': { transform: 'rotate(-30deg)' },
+                          '100%': { transform: 'rotate(0deg)' },
+                        }
+                      }}
+                    >
+                      {mode === 'dark' ? (
+                        <Brightness7Icon sx={{ color: '#FFC107' }} />
+                      ) : (
+                        <Brightness4Icon sx={{ color: '#5C6BC0' }} />
+                      )}
+                    </IconButton>
+                  </Tooltip>
+                  
+                  <Fade in={mounted} timeout={1000}>
+                    <Button 
+                      variant="contained" 
+                      component={RouterLink}
+                      to="/"
+                      sx={{ 
+                        fontWeight: 600,
+                        borderRadius: '8px',
+                        px: 3,
+                        boxShadow: 2,
+                        transition: 'all 0.2s ease',
+                        '&:hover': {
+                          transform: 'translateY(-2px)',
+                          boxShadow: 4,
+                        },
+                      }}
+                    >
+                      Sign In
+                    </Button>
+                  </Fade>
+                </Box>
               )}
             </Toolbar>
           </Container>
@@ -418,7 +499,7 @@ const Header = (props) => {
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
               <Avatar 
                 sx={{ 
-                  bgcolor: theme.palette.primary.main,
+                  bgcolor: muiTheme.palette.primary.main,
                   fontWeight: 'bold',
                   width: 48,
                   height: 48,
@@ -436,6 +517,30 @@ const Header = (props) => {
         )}
         
         <List>
+          {/* Theme Toggle in Mobile Menu */}
+          <ListItem 
+            button 
+            onClick={toggleTheme}
+            sx={{ 
+              borderRadius: 2,
+              mb: 1,
+            }}
+          >
+            <ListItemIcon>
+              {mode === 'dark' ? (
+                <Brightness7Icon sx={{ color: '#FFC107' }} />
+              ) : (
+                <Brightness4Icon sx={{ color: '#5C6BC0' }} />
+              )}
+            </ListItemIcon>
+            <ListItemText primary={`${mode === 'dark' ? 'Light' : 'Dark'} Mode`} />
+            <Switch 
+              checked={mode === 'dark'}
+              onChange={toggleTheme}
+              size="small"
+            />
+          </ListItem>
+          
           <ListItem 
             button 
             onClick={() => handleNavigate('/search')}
@@ -444,10 +549,10 @@ const Header = (props) => {
               borderRadius: 2,
               mb: 1,
               '&.Mui-selected': {
-                backgroundColor: `${theme.palette.primary.main}15`,
-                color: theme.palette.primary.main,
+                backgroundColor: `${muiTheme.palette.primary.main}15`,
+                color: muiTheme.palette.primary.main,
                 '&:hover': {
-                  backgroundColor: `${theme.palette.primary.main}25`,
+                  backgroundColor: `${muiTheme.palette.primary.main}25`,
                 }
               }
             }}
@@ -466,10 +571,10 @@ const Header = (props) => {
               borderRadius: 2,
               mb: 1,
               '&.Mui-selected': {
-                backgroundColor: `${theme.palette.primary.main}15`,
-                color: theme.palette.primary.main,
+                backgroundColor: `${muiTheme.palette.primary.main}15`,
+                color: muiTheme.palette.primary.main,
                 '&:hover': {
-                  backgroundColor: `${theme.palette.primary.main}25`,
+                  backgroundColor: `${muiTheme.palette.primary.main}25`,
                 }
               }
             }}
@@ -492,7 +597,7 @@ const Header = (props) => {
             onClick={handleLogout}
             sx={{ 
               borderRadius: 2,
-              color: theme.palette.error.main
+              color: muiTheme.palette.error.main
             }}
           >
             <ListItemIcon>
