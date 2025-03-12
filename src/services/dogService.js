@@ -39,10 +39,8 @@ const dogService = {
         params.ageMax = filters.ageMax;
       }
       
-      // Add sort parameter if provided
-      if (sort) {
-        params.sort = sort;
-      }
+      // Add sort parameter, defaulting to breed:asc if not provided
+      params.sort = sort || 'breed:asc';
       
       const response = await api.get('/dogs/search', { params });
       

@@ -6,8 +6,11 @@ export const fetchDogs = createAsyncThunk(
   'dogs/fetchDogs',
   async ({ filters, page, size, sort }, { rejectWithValue }) => {
     try {
+      // Ensure sort has a default value if not provided
+      const sortOption = sort || 'breed:asc';
+      
       // Call the search API to get dog IDs
-      const searchResults = await dogService.searchDogs(filters, page, size, sort);
+      const searchResults = await dogService.searchDogs(filters, page, size, sortOption);
       
       if (!searchResults.resultIds || searchResults.resultIds.length === 0) {
         return {
