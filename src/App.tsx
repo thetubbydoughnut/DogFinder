@@ -1,26 +1,41 @@
 import React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import theme from './theme';
+import store from './store';
+
+// Pages
+import LoginPage from './pages/LoginPage';
+import SearchPage from './pages/SearchPage';
+import FavoritesPage from './pages/FavoritesPage';
+
+// Components
+import Layout from './components/layout/Layout';
+import ProtectedRoute from './features/auth/components/ProtectedRoute';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Container maxWidth="lg">
-        <Box sx={{ my: 4, textAlign: 'center' }}>
-          <Typography variant="h4" component="h1" gutterBottom>
-            Fetch Dog Finder
-          </Typography>
-          <Typography variant="body1">
-            Welcome to the Fetch Dog Finder application. This app will help you find your perfect dog companion.
-          </Typography>
-        </Box>
-      </Container>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<LoginPage />} />
+            
+            {/* Protected Routes - wrapped in Layout */}
+            <Route element={<ProtectedRoute />}>
+              <Route element={<Layout />}>
+                <Route path="/search" element={<SearchPage />} />
+                <Route path="/favorites" element={<FavoritesPage />} />
+              </Route>
+            </Route>
+          </Routes>
+        </Router>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

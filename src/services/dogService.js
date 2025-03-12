@@ -1,6 +1,6 @@
 import api from './api';
 
-// Dog-related services
+// Dog services
 const dogService = {
   // Get all dog breeds
   getBreeds: async () => {
@@ -20,6 +20,16 @@ const dogService = {
   // Generate a match
   generateMatch: async (favoriteIds) => {
     return api.post('/dogs/match', favoriteIds);
+  },
+  
+  // Get locations by ZIP codes
+  getLocationsByZip: async (zipCodes) => {
+    return api.post('/locations', zipCodes);
+  },
+  
+  // Search locations
+  searchLocations: async (searchParams) => {
+    return api.post('/locations/search', searchParams);
   }
 };
 

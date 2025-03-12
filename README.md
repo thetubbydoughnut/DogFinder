@@ -45,26 +45,71 @@ A web application that helps users search through a database of shelter dogs to 
 
 ## Project Structure
 
+The project follows a feature-based organization pattern:
+
 ```
-fetch-dog-finder/
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── auth/
-│   │   ├── dogs/
-│   │   ├── layout/
-│   │   └── ui/
-│   ├── pages/
-│   ├── services/
-│   ├── store/
-│   │   ├── slices/
-│   ├── utils/
-│   ├── App.tsx
-│   ├── index.tsx
-│   └── theme.js
-├── tests/
-└── ...
+src/
+├── components/           # Shared components
+│   ├── ui/               # Pure UI components (buttons, inputs, etc.)
+│   └── layout/           # Layout components (Header, Footer, etc.)
+├── features/             # Feature modules
+│   ├── auth/             # Authentication feature
+│   │   ├── components/   # Auth-specific components (LoginForm, ProtectedRoute)
+│   │   └── slice.js      # Auth redux slice
+│   ├── dogs/             # Dog search feature
+│   │   ├── components/   # Dog-specific components (DogCard, DogFilter)
+│   │   └── slice.js      # Dogs redux slice
+│   └── favorites/        # Favorites feature
+│       ├── components/   # Favorites-specific components
+│       └── slice.js      # Favorites redux slice
+├── services/             # API services
+│   ├── api.js            # Base API configuration
+│   ├── authService.js    # Authentication-related API calls
+│   └── dogService.js     # Dog-related API calls
+├── store/                # Redux store setup
+│   ├── index.js          # Store configuration
+│   └── hooks.js          # Redux hooks
+├── utils/                # Utility functions
+├── pages/                # Page components
+│   ├── LoginPage.jsx     # Login page
+│   ├── SearchPage.jsx    # Dog search page
+│   └── FavoritesPage.jsx # Favorites page
+├── App.tsx               # Main app component with routing
+├── index.tsx             # Entry point
+└── theme.js              # Material-UI theme configuration
 ```
+
+## Development Guide
+
+### API Integration
+
+The application interacts with the Fetch API for dog data. Key endpoints include:
+- `/auth/login` - Authenticate users
+- `/dogs/search` - Search for dogs with filters
+- `/dogs/breeds` - Get all available breeds
+- `/dogs/match` - Generate a match based on favorite dogs
+
+### State Management
+
+Redux Toolkit is used for state management with the following slices:
+- **Auth** - User authentication state
+  - Manages login, logout, and user information
+  - Persists user state in localStorage
+- **Dogs** - Dog search state
+  - Handles search parameters, filtering, and results
+  - Manages pagination and sorting
+- **Favorites** - User's favorite dogs state
+  - Tracks favorite dog IDs
+  - Handles match generation
+  - Persists favorites in localStorage
+
+### Routing
+
+React Router handles application routing with these main routes:
+- `/` - Login page
+- `/search` - Dog search page
+- `/favorites` - User's favorite dogs
+- `/match` - Match result page
 
 ## License
 

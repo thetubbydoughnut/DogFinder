@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
+import authReducer from '../features/auth/slice';
+import dogsReducer from '../features/dogs/slice';
+import favoritesReducer from '../features/favorites/slice';
 
-// Store setup with placeholders for reducers that will be added later
+// Store setup with all reducers
 const store = configureStore({
   reducer: {
-    // Reducers will be added as development progresses
-    // auth: authReducer,
-    // dogs: dogsReducer,
-    // favorites: favoritesReducer,
-    // ui: uiReducer
+    auth: authReducer,
+    dogs: dogsReducer,
+    favorites: favoritesReducer,
+    // ui: uiReducer - will be added later if needed
   }
 });
 
