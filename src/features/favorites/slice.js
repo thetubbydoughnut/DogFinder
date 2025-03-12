@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import dogService from '../../services/dogService';
+import { getDogsByIds } from '../../api/dogsApi';
 
 // Local storage key for favorites
 const FAVORITES_KEY = 'fetch_dog_finder_favorites';
@@ -19,35 +19,44 @@ const initialState = {
   error: null,
 };
 
-// Get favorite dogs by IDs
+// Thunk to fetch dogs by IDs
 export const getFavoriteDogs = createAsyncThunk(
   'favorites/getFavoriteDogs',
-  async (favoriteIds, { rejectWithValue }) => {
+  async (dogIds, { rejectWithValue }) => {
     try {
-      // If no favorites, return empty array
-      if (!favoriteIds.length) return [];
-      
-      const response = await dogService.getDogsByIds(favoriteIds);
-      return response.data;
+      const dogs = await getDogsByIds(dogIds);
+      return dogs;
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data?.message || 'Failed to fetch favorite dogs'
-      );
+      return rejectWithValue('Failed to fetch favorite dogs. Please try again later.');
     }
   }
 );
 
-// Generate match
+// Thunk to generate a match from favorite dogs
 export const generateMatch = createAsyncThunk(
   'favorites/generateMatch',
   async (favoriteIds, { rejectWithValue }) => {
     try {
-      const response = await dogService.generateMatch(favoriteIds);
-      return response.data.match;
+      // If there are no favorites, reject
+      if (!favoriteIds || favoriteIds.length === 0) {
+        return rejectWithValue('No favorite dogs to match with.');
+      }
+
+      // Need at least 2 dogs to generate a match
+      if (favoriteIds.length < 2) {
+        return rejectWithValue('Need at least 2 favorite dogs to generate a match.');
+      }
+
+      // Simulate a backend match generation by selecting a random dog from favorites
+      const randomIndex = Math.floor(Math.random() * favoriteIds.length);
+      const matchedDogId = favoriteIds[randomIndex];
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      return matchedDogId;
     } catch (error) {
-      return rejectWithValue(
-        error.response?.data?.message || 'Failed to generate match'
-      );
+      return rejectWithValue('Failed to generate match. Please try again later.');
     }
   }
 );
@@ -58,7 +67,7 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     // Add dog to favorites
-    addFavorite: (state, action) => {
+    addToFavorites: (state, action) => {
       if (!state.favorites.includes(action.payload)) {
         state.favorites.push(action.payload);
         // Store in localStorage
@@ -66,7 +75,7 @@ const favoritesSlice = createSlice({
       }
     },
     // Remove dog from favorites
-    removeFavorite: (state, action) => {
+    removeFromFavorites: (state, action) => {
       state.favorites = state.favorites.filter(id => id !== action.payload);
       // Store in localStorage
       localStorage.setItem(FAVORITES_KEY, JSON.stringify(state.favorites));
@@ -97,7 +106,7 @@ const favoritesSlice = createSlice({
       })
       .addCase(getFavoriteDogs.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload || 'Failed to load favorite dogs';
       })
       // Generate match cases
       .addCase(generateMatch.pending, (state) => {
@@ -110,15 +119,15 @@ const favoritesSlice = createSlice({
       })
       .addCase(generateMatch.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload || 'Failed to generate match';
       });
   },
 });
 
 // Export actions and reducer
 export const {
-  addFavorite,
-  removeFavorite,
+  addToFavorites,
+  removeFromFavorites,
   clearFavorites,
   clearMatch,
 } = favoritesSlice.actions;

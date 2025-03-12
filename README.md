@@ -27,8 +27,8 @@ A web application that helps users search through a database of shelter dogs to 
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/fetch-dog-finder.git
-   cd fetch-dog-finder
+   git clone https://github.com/thetubbydoughnut/FetchRewardsDogFinder.git
+   cd FetchRewardsDogFinder
    ```
 
 2. Install dependencies
