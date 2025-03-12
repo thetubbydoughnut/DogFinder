@@ -1,20 +1,29 @@
-import React from 'react';
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import React, { lazy, Suspense } from 'react';
+import { ThemeProvider, CssBaseline, CircularProgress, Box } from '@mui/material';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import theme from './theme';
 import store from './store';
-import { Box } from '@mui/material';
 
-// Pages
+// Import login page normally since it's the entry point
 import LoginPage from './pages/LoginPage';
-import SearchPage from './pages/SearchPage';
-import FavoritesPage from './pages/FavoritesPage';
+
+// Lazy load other pages
+const SearchPage = lazy(() => import('./pages/SearchPage'));
+const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
+const DogDetailsPage = lazy(() => import('./pages/DogDetailsPage'));
 
 // Components
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './features/auth/components/ProtectedRoute';
 import ErrorBoundary from './components/ui/ErrorBoundary';
+
+// Loading component for Suspense
+const LoadingFallback = () => (
+  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <CircularProgress />
+  </Box>
+);
 
 function App() {
   return (
@@ -31,7 +40,9 @@ function App() {
                     path="/"
                     element={
                       <Layout>
-                        <SearchPage />
+                        <Suspense fallback={<LoadingFallback />}>
+                          <SearchPage />
+                        </Suspense>
                       </Layout>
                     }
                   />
@@ -39,7 +50,19 @@ function App() {
                     path="/favorites"
                     element={
                       <Layout>
-                        <FavoritesPage />
+                        <Suspense fallback={<LoadingFallback />}>
+                          <FavoritesPage />
+                        </Suspense>
+                      </Layout>
+                    }
+                  />
+                  <Route
+                    path="/dog/:id"
+                    element={
+                      <Layout>
+                        <Suspense fallback={<LoadingFallback />}>
+                          <DogDetailsPage />
+                        </Suspense>
                       </Layout>
                     }
                   />

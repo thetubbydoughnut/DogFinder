@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { debounce } from 'lodash';
 import { 
   Box, 
   Typography, 
@@ -39,7 +40,7 @@ const formatAge = (age) => {
   return `${years} year${years !== 1 ? 's' : ''}${months > 0 ? ` ${months} month${months !== 1 ? 's' : ''}` : ''}`;
 };
 
-const DogFilter = () => {
+const DogFilter = ({ onFilterChange }) => {
   const dispatch = useDispatch();
   const { filters } = useSelector((state) => state.dogs);
   
@@ -50,6 +51,20 @@ const DogFilter = () => {
   const [zipCodeError, setZipCodeError] = useState('');
   const [showFilters, setShowFilters] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Create debounced filter change handler
+  const debouncedFilterChange = useCallback(
+    debounce((newFilters) => {
+      onFilterChange(newFilters);
+    }, 300),
+    [onFilterChange]
+  );
+
+  // Update this handler to use debouncing
+  const handleFilterChange = (newFilters) => {
+    setLocalFilters(newFilters);
+    debouncedFilterChange(newFilters);
+  };
 
   // Fetch breeds on component mount
   useEffect(() => {

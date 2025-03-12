@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
 import dogService from '../../services/dogService';
 
 // Fetch dogs with filters
@@ -63,6 +63,7 @@ const dogsSlice = createSlice({
     },
     sortOption: '',
     isLoading: false,
+    isLoadingBreeds: false,
     error: null,
     page: 0,
     next: null,
@@ -71,7 +72,7 @@ const dogsSlice = createSlice({
   },
   reducers: {
     setFilters: (state, action) => {
-      state.filters = action.payload;
+      state.filters = { ...action.payload };
       state.page = 0; // Reset page on filter change
     },
     clearFilters: (state) => {
@@ -131,5 +132,26 @@ const dogsSlice = createSlice({
 });
 
 export const { setFilters, clearFilters, setSortOption, setPage, setPageSize } = dogsSlice.actions;
+
+// Memoized selectors
+export const selectDogs = state => state.dogs.dogs;
+export const selectFilters = state => state.dogs.filters;
+export const selectSortOption = state => state.dogs.sortOption;
+export const selectIsLoading = state => state.dogs.isLoading;
+export const selectError = state => state.dogs.error;
+export const selectPagination = state => ({
+  page: state.dogs.page,
+  pageSize: state.dogs.pageSize,
+  total: state.dogs.total
+});
+
+// Memoized filtered and sorted dogs selector
+export const selectFilteredDogs = createSelector(
+  [selectDogs, selectFilters, selectSortOption],
+  (dogs, filters, sortOption) => {
+    // The selector will only recalculate when dogs, filters, or sortOption changes
+    return dogs;
+  }
+);
 
 export default dogsSlice.reducer; 

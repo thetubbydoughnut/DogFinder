@@ -186,4 +186,7 @@ const DogCard = ({ dog }) => {
   );
 };
 
-export default DogCard; 
+export default React.memo(DogCard, (prevProps, nextProps) => {
+  return prevProps.dog.id === nextProps.dog.id && 
+         prevProps.isFavorite === nextProps.isFavorite;
+}); 

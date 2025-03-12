@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
@@ -17,23 +17,30 @@ import {
 import DogCard from '../features/dogs/components/DogCard';
 import DogFilter from '../features/dogs/components/DogFilter';
 import SortSelector from '../features/dogs/components/SortSelector';
-import { fetchDogs, setPage } from '../features/dogs/slice';
+import { 
+  fetchDogs, 
+  setPage,
+  setFilters,
+  selectFilteredDogs,
+  selectIsLoading,
+  selectError,
+  selectPagination
+} from '../features/dogs/slice';
 
 const SearchPage = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   
-  const { 
-    dogs, 
-    isLoading, 
-    error, 
-    total, 
-    page, 
-    pageSize, 
-    filters, 
-    sortOption 
-  } = useSelector((state) => state.dogs);
+  // Use memoized selectors
+  const dogs = useSelector(selectFilteredDogs);
+  const { isLoading, error } = useSelector(state => ({
+    isLoading: selectIsLoading(state),
+    error: selectError(state)
+  }));
+  const { total, page, pageSize } = useSelector(selectPagination);
+  const filters = useSelector(state => state.dogs.filters);
+  const sortOption = useSelector(state => state.dogs.sortOption);
 
   // Fetch dogs on component mount and when search parameters change
   useEffect(() => {
@@ -45,14 +52,19 @@ const SearchPage = () => {
     }));
   }, [dispatch, filters, page, pageSize, sortOption]);
 
-  // Handle page change
-  const handlePageChange = (event, value) => {
+  // Handle page change with useCallback
+  const handlePageChange = useCallback((event, value) => {
     dispatch(setPage(value - 1)); // API is 0-indexed, UI is 1-indexed
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  };
+  }, [dispatch]);
+
+  // Handle filter change with useCallback
+  const handleFilterChange = useCallback((newFilters) => {
+    dispatch(setFilters(newFilters));
+  }, [dispatch]);
 
   // Calculate total pages
   const totalPages = Math.ceil(total / pageSize);
@@ -66,7 +78,7 @@ const SearchPage = () => {
       <Grid container spacing={3}>
         {/* Sidebar with filters */}
         <Grid item xs={12} md={3} lg={3}>
-          <DogFilter />
+          <DogFilter onFilterChange={handleFilterChange} />
         </Grid>
 
         {/* Main content with dog cards */}

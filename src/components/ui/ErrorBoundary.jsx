@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Typography, Button, Paper } from '@mui/material';
-import { Home as HomeIcon } from '@mui/icons-material';
+import { Box, Typography, Button, Paper, Divider } from '@mui/material';
+import { Home as HomeIcon, Refresh as RefreshIcon } from '@mui/icons-material';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -11,19 +11,32 @@ class ErrorBoundary extends Component {
 
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI
-    return { hasError: true, error, errorInfo: null };
+    return { hasError: true, error };
   }
 
   componentDidCatch(error, errorInfo) {
-    // You can log the error to an error reporting service
+    // Log the error to console and potentially to an error service
     console.error('ErrorBoundary caught an error', error, errorInfo);
+    
+    // Update state with error details
     this.setState({ errorInfo });
+    
+    // Example of how you could log to an error service
+    // if (process.env.NODE_ENV === 'production') {
+    //   logErrorToService(error, errorInfo);
+    // }
   }
 
   handleReset = () => {
     this.setState({ hasError: false, error: null, errorInfo: null });
     // Attempt to recover by navigating to the home page
     window.location.href = '/';
+  };
+
+  handleRetry = () => {
+    this.setState({ hasError: false, error: null, errorInfo: null });
+    // Stay on the same page but reset the error state to try again
+    window.location.reload();
   };
 
   render() {
@@ -55,19 +68,46 @@ class ErrorBoundary extends Component {
               Oops! Something went wrong
             </Typography>
             <Typography variant="body1" paragraph>
-              We're sorry, but there was an error loading this page. Our team has been notified.
+              We're sorry, but there was an error loading this page.
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-              {process.env.NODE_ENV === 'development' && this.state.error?.toString()}
-            </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              startIcon={<HomeIcon />}
-              onClick={this.handleReset}
-            >
-              Return to Home
-            </Button>
+
+            {process.env.NODE_ENV === 'development' && (
+              <Box sx={{ my: 2, textAlign: 'left', bgcolor: '#f8f8f8', p: 2, borderRadius: 1 }}>
+                <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 1 }}>
+                  Error details:
+                </Typography>
+                <Typography variant="body2" component="pre" sx={{ whiteSpace: 'pre-wrap', overflowX: 'auto' }}>
+                  {this.state.error?.toString()}
+                </Typography>
+                {this.state.errorInfo && (
+                  <>
+                    <Divider sx={{ my: 1 }} />
+                    <Typography variant="body2" component="pre" sx={{ whiteSpace: 'pre-wrap', overflowX: 'auto', fontSize: '0.75rem' }}>
+                      {this.state.errorInfo.componentStack}
+                    </Typography>
+                  </>
+                )}
+              </Box>
+            )}
+
+            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 2 }}>
+              <Button
+                variant="outlined"
+                color="primary"
+                startIcon={<RefreshIcon />}
+                onClick={this.handleRetry}
+              >
+                Try Again
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<HomeIcon />}
+                onClick={this.handleReset}
+              >
+                Return to Home
+              </Button>
+            </Box>
           </Paper>
         </Box>
       );
