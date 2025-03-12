@@ -14,14 +14,12 @@ import {
   Zoom,
   Grow,
   Skeleton,
-  Badge,
   useTheme,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PetsIcon from '@mui/icons-material/Pets';
-import InfoIcon from '@mui/icons-material/Info';
 import CakeIcon from '@mui/icons-material/Cake';
 import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import { addToFavorites, removeFromFavorites } from '../../favorites/slice';

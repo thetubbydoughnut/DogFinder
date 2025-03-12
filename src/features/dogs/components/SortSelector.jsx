@@ -21,7 +21,7 @@ const SortSelector = () => {
 
   // Sort options with descriptive labels and values for API
   const sortOptions = [
-    { value: '', label: 'Default' },
+    { value: '', label: 'Default (Breed A-Z)' },
     { value: 'breed:asc', label: 'Breed (A-Z)' },
     { value: 'breed:desc', label: 'Breed (Z-A)' },
     { value: 'age:asc', label: 'Age (Youngest)' },

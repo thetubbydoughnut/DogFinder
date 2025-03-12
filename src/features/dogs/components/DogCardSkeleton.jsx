@@ -94,25 +94,4 @@ const DogCardSkeleton = () => {
   );
 };
 
-// Shimmer effect for better visual appeal
-const ShimmerEffect = () => {
-  return (
-    <Box
-      sx={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        animation: 'shimmer 2s infinite',
-        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-        '@keyframes shimmer': {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(100%)' },
-        },
-      }}
-    />
-  );
-};
-
 export default DogCardSkeleton; 

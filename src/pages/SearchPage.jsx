@@ -5,7 +5,6 @@ import {
   Typography,
   Grid,
   Container,
-  CircularProgress,
   Alert,
   AlertTitle,
   Pagination,

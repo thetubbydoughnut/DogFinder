@@ -14,7 +14,6 @@ import {
   Fade, 
   Chip, 
   Divider,
-  Avatar,
   IconButton,
   useMediaQuery
 } from '@mui/material';
@@ -27,7 +26,6 @@ import ShareIcon from '@mui/icons-material/Share';
 import DownloadIcon from '@mui/icons-material/Download';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Confetti from 'react-confetti';
-import DogCard from '../../dogs/components/DogCard';
 
 // Define animations
 const bounce = keyframes`

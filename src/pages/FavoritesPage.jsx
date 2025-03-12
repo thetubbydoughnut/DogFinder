@@ -20,10 +20,8 @@ import {
   Container,
   useTheme,
   useMediaQuery,
-  IconButton,
   Tooltip,
   Stack,
-  Chip,
   Slide,
   Grow,
   LinearProgress,
@@ -33,24 +31,12 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MatchIcon from '@mui/icons-material/Pets';
 import SearchIcon from '@mui/icons-material/Search';
-import CelebrationIcon from '@mui/icons-material/Celebration';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import { getFavoriteDogs, clearFavorites, generateMatch, clearMatch } from '../features/favorites/slice';
 import DogCard from '../features/dogs/components/DogCard';
 import DogCardSkeleton from '../features/dogs/components/DogCardSkeleton';
 import MatchResult from '../features/favorites/components/MatchResult';
-
-// Animation variants for staggered entry
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
