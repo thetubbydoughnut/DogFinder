@@ -12,11 +12,13 @@ A web application that helps users search through a database of shelter dogs to 
 - 📱 Progressive Web App (PWA) support for offline capabilities
 - 🛡️ Error boundaries for graceful error handling
 - 🚀 Code splitting and lazy loading for improved performance
+- 📊 TypeScript for core application files with enhanced type safety
 
 ## Tech Stack
 
 ### Frontend
 - **React.js** - Core UI library
+- **TypeScript** - For type safety in core application files
 - **Material-UI** - Component library for consistent and professional UI
 - **Redux Toolkit** - State management with simplified Redux setup
 - **React Router** - For application routing
@@ -68,7 +70,7 @@ src/
 ├── components/           # Shared components
 │   ├── ui/               # Pure UI components (buttons, inputs, etc.)
 │   ├── layout/           # Layout components (Header, Footer, etc.)
-│   └── ErrorBoundary.tsx # Error handling component
+│   └── ErrorBoundary.tsx # Error handling component (TypeScript)
 ├── features/             # Feature modules
 │   ├── auth/             # Authentication feature
 │   │   ├── components/   # Auth-specific components
@@ -91,9 +93,9 @@ src/
 │   ├── LoginPage.jsx     # Login page
 │   ├── SearchPage.jsx    # Dog search page
 │   └── FavoritesPage.jsx # Favorites page
-├── App.tsx               # Main app component with routing
-├── index.tsx             # Entry point
-├── serviceWorkerRegistration.ts # Service worker registration
+├── App.tsx               # Main app component with routing (TypeScript)
+├── index.tsx             # Entry point (TypeScript)
+├── serviceWorkerRegistration.ts # Service worker registration (TypeScript)
 └── theme.js              # Material-UI theme configuration
 ```
 
