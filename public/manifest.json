@@ -1,6 +1,7 @@
 {
   "short_name": "Dog Finder",
   "name": "Fetch Dog Finder",
+  "description": "Find your perfect dog companion from available shelter dogs",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +11,21 @@
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#3f51b5",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["pets", "lifestyle", "adoption"]
 } 

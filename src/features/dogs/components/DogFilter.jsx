@@ -14,10 +14,8 @@ import {
   FormControl,
   FormLabel,
   Divider,
-  Chip,
   IconButton,
   Collapse,
-  Tooltip,
   CircularProgress,
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
@@ -55,14 +53,14 @@ const DogFilter = ({ onFilterChange }) => {
   const [isPending, startTransition] = useTransition();
 
   // Create debounced filter change handler - not used in this component but kept for future use
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars, react-hooks/exhaustive-deps
   const debouncedFilterChange = useCallback(
     debounce((newFilters) => {
       startTransition(() => {
         onFilterChange(newFilters);
       });
     }, 300),
-    [onFilterChange, startTransition]
+    [onFilterChange]
   );
 
   // Update local state handlers

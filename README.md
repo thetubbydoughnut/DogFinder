@@ -9,6 +9,9 @@ A web application that helps users search through a database of shelter dogs to 
 - 📄 Paginated and sortable results
 - ❤️ Favorites selection and management
 - 🤝 Match generation for adoption
+- 📱 Progressive Web App (PWA) support for offline capabilities
+- 🛡️ Error boundaries for graceful error handling
+- 🚀 Code splitting and lazy loading for improved performance
 
 ## Tech Stack
 
@@ -19,6 +22,13 @@ A web application that helps users search through a database of shelter dogs to 
 - **React Router** - For application routing
 - **Axios** - For API communication
 - **Formik & Yup** - Form handling and validation
+
+### Performance Optimizations
+- **React.lazy & Suspense** - Code splitting for better load times
+- **Service Worker** - Offline capabilities and caching
+- **Virtualized Lists** - Efficient rendering of large lists
+- **useTransition** - Improved UI responsiveness during state updates
+- **Memoization** - Optimized component rendering
 
 ## Getting Started
 
@@ -57,7 +67,8 @@ yarn start
 src/
 ├── components/           # Shared components
 │   ├── ui/               # Pure UI components (buttons, inputs, etc.)
-│   └── layout/           # Layout components (Header, Footer, etc.)
+│   ├── layout/           # Layout components (Header, Footer, etc.)
+│   └── ErrorBoundary.tsx # Error handling component
 ├── features/             # Feature modules
 │   ├── auth/             # Authentication feature
 │   │   ├── components/   # Auth-specific components
@@ -82,6 +93,7 @@ src/
 │   └── FavoritesPage.jsx # Favorites page
 ├── App.tsx               # Main app component with routing
 ├── index.tsx             # Entry point
+├── serviceWorkerRegistration.ts # Service worker registration
 └── theme.js              # Material-UI theme configuration
 ```
 
@@ -104,6 +116,12 @@ Users must log in with their name and email to access the application. This crea
 - View all favorited dogs in one place
 - Generate a match from your favorite dogs
 
+### Progressive Web App Features
+
+- Offline capabilities with service worker caching
+- Installable on mobile devices
+- Fast loading with optimized assets
+
 ## Deployment
 
 The application is configured for seamless deployment to Vercel. The deployment configuration includes:
@@ -111,6 +129,7 @@ The application is configured for seamless deployment to Vercel. The deployment 
 - **vercel.json** - Contains routing configuration for React Router and build settings
 - **Error Boundary** - Runtime error handling for production environment
 - **Environment Variables** - Environment-specific settings in `.env` files
+- **Service Worker** - Offline capabilities and improved performance
 
 ### Deploying to Vercel
 

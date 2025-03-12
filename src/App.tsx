@@ -1,22 +1,16 @@
 import React, { lazy, Suspense } from 'react';
 import { ThemeProvider, CssBaseline, CircularProgress, Box } from '@mui/material';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
 import theme from './theme';
-import store from './store';
-
-// Import login page normally since it's the entry point
+import Layout from './components/layout/Layout';
+import ProtectedRoute from './features/auth/components/ProtectedRoute';
+import ErrorBoundary from './components/ErrorBoundary';
 import LoginPage from './pages/LoginPage';
 
 // Lazy load other pages
 const SearchPage = lazy(() => import('./pages/SearchPage'));
 const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
 const DogDetailsPage = lazy(() => import('./pages/DogDetailsPage'));
-
-// Components
-import Layout from './components/layout/Layout';
-import ProtectedRoute from './features/auth/components/ProtectedRoute';
-import ErrorBoundary from './components/ui/ErrorBoundary';
 
 // Loading component for Suspense
 const LoadingFallback = () => (
@@ -28,50 +22,52 @@ const LoadingFallback = () => (
 function App() {
   return (
     <ErrorBoundary>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <BrowserRouter>
-            <Box sx={{ display: 'flex', minHeight: '100vh' }}>
-              <Routes>
-                <Route path="/login" element={<LoginPage />} />
-                <Route element={<ProtectedRoute />}>
-                  <Route
-                    path="/"
-                    element={
-                      <Layout>
-                        <Suspense fallback={<LoadingFallback />}>
-                          <SearchPage />
-                        </Suspense>
-                      </Layout>
-                    }
-                  />
-                  <Route
-                    path="/favorites"
-                    element={
-                      <Layout>
-                        <Suspense fallback={<LoadingFallback />}>
-                          <FavoritesPage />
-                        </Suspense>
-                      </Layout>
-                    }
-                  />
-                  <Route
-                    path="/dog/:id"
-                    element={
-                      <Layout>
-                        <Suspense fallback={<LoadingFallback />}>
-                          <DogDetailsPage />
-                        </Suspense>
-                      </Layout>
-                    }
-                  />
-                </Route>
-              </Routes>
-            </Box>
-          </BrowserRouter>
-        </ThemeProvider>
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box sx={{ display: 'flex', minHeight: '100vh' }}>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route element={<ProtectedRoute />}>
+              <Route
+                path="/"
+                element={
+                  <Layout>
+                    <ErrorBoundary>
+                      <Suspense fallback={<LoadingFallback />}>
+                        <SearchPage />
+                      </Suspense>
+                    </ErrorBoundary>
+                  </Layout>
+                }
+              />
+              <Route
+                path="/favorites"
+                element={
+                  <Layout>
+                    <ErrorBoundary>
+                      <Suspense fallback={<LoadingFallback />}>
+                        <FavoritesPage />
+                      </Suspense>
+                    </ErrorBoundary>
+                  </Layout>
+                }
+              />
+              <Route
+                path="/dogs/:id"
+                element={
+                  <Layout>
+                    <ErrorBoundary>
+                      <Suspense fallback={<LoadingFallback />}>
+                        <DogDetailsPage />
+                      </Suspense>
+                    </ErrorBoundary>
+                  </Layout>
+                }
+              />
+            </Route>
+          </Routes>
+        </Box>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }
