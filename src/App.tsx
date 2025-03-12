@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { ThemeProvider, CssBaseline, CircularProgress, Box } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
 import theme from './theme';
@@ -6,6 +6,7 @@ import Layout from './components/layout/Layout';
 import ProtectedRoute from './features/auth/components/ProtectedRoute';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoginPage from './pages/LoginPage';
+import LoadingScreen from './components/layout/LoadingScreen';
 
 // Lazy load other pages
 const SearchPage = lazy(() => import('./pages/SearchPage'));
@@ -20,6 +21,24 @@ const LoadingFallback = () => (
 );
 
 function App() {
+  // State to track if the app is loading
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate app initialization
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500); // Show loading screen for 2.5 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Show loading screen during initial load
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <ErrorBoundary>
       <ThemeProvider theme={theme}>

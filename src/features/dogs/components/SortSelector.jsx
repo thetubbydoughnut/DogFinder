@@ -21,8 +21,7 @@ const SortSelector = () => {
 
   // Sort options with descriptive labels and values for API
   const sortOptions = [
-    { value: '', label: 'Default (Breed A-Z)' },
-    { value: 'breed:asc', label: 'Breed (A-Z)' },
+    { value: 'breed:asc', label: 'Breed (A-Z) • Default' },
     { value: 'breed:desc', label: 'Breed (Z-A)' },
     { value: 'age:asc', label: 'Age (Youngest)' },
     { value: 'age:desc', label: 'Age (Oldest)' },
@@ -33,6 +32,9 @@ const SortSelector = () => {
   const handleSortChange = (event) => {
     dispatch(setSortOption(event.target.value));
   };
+
+  // Set default sort to breed:asc if empty
+  const currentSortOption = sortOption || 'breed:asc';
 
   return (
     <Box display="flex" alignItems="center">
@@ -63,7 +65,7 @@ const SortSelector = () => {
         <Select
           labelId="sort-select-label"
           id="sort-select"
-          value={sortOption}
+          value={currentSortOption}
           onChange={handleSortChange}
           label={isMobile ? "Sort" : "Sort"}
           displayEmpty
