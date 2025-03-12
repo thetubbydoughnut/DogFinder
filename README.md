@@ -104,6 +104,36 @@ Users must log in with their name and email to access the application. This crea
 - View all favorited dogs in one place
 - Generate a match from your favorite dogs
 
+## Deployment
+
+The application is configured for seamless deployment to Vercel. The deployment configuration includes:
+
+- **vercel.json** - Contains routing configuration for React Router and build settings
+- **Error Boundary** - Runtime error handling for production environment
+- **Environment Variables** - Environment-specific settings in `.env` files
+
+### Deploying to Vercel
+
+For detailed deployment instructions, refer to the [deployment-guide.md](./deployment-guide.md) file.
+
+Quick steps:
+1. Push your code to a Git repository
+2. Import the repository to Vercel
+3. Configure the project settings (framework preset: Create React App)
+4. Deploy!
+
+### Production Build
+
+To create a production build locally:
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+The build artifacts will be in the `build` directory.
+
 ## API Integration
 
 The application integrates with the Fetch API service at `https://frontend-take-home-service.fetch.com`, which provides:
