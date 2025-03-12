@@ -27,7 +27,7 @@ import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import { addToFavorites, removeFromFavorites } from '../../favorites/slice';
 import { Link as RouterLink } from 'react-router-dom';
 
-const DogCard = ({ dog }) => {
+const DogCard = ({ dog, hideActions = false }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const { favorites } = useSelector((state) => state.favorites);
@@ -304,39 +304,44 @@ const DogCard = ({ dog }) => {
               </Box>
             </CardContent>
 
-            <CardActions sx={{ justifyContent: 'space-between', p: 2, pt: 0 }}>
-              <Button
-                size="small"
-                color={isFavorite ? "error" : "primary"}
-                onClick={handleToggleFavorite}
-                startIcon={isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                sx={{
-                  fontWeight: 'bold',
-                  transition: 'all 0.2s ease',
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                  }
-                }}
-              >
-                {isFavorite ? 'Remove' : 'Favorite'}
-              </Button>
-              
-              <Button
-                size="small"
-                color="primary"
-                onClick={handleFlipCard}
-                startIcon={<InfoIcon />}
-                sx={{
-                  fontWeight: 'medium',
-                  transition: 'all 0.2s ease',
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                  }
-                }}
-              >
-                Details
-              </Button>
-            </CardActions>
+            {/* Only show card actions if hideActions is false */}
+            {!hideActions && (
+              <CardActions sx={{ 
+                justifyContent: 'space-between', 
+                p: 2,
+                backgroundColor: isFlipped ? 'background.paper' : 'inherit'
+              }}>
+                <Tooltip title={isFavorite ? "Remove from favorites" : "Add to favorites"} arrow>
+                  <IconButton 
+                    onClick={handleToggleFavorite}
+                    color={isFavorite ? "error" : "default"}
+                    sx={{
+                      transition: 'transform 0.2s',
+                      '&:hover': {
+                        transform: 'scale(1.1)',
+                      },
+                    }}
+                  >
+                    {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                  </IconButton>
+                </Tooltip>
+                
+                <Tooltip title="Flip card for more info" arrow>
+                  <IconButton 
+                    onClick={handleFlipCard}
+                    color="primary"
+                    sx={{
+                      transition: 'transform 0.2s',
+                      '&:hover': {
+                        transform: 'scale(1.1)',
+                      },
+                    }}
+                  >
+                    <FlipCameraAndroidIcon />
+                  </IconButton>
+                </Tooltip>
+              </CardActions>
+            )}
           </Box>
           
           {/* Back Side of Card */}

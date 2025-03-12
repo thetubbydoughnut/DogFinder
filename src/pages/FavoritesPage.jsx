@@ -39,6 +39,7 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import { getFavoriteDogs, clearFavorites, generateMatch, clearMatch } from '../features/favorites/slice';
 import DogCard from '../features/dogs/components/DogCard';
 import DogCardSkeleton from '../features/dogs/components/DogCardSkeleton';
+import MatchResult from '../features/favorites/components/MatchResult';
 
 // Animation variants for staggered entry
 const containerVariants = {
@@ -380,80 +381,12 @@ const FavoritesPage = () => {
         </DialogActions>
       </Dialog>
 
-      {/* Match result dialog */}
-      <Dialog
-        open={matchDialogOpen}
-        onClose={handleMatchDialogClose}
-        aria-labelledby="match-dialog-title"
-        maxWidth="sm"
-        fullWidth
-        TransitionComponent={Zoom}
-        PaperProps={{
-          sx: {
-            borderRadius: 3,
-            overflow: 'hidden',
-          }
-        }}
-      >
-        <Box sx={{ 
-          background: `linear-gradient(135deg, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
-          p: 2,
-          color: 'white'
-        }}>
-          <DialogTitle id="match-dialog-title" sx={{ textAlign: 'center', p: 1 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <CelebrationIcon sx={{ fontSize: 30, mr: 1 }} />
-              <Typography variant="h5" component="span" fontWeight="bold">
-                It's a Match!
-              </Typography>
-              <CelebrationIcon sx={{ fontSize: 30, ml: 1 }} />
-            </Box>
-          </DialogTitle>
-        </Box>
-        
-        <DialogContent sx={{ pt: 4, pb: 2 }}>
-          {matchedDog ? (
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <DialogContentText sx={{ textAlign: 'center', mb: 2 }}>
-                Based on your favorites, we've found your perfect match! 
-                Say hello to your new best friend:
-              </DialogContentText>
-              <Chip 
-                label={matchedDog.name} 
-                color="primary" 
-                sx={{ 
-                  mb: 3, 
-                  py: 2.5, 
-                  px: 1, 
-                  fontSize: '1.2rem',
-                  fontWeight: 'bold'
-                }} 
-              />
-              <Box sx={{ width: '100%', maxWidth: 350, mx: 'auto' }}>
-                <DogCard dog={matchedDog} hideActions />
-              </Box>
-            </Box>
-          ) : (
-            <DialogContentText sx={{ textAlign: 'center' }}>
-              We couldn't find information about your match. Please try again.
-            </DialogContentText>
-          )}
-        </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center', pb: 4 }}>
-          <Button
-            onClick={handleMatchDialogClose}
-            color="primary"
-            variant="contained"
-            size="large"
-            sx={{ 
-              px: 4,
-              borderRadius: 5
-            }}
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
+      {/* Use our new MatchResult component */}
+      <MatchResult 
+        open={matchDialogOpen} 
+        onClose={handleMatchDialogClose} 
+        matchedDog={matchedDog} 
+      />
     </Container>
   );
 };
