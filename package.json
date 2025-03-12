@@ -62,7 +62,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.0.0"
   },
-  "homepage": ".",
+  "homepage": "/",
   "description": "A web application for searching and adopting dogs from shelters",
   "author": "Your Name",
   "license": "MIT",
