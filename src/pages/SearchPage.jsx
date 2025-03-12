@@ -16,6 +16,7 @@ import {
 import { FixedSizeGrid } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import DogCard from '../features/dogs/components/DogCard';
+import DogCardSkeleton from '../features/dogs/components/DogCardSkeleton';
 import DogFilter from '../features/dogs/components/DogFilter';
 import SortSelector from '../features/dogs/components/SortSelector';
 import { 
@@ -101,6 +102,24 @@ const SearchPage = () => {
     );
   }, [dogs, getColumnCount]);
 
+  // Generate a skeleton loading grid based on screen size
+  const renderSkeletons = () => {
+    const columnCount = getColumnCount();
+    const skeletonCount = columnCount * 2; // Show 2 rows of skeletons
+    
+    return (
+      <Paper elevation={1} sx={{ p: 2, mb: 3, borderRadius: 2 }}>
+        <Grid container spacing={2}>
+          {Array.from(new Array(skeletonCount)).map((_, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={`skeleton-${index}`}>
+              <DogCardSkeleton />
+            </Grid>
+          ))}
+        </Grid>
+      </Paper>
+    );
+  };
+
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" component="h1" gutterBottom mt={3}>
@@ -144,12 +163,8 @@ const SearchPage = () => {
             <SortSelector />
           </Paper>
 
-          {/* Loading indicator */}
-          {isLoading ? (
-            <Box display="flex" justifyContent="center" my={10}>
-              <CircularProgress />
-            </Box>
-          ) : null}
+          {/* Loading skeletons */}
+          {isLoading && renderSkeletons()}
 
           {/* Error message */}
           {error && !isLoading ? (
