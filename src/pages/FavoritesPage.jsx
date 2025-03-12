@@ -37,6 +37,9 @@ import { getFavoriteDogs, clearFavorites, generateMatch, clearMatch } from '../f
 import DogCard from '../features/dogs/components/DogCard';
 import DogCardSkeleton from '../features/dogs/components/DogCardSkeleton';
 import MatchResult from '../features/favorites/components/MatchResult';
+import ErrorState from '../components/ui/ErrorState';
+import EmptyState from '../components/ui/EmptyState';
+import useApiErrorHandler from '../hooks/useApiErrorHandler';
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
@@ -53,6 +56,12 @@ const FavoritesPage = () => {
   const [matchedDog, setMatchedDog] = useState(null);
   const [isMatchGenerating, setIsMatchGenerating] = useState(false);
   const [animateItems, setAnimateItems] = useState(false);
+  
+  // Use API error handler hook
+  const { retryApiCall } = useApiErrorHandler({
+    maxRetries: 3,
+    initialDelay: 1500,
+  });
 
   // Load favorite dogs on component mount
   useEffect(() => {
@@ -110,6 +119,13 @@ const FavoritesPage = () => {
 
   const handleGoToSearch = () => {
     navigate('/search');
+  };
+  
+  // Handle retry loading favorites
+  const handleRetryLoadFavorites = () => {
+    if (favorites.length > 0) {
+      retryApiCall(() => dispatch(getFavoriteDogs(favorites)));
+    }
   };
 
   // Render loading skeletons
@@ -240,11 +256,14 @@ const FavoritesPage = () => {
       </Paper>
 
       {/* Error display */}
-      {error && (
-        <Alert severity="error" sx={{ mb: 3 }}>
-          <AlertTitle>Error</AlertTitle>
-          {error}
-        </Alert>
+      {error && !isLoading && (
+        <ErrorState 
+          type="api"
+          title="Failed to Load Favorites"
+          message={error}
+          onRetry={handleRetryLoadFavorites}
+          actionText="Try Again"
+        />
       )}
 
       {/* Loading state */}
@@ -257,50 +276,13 @@ const FavoritesPage = () => {
           {renderSkeletons()}
         </Box>
       ) : favorites.length === 0 ? (
-        <Grow in={true} timeout={800}>
-          <Paper 
-            sx={{ 
-              p: 5, 
-              textAlign: 'center', 
-              borderRadius: 3,
-              my: 5,
-              boxShadow: 3,
-              maxWidth: 700,
-              mx: 'auto',
-              background: `linear-gradient(145deg, ${theme.palette.background.paper}, ${theme.palette.primary.light}15)`,
-            }} 
-          >
-            <SentimentVeryDissatisfiedIcon sx={{ fontSize: 60, color: 'text.secondary', mb: 2 }} />
-            <Typography variant="h5" gutterBottom fontWeight="500">
-              You haven't added any favorites yet
-            </Typography>
-            <Typography variant="body1" paragraph color="text.secondary">
-              Start adding some dogs to your favorites to find your perfect match!
-              Our sophisticated matching algorithm will help you find the dog that's right for you.
-            </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleGoToSearch}
-              sx={{ 
-                mt: 2,
-                px: 4,
-                py: 1.5,
-                boxShadow: 2,
-                fontSize: '1.1rem',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-3px)',
-                  boxShadow: 4,
-                }
-              }}
-              startIcon={<SearchIcon />}
-              size="large"
-            >
-              Browse Dogs
-            </Button>
-          </Paper>
-        </Grow>
+        <EmptyState
+          type="favorites"
+          primaryAction={handleGoToSearch}
+          primaryActionText="Browse Dogs"
+          message="Start adding some dogs to your favorites to find your perfect match! Our sophisticated matching algorithm will help you find the dog that's right for you."
+          elevation={3}
+        />
       ) : (
         <>
           <Divider sx={{ my: 3 }} />

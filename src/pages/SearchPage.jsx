@@ -5,8 +5,6 @@ import {
   Typography,
   Grid,
   Container,
-  Alert,
-  AlertTitle,
   Pagination,
   Paper,
   useMediaQuery,
@@ -18,6 +16,9 @@ import DogCard from '../features/dogs/components/DogCard';
 import DogCardSkeleton from '../features/dogs/components/DogCardSkeleton';
 import DogFilter from '../features/dogs/components/DogFilter';
 import SortSelector from '../features/dogs/components/SortSelector';
+import ErrorState from '../components/ui/ErrorState';
+import EmptyState from '../components/ui/EmptyState';
+import useApiErrorHandler from '../hooks/useApiErrorHandler';
 import { 
   fetchDogs, 
   setPage,
@@ -34,6 +35,12 @@ const SearchPage = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+  
+  // Use API error handler hook
+  const { retryApiCall } = useApiErrorHandler({
+    maxRetries: 3,
+    initialDelay: 1500,
+  });
   
   // Use memoized selectors
   const dogs = useSelector(selectFilteredDogs);
@@ -67,6 +74,28 @@ const SearchPage = () => {
   // Handle filter change with useCallback
   const handleFilterChange = useCallback((newFilters) => {
     dispatch(setFilters(newFilters));
+  }, [dispatch]);
+
+  // Handle retry for fetching dogs
+  const handleRetry = useCallback(() => {
+    retryApiCall(() => 
+      dispatch(fetchDogs({ 
+        filters, 
+        page, 
+        size: pageSize, 
+        sort: sortOption 
+      }))
+    );
+  }, [dispatch, filters, page, pageSize, sortOption, retryApiCall]);
+
+  // Handle reset filters
+  const handleResetFilters = useCallback(() => {
+    dispatch(setFilters({
+      breeds: [],
+      ageMin: undefined,
+      ageMax: undefined,
+      zipCodes: undefined,
+    }));
   }, [dispatch]);
 
   // Calculate total pages
@@ -119,6 +148,21 @@ const SearchPage = () => {
     );
   };
 
+  // Determine the error type
+  const getErrorType = (errorMessage) => {
+    if (!errorMessage) return 'general';
+    
+    if (errorMessage.includes('network') || 
+        errorMessage.includes('Network') || 
+        errorMessage.includes('offline') ||
+        errorMessage.includes('ECONNREFUSED') ||
+        errorMessage.includes('ETIMEDOUT')) {
+      return 'network';
+    }
+    
+    return 'api';
+  };
+
   return (
     <Container maxWidth="xl">
       <Typography variant="h4" component="h1" gutterBottom mt={3}>
@@ -166,23 +210,27 @@ const SearchPage = () => {
           {isLoading && renderSkeletons()}
 
           {/* Error message */}
-          {error && !isLoading ? (
-            <Alert severity="error" sx={{ mb: 3 }}>
-              <AlertTitle>Error</AlertTitle>
-              {error}
-            </Alert>
-          ) : null}
+          {error && !isLoading && (
+            <ErrorState 
+              type={getErrorType(error)}
+              message={error}
+              onRetry={handleRetry}
+              actionText="Try Again"
+            />
+          )}
 
           {/* No results message */}
-          {!isLoading && !error && dogs.length === 0 ? (
-            <Alert severity="info" sx={{ mb: 3 }}>
-              <AlertTitle>No Dogs Found</AlertTitle>
-              Try adjusting your search filters to find dogs.
-            </Alert>
-          ) : null}
+          {!isLoading && !error && dogs.length === 0 && (
+            <EmptyState 
+              type="dogs"
+              primaryAction={handleResetFilters}
+              primaryActionText="Reset Filters"
+              message="We couldn't find any dogs matching your search criteria. Try adjusting your filters to broaden your search."
+            />
+          )}
 
           {/* Virtualized Dog Grid */}
-          {!isLoading && !error && dogs.length > 0 ? (
+          {!isLoading && !error && dogs.length > 0 && (
             <>
               <Paper elevation={1} sx={{ height: 800, mb: 3, borderRadius: 2, overflow: 'hidden' }}>
                 <AutoSizer>
@@ -229,7 +277,7 @@ const SearchPage = () => {
                 </Box>
               )}
             </>
-          ) : null}
+          )}
         </Grid>
       </Grid>
     </Container>
