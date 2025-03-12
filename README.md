@@ -1,51 +1,57 @@
-# Fetch Dog Finder
+# Fetch Rewards Dog Finder 🐕
 
-A web application that helps users search through a database of shelter dogs to find potential adoptions. Users can browse available dogs, filter by different criteria, select favorites, and generate a match for adoption.
+A web application that helps users search through a database of shelter dogs to find their perfect match for adoption. Users can browse available dogs, filter by various criteria, select favorites, and generate a match for adoption.
 
 ## Features
 
-- User authentication with name and email
-- Dog search with multiple filters (breed, age, location)
-- Paginated and sortable results
-- Favorites selection
-- Match generation for adoption
+- 🔐 User authentication with name and email
+- 🔍 Advanced dog search with multiple filters (breed, age, location)
+- 📄 Paginated and sortable results
+- ❤️ Favorites selection and management
+- 🤝 Match generation for adoption
 
-## Technology Stack
+## Tech Stack
 
-- **Frontend**: React.js, Material-UI, Redux Toolkit, React Router, Axios, Formik & Yup
-- **Testing**: Jest, Cypress, React Testing Library
-- **Development & Deployment**: GitHub, Vercel, ESLint/Prettier
+### Frontend
+- **React.js** - Core UI library
+- **Material-UI** - Component library for consistent and professional UI
+- **Redux Toolkit** - State management with simplified Redux setup
+- **React Router** - For application routing
+- **Axios** - For API communication
+- **Formik & Yup** - Form handling and validation
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v14.x or higher)
-- npm (v6.x or higher)
+- Node.js (v14 or higher)
+- npm or yarn
 
 ### Installation
 
-1. Clone the repository
-   ```bash
-   git clone https://github.com/thetubbydoughnut/FetchRewardsDogFinder.git
-   cd FetchRewardsDogFinder
-   ```
+1. Clone the repository:
+```bash
+git clone https://github.com/thetubbydoughnut/FetchRewardsDogFinder
+cd fetch-rewards-dog-finder
+```
 
-2. Install dependencies
-   ```bash
-   npm install
-   ```
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-3. Start the development server
-   ```bash
-   npm start
-   ```
+3. Start the development server:
+```bash
+npm start
+# or
+yarn start
+```
 
 4. Open your browser and navigate to `http://localhost:3000`
 
 ## Project Structure
-
-The project follows a feature-based organization pattern:
 
 ```
 src/
@@ -54,7 +60,7 @@ src/
 │   └── layout/           # Layout components (Header, Footer, etc.)
 ├── features/             # Feature modules
 │   ├── auth/             # Authentication feature
-│   │   ├── components/   # Auth-specific components (LoginForm, ProtectedRoute)
+│   │   ├── components/   # Auth-specific components
 │   │   └── slice.js      # Auth redux slice
 │   ├── dogs/             # Dog search feature
 │   │   ├── components/   # Dog-specific components (DogCard, DogFilter)
@@ -74,43 +80,44 @@ src/
 │   ├── LoginPage.jsx     # Login page
 │   ├── SearchPage.jsx    # Dog search page
 │   └── FavoritesPage.jsx # Favorites page
-├── App.tsx               # Main app component with routing
-├── index.tsx             # Entry point
+├── App.jsx               # Main app component with routing
+├── index.jsx             # Entry point
 └── theme.js              # Material-UI theme configuration
 ```
 
-## Development Guide
+## Key Functionality
 
-### API Integration
+### Authentication
 
-The application interacts with the Fetch API for dog data. Key endpoints include:
-- `/auth/login` - Authenticate users
-- `/dogs/search` - Search for dogs with filters
-- `/dogs/breeds` - Get all available breeds
-- `/dogs/match` - Generate a match based on favorite dogs
+Users must log in with their name and email to access the application. This creates a session with the API service.
 
-### State Management
+### Dog Search
 
-Redux Toolkit is used for state management with the following slices:
-- **Auth** - User authentication state
-  - Manages login, logout, and user information
-  - Persists user state in localStorage
-- **Dogs** - Dog search state
-  - Handles search parameters, filtering, and results
-  - Manages pagination and sorting
-- **Favorites** - User's favorite dogs state
-  - Tracks favorite dog IDs
-  - Handles match generation
-  - Persists favorites in localStorage
+- Filter dogs by breed, age range, and ZIP code
+- Sort results by breed, name, or age in ascending or descending order
+- Paginate through results
+- View all details for each dog
 
-### Routing
+### Favorites
 
-React Router handles application routing with these main routes:
-- `/` - Login page
-- `/search` - Dog search page
-- `/favorites` - User's favorite dogs
-- `/match` - Match result page
+- Add/remove dogs to/from favorites
+- View all favorited dogs in one place
+- Generate a match from your favorite dogs
+
+## API Integration
+
+The application integrates with the Fetch API service at `https://frontend-take-home-service.fetch.com`, which provides:
+
+- Authentication endpoints
+- Dog search and filtering
+- Dog details retrieval
+- Match generation
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Fetch Rewards for the project requirements and API
+- All the shelter dogs looking for forever homes! 
