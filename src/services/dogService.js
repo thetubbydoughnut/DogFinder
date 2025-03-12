@@ -16,12 +16,35 @@ const dogService = {
   // Search dogs with filters
   searchDogs: async (filters = {}, page = 0, size = 25, sort = '') => {
     try {
-      const response = await api.post('/dogs/search', {
-        ...filters,
+      // Convert filters to query params
+      const params = {
         size,
-        from: page * size,
-        sort: sort ? sort.split(':') : undefined
-      });
+        from: page * size
+      };
+      
+      // Add filter parameters if present
+      if (filters.breeds && filters.breeds.length > 0) {
+        params.breeds = filters.breeds;
+      }
+      
+      if (filters.zipCodes && filters.zipCodes.length > 0) {
+        params.zipCodes = filters.zipCodes;
+      }
+      
+      if (filters.ageMin !== undefined) {
+        params.ageMin = filters.ageMin;
+      }
+      
+      if (filters.ageMax !== undefined) {
+        params.ageMax = filters.ageMax;
+      }
+      
+      // Add sort parameter if provided
+      if (sort) {
+        params.sort = sort;
+      }
+      
+      const response = await api.get('/dogs/search', { params });
       
       return {
         resultIds: response.data.resultIds,

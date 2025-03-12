@@ -30,7 +30,11 @@ export const fetchDogs = createAsyncThunk(
         prev: searchResults.prev
       };
     } catch (error) {
-      return rejectWithValue('Failed to fetch dogs. Please try again later.');
+      console.error('Error in fetchDogs thunk:', error);
+      return rejectWithValue(
+        error.response?.data?.message || 
+        'Failed to fetch dogs. Please try again later.'
+      );
     }
   }
 );
