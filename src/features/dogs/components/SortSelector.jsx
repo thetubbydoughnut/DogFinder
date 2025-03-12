@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
   FormControl, 
@@ -28,6 +28,13 @@ const SortSelector = () => {
     { value: 'name:asc', label: 'Name (A-Z)' },
     { value: 'name:desc', label: 'Name (Z-A)' },
   ];
+
+  // Set default sort option if none is selected
+  useEffect(() => {
+    if (!sortOption) {
+      dispatch(setSortOption('breed:asc'));
+    }
+  }, [dispatch, sortOption]);
 
   const handleSortChange = (event) => {
     dispatch(setSortOption(event.target.value));
