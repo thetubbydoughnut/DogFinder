@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Card,
@@ -13,7 +13,6 @@ import {
   Tooltip,
   Zoom,
   Grow,
-  Link,
   Skeleton,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -33,11 +32,11 @@ const DogCard = ({ dog }) => {
   const [imageError, setImageError] = useState(false);
 
   // Generate a random placeholder image based on dog id for consistency
-  const getImageUrl = () => {
+  const getImageUrl = useCallback(() => {
     // Use the first characters of the dog ID to generate a consistent random image
     const seed = dog.id.substring(0, 8);
     return `https://placedog.net/500/280?id=${seed}`;
-  };
+  }, [dog.id]);
 
   // Handle image load event
   const handleImageLoad = () => {
@@ -61,7 +60,7 @@ const DogCard = ({ dog }) => {
       img.onload = null;
       img.onerror = null;
     };
-  }, [dog.img]);
+  }, [dog.img, getImageUrl]);
 
   const handleToggleFavorite = (e) => {
     e.preventDefault(); // Prevent card click navigation if clicking favorite button

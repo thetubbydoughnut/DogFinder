@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useRef } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
@@ -9,9 +9,8 @@ import {
   Alert,
   AlertTitle,
   Pagination,
-  Divider,
-  useMediaQuery,
   Paper,
+  useMediaQuery,
   useTheme,
 } from '@mui/material';
 import { FixedSizeGrid } from 'react-window';
@@ -73,13 +72,13 @@ const SearchPage = () => {
   // Calculate total pages
   const totalPages = Math.ceil(total / pageSize);
 
-  // Calculate grid layout based on screen size
-  const getColumnCount = () => {
+  // Calculate grid layout based on screen size - wrapped in useCallback
+  const getColumnCount = useCallback(() => {
     if (isMobile) return 1;
     if (isTablet) return 2;
     if (isDesktop) return 3;
     return 4; // xl screens
-  };
+  }, [isMobile, isTablet, isDesktop]);
 
   // Cell renderer for virtualized grid
   const Cell = useCallback(({ columnIndex, rowIndex, style }) => {

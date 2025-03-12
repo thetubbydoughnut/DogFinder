@@ -54,7 +54,8 @@ const DogFilter = ({ onFilterChange }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isPending, startTransition] = useTransition();
 
-  // Create debounced filter change handler
+  // Create debounced filter change handler - not used in this component but kept for future use
+  // eslint-disable-next-line no-unused-vars
   const debouncedFilterChange = useCallback(
     debounce((newFilters) => {
       startTransition(() => {
@@ -64,10 +65,18 @@ const DogFilter = ({ onFilterChange }) => {
     [onFilterChange, startTransition]
   );
 
-  // Update this handler to use debouncing
-  const handleFilterChange = (newFilters) => {
-    // Apply filter changes directly
-    debouncedFilterChange(newFilters);
+  // Update local state handlers
+  const handleBreedChange = (event, newValue) => {
+    setSelectedBreeds(newValue);
+  };
+
+  const handleAgeRangeChange = (event, newValue) => {
+    setAgeRange(newValue);
+  };
+
+  const handleZipCodeChange = (e) => {
+    setZipCode(e.target.value);
+    setZipCodeError('');
   };
 
   // Fetch breeds on component mount
@@ -182,7 +191,7 @@ const DogFilter = ({ onFilterChange }) => {
                   id="breed-filter"
                   options={breeds}
                   value={selectedBreeds}
-                  onChange={(_, newValue) => setSelectedBreeds(newValue)}
+                  onChange={handleBreedChange}
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -215,7 +224,7 @@ const DogFilter = ({ onFilterChange }) => {
                 </FormLabel>
                 <Slider
                   value={ageRange}
-                  onChange={(_, newValue) => setAgeRange(newValue)}
+                  onChange={handleAgeRangeChange}
                   min={0}
                   max={192} // Up to 16 years in months
                   valueLabelDisplay="auto"
@@ -250,10 +259,7 @@ const DogFilter = ({ onFilterChange }) => {
                   id="zip-code-filter"
                   placeholder="Enter ZIP code"
                   value={zipCode}
-                  onChange={(e) => {
-                    setZipCode(e.target.value);
-                    setZipCodeError('');
-                  }}
+                  onChange={handleZipCodeChange}
                   error={!!zipCodeError}
                   helperText={zipCodeError}
                   size="small"
