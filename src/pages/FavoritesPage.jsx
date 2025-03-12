@@ -7,8 +7,6 @@ import {
   Grid,
   Paper,
   Button,
-  Alert,
-  AlertTitle,
   Divider,
   Dialog,
   DialogTitle,
@@ -23,16 +21,13 @@ import {
   Tooltip,
   Stack,
   Slide,
-  Grow,
   LinearProgress,
   Badge,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MatchIcon from '@mui/icons-material/Pets';
-import SearchIcon from '@mui/icons-material/Search';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import { getFavoriteDogs, clearFavorites, generateMatch, clearMatch } from '../features/favorites/slice';
 import DogCard from '../features/dogs/components/DogCard';
 import DogCardSkeleton from '../features/dogs/components/DogCardSkeleton';
