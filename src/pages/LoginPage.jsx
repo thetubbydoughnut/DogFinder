@@ -75,6 +75,18 @@ const LoginPage = () => {
                 p: { xs: 3, sm: 5 },
                 borderRadius: 3,
                 boxShadow: '0 8px 40px rgba(0, 0, 0, 0.12)',
+                position: 'relative',
+                overflow: 'hidden',
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: 0,
+                  right: 0,
+                  width: '150px',
+                  height: '150px',
+                  background: `radial-gradient(circle at bottom right, ${theme.palette.primary.light}15, transparent 70%)`,
+                  zIndex: 0,
+                },
               }}
             >
               <LoginForm />
