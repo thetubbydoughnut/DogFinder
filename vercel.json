@@ -7,27 +7,34 @@
   ],
   "headers": [
     {
-      "source": "/static/js/(.*)",
+      "source": "/static/js/:file*",
       "headers": [
         { "key": "Content-Type", "value": "application/javascript" },
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "source": "/static/css/(.*)",
+      "source": "/static/css/:file*",
       "headers": [
         { "key": "Content-Type", "value": "text/css" },
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "source": "/(.*\\.(ico|json|png|jpg|svg|ttf|woff|woff2))",
+      "source": "/:path*\\.(ico|json|png|jpg|svg|ttf|woff|woff2)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
-      "source": "/(.*)",
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "x-matched-path",
+          "value": "^(?!.*\\.(js|css|ico|json|png|jpg|svg|ttf|woff|woff2)$).*$"
+        }
+      ],
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
