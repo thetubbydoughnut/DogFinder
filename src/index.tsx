@@ -8,6 +8,24 @@ import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+// Add error handling for script loading issues
+const handleErrorEvent = (event: Event | ErrorEvent) => {
+  const errorEvent = event as ErrorEvent;
+  if (
+    errorEvent.message &&
+    (errorEvent.message.includes('Unexpected token') || 
+     errorEvent.message.includes('Failed to load'))
+  ) {
+    console.warn('Detected script loading error, attempting to recover...');
+    // Force a hard reload to clear cache
+    window.location.href = '/';
+    return true;
+  }
+  return false;
+};
+
+window.addEventListener('error', handleErrorEvent);
+
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <React.StrictMode>
