@@ -15,6 +15,9 @@ import {
   Grow,
   Skeleton,
   useTheme,
+  Badge,
+  Paper,
+  Divider,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -22,9 +25,12 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PetsIcon from '@mui/icons-material/Pets';
 import CakeIcon from '@mui/icons-material/Cake';
 import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
+import InfoIcon from '@mui/icons-material/Info';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { addToFavorites, removeFromFavorites } from '../../favorites/slice';
 import { Link as RouterLink } from 'react-router-dom';
 
+// The DogCard component that shows dog information
 const DogCard = ({ dog, hideActions = false }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -35,6 +41,7 @@ const DogCard = ({ dog, hideActions = false }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [flipAnimation, setFlipAnimation] = useState(false);
 
   // Generate a random placeholder image based on dog id for consistency
   const getImageUrl = useCallback(() => {
@@ -48,29 +55,29 @@ const DogCard = ({ dog, hideActions = false }) => {
     setImageLoaded(true);
   };
 
-  // Handle image error
+  // Handle image error event
   const handleImageError = () => {
     setImageError(true);
-    setImageLoaded(true); // Consider it "loaded" even though it failed, to remove skeleton
+    setImageLoaded(true); // Still mark as loaded to remove skeleton
   };
 
-  // Preload image
+  // Preload the image
   useEffect(() => {
     const img = new Image();
-    img.src = dog.img || getImageUrl();
     img.onload = handleImageLoad;
     img.onerror = handleImageError;
+    img.src = dog.img || getImageUrl();
 
     return () => {
+      // Clean up
       img.onload = null;
       img.onerror = null;
     };
   }, [dog.img, getImageUrl]);
 
+  // Toggle favorite status
   const handleToggleFavorite = (e) => {
-    e.preventDefault(); // Prevent card click navigation if clicking favorite button
     e.stopPropagation();
-    
     if (isFavorite) {
       dispatch(removeFromFavorites(dog.id));
     } else {
@@ -78,355 +85,377 @@ const DogCard = ({ dog, hideActions = false }) => {
     }
   };
 
+  // Handle card flip
   const handleFlipCard = (e) => {
-    e.preventDefault();
     e.stopPropagation();
-    setIsFlipped(!isFlipped);
+    setFlipAnimation(true);
+    setTimeout(() => {
+      setIsFlipped(!isFlipped);
+      setTimeout(() => {
+        setFlipAnimation(false);
+      }, 300);
+    }, 150);
   };
 
-  // Format age for display
+  // Format age from days to years/months
   const formatAge = (ageInDays) => {
     const years = Math.floor(ageInDays / 365);
     const months = Math.floor((ageInDays % 365) / 30);
     
     if (years > 0) {
-      return `${years} ${years === 1 ? 'year' : 'years'}${months > 0 ? `, ${months} mo` : ''}`;
-    } else {
+      return `${years} ${years === 1 ? 'year' : 'years'}${months > 0 ? `, ${months} ${months === 1 ? 'month' : 'months'}` : ''}`;
+    } else if (months > 0) {
       return `${months} ${months === 1 ? 'month' : 'months'}`;
+    } else {
+      return `${ageInDays} ${ageInDays === 1 ? 'day' : 'days'}`;
     }
   };
-  
+
   // Get age category for badge
   const getAgeCategory = (ageInDays) => {
-    if (ageInDays < 365) return { label: 'Puppy', color: theme.palette.info.main };
-    if (ageInDays < 365 * 3) return { label: 'Young', color: theme.palette.success.main };
-    if (ageInDays < 365 * 8) return { label: 'Adult', color: theme.palette.warning.main };
-    return { label: 'Senior', color: theme.palette.error.main };
+    if (ageInDays < 365) {
+      return { label: 'Puppy', color: 'success' };
+    } else if (ageInDays < 365 * 8) {
+      return { label: 'Adult', color: 'primary' };
+    } else {
+      return { label: 'Senior', color: 'secondary' };
+    }
   };
-  
+
   const ageCategory = getAgeCategory(dog.age);
+
+  // Calculate transform style based on flip state
+  const getCardTransform = () => {
+    const baseTransform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0)';
+    const scaleEffect = flipAnimation ? 'scale(0.95)' : 'scale(1)';
+    return `${baseTransform} ${scaleEffect}`;
+  };
 
   return (
     <Grow in={true} timeout={300}>
       <Box
         sx={{
-          height: '100%',
-          perspective: '1000px',
+          position: 'relative',
           width: '100%',
+          height: '100%',
+          minHeight: 350,
+          perspective: '1000px',
         }}
       >
         <Card
           sx={{
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
             position: 'relative',
-            transition: 'transform 0.6s ease-in-out, box-shadow 0.2s ease-in-out',
+            width: '100%',
+            height: '100%',
+            borderRadius: 3,
+            overflow: 'visible',
+            transition: 'transform 0.6s, box-shadow 0.3s',
             transformStyle: 'preserve-3d',
-            transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0)',
-            borderRadius: 2,
-            overflow: 'hidden',
-            boxShadow: isFlipped ? theme.shadows[8] : theme.shadows[3],
+            boxShadow: isFlipped
+              ? '0 10px 30px rgba(0, 0, 0, 0.25)'
+              : '0 6px 20px rgba(0, 0, 0, 0.15)',
+            transform: getCardTransform(),
             '&:hover': {
-              transform: isFlipped 
-                ? 'rotateY(180deg) translateY(-4px)' 
-                : 'rotateY(0) translateY(-4px)',
-              boxShadow: theme.shadows[8],
+              boxShadow: '0 12px 40px rgba(0, 0, 0, 0.2)',
             },
           }}
-          component={RouterLink}
-          to={`/dogs/${dog.id}`}
-          style={{ textDecoration: 'none' }}
         >
-          {/* Front Side of Card */}
+          {/* FRONT SIDE */}
           <Box
             sx={{
               position: 'absolute',
               width: '100%',
               height: '100%',
               backfaceVisibility: 'hidden',
-              display: 'flex',
-              flexDirection: 'column',
+              borderRadius: 3,
+              overflow: 'hidden',
             }}
           >
-            <Box sx={{ position: 'relative', height: 200 }}>
+            {/* Dog image with loading skeleton */}
+            <Box sx={{ position: 'relative', width: '100%', height: 180 }}>
               {!imageLoaded && (
                 <Skeleton 
                   variant="rectangular" 
                   width="100%" 
-                  height={200} 
+                  height={180} 
                   animation="wave"
-                  sx={{ position: 'absolute', top: 0, left: 0 }} 
+                  sx={{ position: 'absolute', top: 0, left: 0 }}
                 />
               )}
               <CardMedia
                 component="img"
-                height="200"
-                image={imageError ? getImageUrl() : (dog.img || getImageUrl())}
-                alt={`A photo of ${dog.name}, a ${dog.breed} dog`}
-                sx={{ 
-                  objectFit: 'cover',
-                  transition: 'transform 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'scale(1.05)',
-                  },
-                  display: imageLoaded ? 'block' : 'none'
-                }}
+                height="180"
+                image={imageError ? getImageUrl() : dog.img || getImageUrl()}
+                alt={dog.name}
                 onLoad={handleImageLoad}
                 onError={handleImageError}
-                loading="lazy"
+                sx={{ 
+                  opacity: imageLoaded ? 1 : 0,
+                  transition: 'opacity 0.3s ease-in-out',
+                  objectFit: 'cover',
+                }}
               />
               
-              {/* Age Badge */}
-              <Box
+              {/* Age badge */}
+              <Chip
+                label={ageCategory.label}
+                color={ageCategory.color}
+                size="small"
                 sx={{
                   position: 'absolute',
-                  top: 8,
-                  left: 8,
-                  zIndex: 2,
+                  top: 12,
+                  right: 12,
+                  fontWeight: 'bold',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
                 }}
-              >
-                <Chip
-                  label={ageCategory.label}
-                  size="small"
-                  sx={{
-                    backgroundColor: `${ageCategory.color}`,
-                    color: '#fff',
+              />
+            </Box>
+            
+            <CardContent sx={{ pb: 0 }}>
+              <Box display="flex" justifyContent="space-between" alignItems="flex-start">
+                <Typography 
+                  gutterBottom 
+                  variant="h6" 
+                  component="div" 
+                  sx={{ 
                     fontWeight: 'bold',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                    mb: 0.5,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
                   }}
-                />
+                >
+                  {dog.name}
+                </Typography>
+                
+                {!hideActions && (
+                  <Tooltip title={isFavorite ? "Remove from favorites" : "Add to favorites"}>
+                    <IconButton 
+                      size="small" 
+                      color={isFavorite ? "error" : "default"}
+                      onClick={handleToggleFavorite}
+                      onMouseEnter={() => setFavoriteHover(true)}
+                      onMouseLeave={() => setFavoriteHover(false)}
+                      sx={{ 
+                        mt: -0.5,
+                        transition: 'transform 0.3s ease-in-out',
+                        transform: favoriteHover ? 'scale(1.2)' : 'scale(1)',
+                      }}
+                    >
+                      {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                    </IconButton>
+                  </Tooltip>
+                )}
               </Box>
               
-              {/* Favorite Button */}
-              <Tooltip
-                title={isFavorite ? "Remove from favorites" : "Add to favorites"}
-                placement="top"
-                TransitionComponent={Zoom}
-                arrow
+              <Typography 
+                variant="body2" 
+                color="text.secondary"
+                sx={{ 
+                  mb: 1,
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
               >
-                <IconButton
-                  color={isFavorite ? 'error' : 'default'}
-                  sx={{
-                    position: 'absolute',
-                    top: 8,
-                    right: 8,
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                      transform: favoriteHover ? 'scale(1.2)' : 'scale(1.1)',
-                    },
-                    zIndex: 2,
-                    transition: 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                    animation: isFavorite ? 'heartbeat 1.5s ease-in-out 1' : 'none',
-                    '@keyframes heartbeat': {
-                      '0%': { transform: 'scale(1)' },
-                      '25%': { transform: 'scale(1.2)' },
-                      '50%': { transform: 'scale(1)' },
-                      '75%': { transform: 'scale(1.2)' },
-                      '100%': { transform: 'scale(1)' },
-                    },
-                  }}
-                  onClick={handleToggleFavorite}
-                  onMouseEnter={() => setFavoriteHover(true)}
-                  onMouseLeave={() => setFavoriteHover(false)}
-                  aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-                  size="small"
-                >
-                  {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                </IconButton>
-              </Tooltip>
-
-              {/* Flip Card Button */}
-              <Tooltip
-                title="See more details"
-                placement="left"
-                TransitionComponent={Zoom}
-                arrow
-              >
-                <IconButton
-                  color="primary"
-                  sx={{
-                    position: 'absolute',
-                    bottom: 8,
-                    right: 8,
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                      transform: 'rotate(180deg)',
-                    },
-                    zIndex: 2,
-                    transition: 'transform 0.3s ease',
-                  }}
-                  onClick={handleFlipCard}
-                  aria-label="Flip card"
-                  size="small"
-                >
-                  <FlipCameraAndroidIcon />
-                </IconButton>
-              </Tooltip>
-            </Box>
-
-            <CardContent sx={{ flexGrow: 1, p: 2 }}>
-              <Typography gutterBottom variant="h5" component="h2" sx={{ 
-                fontWeight: 'bold',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap' 
-              }}>
-                {dog.name}
+                <PetsIcon sx={{ fontSize: 14, mr: 0.5, verticalAlign: 'text-top' }} />
+                {dog.breed}
               </Typography>
-
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 1.5 }}>
-                <Chip
-                  icon={<PetsIcon />}
-                  label={dog.breed}
-                  size="small"
-                  color="primary"
-                  variant="outlined"
-                  sx={{ mr: 0.5, mb: 0.5 }}
-                />
-                <Chip
-                  icon={<CakeIcon />}
-                  label={formatAge(dog.age)}
-                  size="small"
-                  sx={{ mr: 0.5, mb: 0.5 }}
-                />
+              
+              <Box display="flex" alignItems="center" sx={{ mb: 0.5 }}>
+                <CakeIcon sx={{ fontSize: 14, mr: 0.5, color: theme.palette.text.secondary }} />
+                <Typography variant="body2" color="text.secondary">
+                  {formatAge(dog.age)}
+                </Typography>
               </Box>
-
+              
               <Box display="flex" alignItems="center">
-                <LocationOnIcon fontSize="small" color="action" sx={{ mr: 0.5 }} />
+                <LocationOnIcon sx={{ fontSize: 14, mr: 0.5, color: theme.palette.text.secondary }} />
                 <Typography variant="body2" color="text.secondary">
                   {dog.zip_code}
                 </Typography>
               </Box>
             </CardContent>
-
-            {/* Only show card actions if hideActions is false */}
-            {!hideActions && (
-              <CardActions sx={{ 
-                justifyContent: 'space-between', 
-                p: 2,
-                backgroundColor: isFlipped ? 'background.paper' : 'inherit'
-              }}>
-                <Tooltip title={isFavorite ? "Remove from favorites" : "Add to favorites"} arrow>
-                  <IconButton 
-                    onClick={handleToggleFavorite}
-                    color={isFavorite ? "error" : "default"}
-                    sx={{
-                      transition: 'transform 0.2s',
-                      '&:hover': {
-                        transform: 'scale(1.1)',
-                      },
-                    }}
-                  >
-                    {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                  </IconButton>
-                </Tooltip>
-                
-                <Tooltip title="Flip card for more info" arrow>
-                  <IconButton 
-                    onClick={handleFlipCard}
-                    color="primary"
-                    sx={{
-                      transition: 'transform 0.2s',
-                      '&:hover': {
-                        transform: 'scale(1.1)',
-                      },
-                    }}
-                  >
-                    <FlipCameraAndroidIcon />
-                  </IconButton>
-                </Tooltip>
-              </CardActions>
-            )}
+            
+            <CardActions sx={{ justifyContent: 'space-between', px: 2, pb: 2 }}>
+              <Button
+                size="small"
+                component={RouterLink}
+                to={`/dogs/${dog.id}`}
+                sx={{ 
+                  borderRadius: 2,
+                  fontWeight: 'medium',
+                  textTransform: 'none',
+                  '&:hover': {
+                    backgroundColor: theme.palette.primary.main,
+                    color: theme.palette.primary.contrastText,
+                  },
+                }}
+              >
+                View Details
+              </Button>
+              
+              <Tooltip title="View more information">
+                <IconButton
+                  size="small"
+                  onClick={handleFlipCard}
+                  sx={{
+                    backgroundColor: theme.palette.mode === 'dark' 
+                      ? 'rgba(255, 255, 255, 0.08)'
+                      : 'rgba(0, 0, 0, 0.04)',
+                    transition: 'all 0.2s ease-in-out',
+                    '&:hover': {
+                      backgroundColor: theme.palette.mode === 'dark' 
+                        ? 'rgba(255, 255, 255, 0.12)'
+                        : 'rgba(0, 0, 0, 0.08)',
+                    },
+                  }}
+                >
+                  <InfoIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
+            </CardActions>
           </Box>
           
-          {/* Back Side of Card */}
+          {/* BACK SIDE */}
           <Box
             sx={{
               position: 'absolute',
               width: '100%',
               height: '100%',
               backfaceVisibility: 'hidden',
+              borderRadius: 3,
               transform: 'rotateY(180deg)',
+              backgroundColor: theme.palette.background.paper,
+              overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
-              backgroundColor: theme.palette.background.paper,
-              p: 3,
             }}
           >
-            <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 'bold' }}>
-              About {dog.name}
-            </Typography>
-            
-            <Box sx={{ mb: 2 }}>
-              <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'medium' }}>
-                Breed
+            {/* Header */}
+            <Box 
+              sx={{ 
+                p: 2, 
+                bgcolor: theme.palette.primary.main, 
+                color: theme.palette.primary.contrastText,
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+            >
+              <Typography variant="h6" component="div" fontWeight="bold">
+                {dog.name}'s Profile
               </Typography>
-              <Typography variant="body1" gutterBottom>
-                {dog.breed}
-              </Typography>
+              <IconButton 
+                size="small" 
+                onClick={handleFlipCard}
+                sx={{ color: theme.palette.primary.contrastText }}
+              >
+                <ArrowBackIcon />
+              </IconButton>
             </Box>
             
-            <Box sx={{ mb: 2 }}>
-              <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'medium' }}>
-                Age
-              </Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Typography variant="body1">
-                  {formatAge(dog.age)} ({ageCategory.label})
-                </Typography>
-                <Box
-                  sx={{
-                    ml: 1,
-                    width: '100%',
-                    maxWidth: 120,
-                    height: 8,
-                    borderRadius: 4,
-                    bgcolor: 'grey.200',
-                    overflow: 'hidden',
+            {/* Content */}
+            <Box sx={{ p: 2, flexGrow: 1 }}>
+              <Box display="flex" alignItems="center" sx={{ mb: 2 }}>
+                <Box 
+                  component="img"
+                  src={imageError ? getImageUrl() : dog.img || getImageUrl()}
+                  alt={dog.name}
+                  sx={{ 
+                    width: 60,
+                    height: 60,
+                    borderRadius: '50%',
+                    mr: 2,
+                    objectFit: 'cover',
+                    border: `2px solid ${theme.palette.primary.main}`,
                   }}
-                >
-                  <Box
-                    sx={{
-                      width: `${Math.min(100, (dog.age / (365 * 15)) * 100)}%`,
-                      height: '100%',
-                      bgcolor: ageCategory.color,
-                    }}
+                />
+                <Box>
+                  <Typography variant="body1" fontWeight="bold">
+                    {dog.breed}
+                  </Typography>
+                  <Chip 
+                    label={ageCategory.label}
+                    color={ageCategory.color}
+                    size="small"
+                    sx={{ fontWeight: 'medium', mt: 0.5 }}
                   />
                 </Box>
               </Box>
-            </Box>
-            
-            <Box sx={{ mb: 2 }}>
-              <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'medium' }}>
+              
+              <Divider sx={{ mb: 2 }} />
+              
+              {/* Dog attributes */}
+              <Typography 
+                variant="subtitle2" 
+                color="text.secondary"
+                sx={{ mb: 0.5 }}
+              >
+                Age
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 1.5 }}>
+                {formatAge(dog.age)}
+              </Typography>
+              
+              <Typography 
+                variant="subtitle2" 
+                color="text.secondary"
+                sx={{ mb: 0.5 }}
+              >
                 Location
               </Typography>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <LocationOnIcon color="action" sx={{ mr: 1 }} />
-                <Typography variant="body1">
-                  {dog.zip_code}
-                </Typography>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                {dog.zip_code}
+              </Typography>
+              
+              <Typography 
+                variant="subtitle2" 
+                color="text.secondary"
+                sx={{ mb: 0.5 }}
+              >
+                Compatibility
+              </Typography>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mb: 1 }}>
+                <Chip 
+                  label="Kid-friendly" 
+                  size="small" 
+                  color="primary" 
+                  variant="outlined"
+                  sx={{ fontSize: '0.7rem' }}
+                />
+                <Chip 
+                  label="Trained" 
+                  size="small" 
+                  color="success" 
+                  variant="outlined"
+                  sx={{ fontSize: '0.7rem' }}
+                />
+                <Chip 
+                  label="Playful" 
+                  size="small" 
+                  color="secondary" 
+                  variant="outlined"
+                  sx={{ fontSize: '0.7rem' }}
+                />
               </Box>
             </Box>
             
-            <Box sx={{ mt: 'auto' }}>
+            {/* Footer */}
+            <Box sx={{ p: 2, mt: 'auto' }}>
               <Button
-                variant="outlined"
-                color="primary"
-                onClick={handleFlipCard}
                 fullWidth
+                variant="contained"
+                component={RouterLink}
+                to={`/dogs/${dog.id}`}
                 sx={{ 
-                  mt: 2,
                   borderRadius: 2,
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                  },
-                  transition: 'transform 0.2s ease',
+                  py: 1,
+                  fontWeight: 'bold',
+                  textTransform: 'none',
                 }}
               >
-                Back to Photo
+                View Full Profile
               </Button>
             </Box>
           </Box>
@@ -436,7 +465,4 @@ const DogCard = ({ dog, hideActions = false }) => {
   );
 };
 
-export default React.memo(DogCard, (prevProps, nextProps) => {
-  return prevProps.dog.id === nextProps.dog.id && 
-         prevProps.isFavorite === nextProps.isFavorite;
-}); 
+export default DogCard; 
