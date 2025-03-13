@@ -44,17 +44,19 @@ const LoginPage = () => {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
+          alignItems: 'center',
           position: 'relative',
           zIndex: 1,
           py: 4,
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ display: 'flex', justifyContent: 'center' }}>
           <Grid 
             container 
             spacing={4} 
             alignItems="center"
             justifyContent="center"
+            sx={{ maxWidth: '1200px', mx: 'auto' }}
           >
             <Grid item xs={12} sx={{ textAlign: 'center', mb: 4 }}>
               <Box 
@@ -81,92 +83,101 @@ const LoginPage = () => {
                   Fetch Dog Finder
                 </Typography>
               </Box>
-              <Typography variant="h5" color="textSecondary" sx={{ mb: 2 }}>
+              <Typography variant="h5" color="textSecondary" sx={{ mb: 4 }}>
                 Find your perfect canine companion
               </Typography>
             </Grid>
             
-            <Grid item xs={12} md={6}>
-              <Paper
-                elevation={6}
-                sx={{
-                  p: { xs: 3, sm: 5 },
-                  borderRadius: 3,
-                  boxShadow: '0 8px 40px rgba(0, 0, 0, 0.12)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    right: 0,
-                    width: '150px',
-                    height: '150px',
-                    background: `radial-gradient(circle at bottom right, ${theme.palette.primary.light}15, transparent 70%)`,
-                    zIndex: 0,
-                  },
-                }}
-              >
-                <LoginForm />
-              </Paper>
-            </Grid>
-            
             <Grid 
+              container 
               item 
               xs={12} 
-              md={6} 
-              sx={{ 
-                display: { xs: 'none', md: 'block' },
-                position: 'relative',
-                height: '100%',
-                minHeight: '500px',
-              }}
+              spacing={4} 
+              justifyContent="center"
+              alignItems="stretch"
             >
-              <Paper
-                elevation={8}
-                sx={{
-                  position: 'relative',
-                  height: '100%',
-                  minHeight: '500px',
-                  borderRadius: 3,
-                  overflow: 'hidden',
-                  boxShadow: '0 12px 24px rgba(0, 0, 0, 0.15)',
-                  transform: 'perspective(1000px) rotateY(-5deg)',
-                  transition: 'transform 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'perspective(1000px) rotateY(0deg)',
-                  },
-                }}
-              >
-                <Box
-                  component="img"
-                  src="https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
-                  alt="Happy dog with owner"
+              <Grid item xs={12} md={5} sx={{ display: 'flex' }}>
+                <Paper
+                  elevation={6}
                   sx={{
+                    p: { xs: 3, sm: 5 },
+                    borderRadius: 3,
+                    boxShadow: '0 8px 40px rgba(0, 0, 0, 0.12)',
+                    position: 'relative',
+                    overflow: 'hidden',
                     width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                  }}
-                />
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    p: 3,
-                    background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
-                    color: 'white',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      right: 0,
+                      width: '150px',
+                      height: '150px',
+                      background: `radial-gradient(circle at bottom right, ${theme.palette.primary.light}15, transparent 70%)`,
+                      zIndex: 0,
+                    },
                   }}
                 >
-                  <Typography variant="h5" fontWeight="bold">
-                    Ready to Meet Your New Best Friend?
-                  </Typography>
-                  <Typography variant="body1">
-                    Sign in to browse our database of lovable dogs looking for a forever home.
-                  </Typography>
-                </Box>
-              </Paper>
+                  <LoginForm />
+                </Paper>
+              </Grid>
+              
+              <Grid 
+                item 
+                xs={12} 
+                md={5} 
+                sx={{ 
+                  display: { xs: 'none', md: 'flex' },
+                  height: '100%',
+                }}
+              >
+                <Paper
+                  elevation={8}
+                  sx={{
+                    position: 'relative',
+                    height: '100%',
+                    minHeight: '500px',
+                    width: '100%',
+                    borderRadius: 3,
+                    overflow: 'hidden',
+                    boxShadow: '0 12px 24px rgba(0, 0, 0, 0.15)',
+                    transform: 'perspective(1000px) rotateY(-5deg)',
+                    transition: 'transform 0.3s ease-in-out',
+                    '&:hover': {
+                      transform: 'perspective(1000px) rotateY(0deg)',
+                    },
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src="https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+                    alt="Happy dog with owner"
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
+                  />
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      p: 3,
+                      background: 'linear-gradient(transparent, rgba(0,0,0,0.7))',
+                      color: 'white',
+                    }}
+                  >
+                    <Typography variant="h5" fontWeight="bold">
+                      Ready to Meet Your New Best Friend?
+                    </Typography>
+                    <Typography variant="body1">
+                      Sign in to browse our database of lovable dogs looking for a forever home.
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Grid>
             </Grid>
           </Grid>
         </Container>

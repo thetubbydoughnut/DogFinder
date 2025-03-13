@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
@@ -49,6 +49,9 @@ const SearchPage = () => {
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const [showFilters, setShowFilters] = useState(!isMobile);
   
+  // Add ref for the search results section
+  const searchResultsRef = useRef(null);
+  
   // Use API error handler hook
   const { retryApiCall } = useApiErrorHandler({
     maxRetries: 3,
@@ -68,6 +71,16 @@ const SearchPage = () => {
   // Toggle filters display on mobile
   const toggleFilters = useCallback(() => {
     setShowFilters(prev => !prev);
+  }, []);
+
+  // Scroll to search results section
+  const scrollToResults = useCallback(() => {
+    if (searchResultsRef.current) {
+      searchResultsRef.current.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   }, []);
 
   // Update showFilters state when screen size changes
@@ -326,7 +339,7 @@ const SearchPage = () => {
                   variant="contained"
                   size="large"
                   startIcon={<SearchIcon />}
-                  onClick={toggleFilters}
+                  onClick={scrollToResults}
                   sx={{ 
                     px: 3, 
                     py: 1.5, 
@@ -386,7 +399,7 @@ const SearchPage = () => {
         </Container>
       </Box>
 
-      <Container maxWidth="xl" sx={{ pt: 3, pb: 5 }}>
+      <Container maxWidth="xl" sx={{ pt: 3, pb: 5 }} ref={searchResultsRef}>
         {/* Loading indicator */}
         {isLoading && (
           <Box sx={{ width: '100%', mb: 2 }}>

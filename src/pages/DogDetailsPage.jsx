@@ -136,7 +136,7 @@ const DogDetailsPage = () => {
 
   if (!dog) {
     return (
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ pt: 3, pb: 5 }}>
         <Box my={4}>
           <Alert severity="warning">
             <AlertTitle>Not Found</AlertTitle>
