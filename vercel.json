@@ -2,32 +2,35 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
     {
-      "src": "/static/js/(.*)\\.js",
-      "dest": "/static/js/$1.js",
-      "headers": { 
-        "content-type": "application/javascript",
-        "cache-control": "public, max-age=31536000, immutable" 
-      }
+      "source": "/static/js/(.*)",
+      "headers": [
+        { "key": "Content-Type", "value": "application/javascript" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     },
     {
-      "src": "/static/css/(.*)\\.css",
-      "dest": "/static/css/$1.css",
-      "headers": { 
-        "content-type": "text/css",
-        "cache-control": "public, max-age=31536000, immutable" 
-      }
+      "source": "/static/css/(.*)",
+      "headers": [
+        { "key": "Content-Type", "value": "text/css" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     },
     {
-      "src": "/(.*\\.(ico|json|png|jpg|svg|ttf|woff|woff2))",
-      "dest": "/$1",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" }
+      "source": "/(.*\\.(ico|json|png|jpg|svg|ttf|woff|woff2))",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     },
-    { 
-      "src": "/(.*)", 
-      "dest": "/index.html",
-      "headers": { "cache-control": "public, max-age=0, must-revalidate" }
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
     }
   ],
   "buildCommand": "npm run build && node vercel-fix-static.js",
