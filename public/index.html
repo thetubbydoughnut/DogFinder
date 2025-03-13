@@ -3,36 +3,61 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    
+    <!-- Absolute base URL to prevent path resolution issues -->
     <base href="/" />
+    
     <!-- Error recovery script - loads before anything else -->
     <script src="%PUBLIC_URL%/error-recovery.js"></script>
+    
+    <!-- Runtime script checker -->
     <script>
-      // Handle static asset loading errors
-      window.addEventListener('error', function(e) {
-        // Check if the error is for a script or stylesheet
-        if (e.target && (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK')) {
-          const src = e.target.src || e.target.href;
-          if (src && (src.includes('.js') || src.includes('.css'))) {
-            console.warn('Resource failed to load:', src);
-            
-            // If at a non-root path, redirect to root
-            if (window.location.pathname !== '/') {
-              window.location.href = '/';
-              e.preventDefault();
+      (function() {
+        // Add a version cache buster to all script tags
+        window.addEventListener('DOMContentLoaded', function() {
+          var scripts = document.getElementsByTagName('script');
+          var timestamp = Date.now();
+          
+          for (var i = 0; i < scripts.length; i++) {
+            var script = scripts[i];
+            if (script.src && !script.src.includes('error-recovery.js')) {
+              var url = new URL(script.src);
+              // Only add cache buster if not already present
+              if (!url.searchParams.has('v')) {
+                url.searchParams.set('v', timestamp);
+                script.src = url.toString();
+              }
             }
           }
+        });
+        
+        // Handle static asset loading errors
+        window.addEventListener('error', function(e) {
+          // Check if the error is for a script or stylesheet
+          if (e.target && (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK')) {
+            const src = e.target.src || e.target.href;
+            if (src && (src.includes('.js') || src.includes('.css'))) {
+              console.warn('Resource failed to load:', src);
+              
+              // If at a non-root path, redirect to root
+              if (window.location.pathname !== '/') {
+                window.location.href = '/';
+                e.preventDefault();
+              }
+            }
+          }
+        }, true);
+        
+        // Force root path for all navigation
+        try {
+          const path = window.location.pathname.replace(/\/+$/, '');
+          if (path !== '/' && path !== '') {
+            window.history.replaceState(null, null, '/');
+          }
+        } catch (e) {
+          console.warn('Failed to handle routing:', e);
         }
-      }, true);
-      
-      // Force root path for all navigation
-      try {
-        const path = window.location.pathname.replace(/\/+$/, '');
-        if (path !== '/' && path !== '') {
-          window.history.replaceState(null, null, '/');
-        }
-      } catch (e) {
-        console.warn('Failed to handle routing:', e);
-      }
+      })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#3f51b5" />
