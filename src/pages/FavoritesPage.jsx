@@ -137,7 +137,7 @@ const FavoritesPage = () => {
   };
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" sx={{ pt: 3, pb: 5 }}>
       {/* Header with title and actions */}
       <Paper 
         elevation={2} 

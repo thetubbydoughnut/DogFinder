@@ -104,11 +104,19 @@ const Header = (props) => {
 
   return (
     <>
+      {/* Add a spacer to prevent content from being hidden under the fixed header */}
+      {isAuthenticated && <Box sx={{ height: { xs: 64, md: 70 } }} />}
+      
       <HideOnScroll {...props}>
         <AppBar 
-          position="sticky" 
-          elevation={0}
+          position="fixed"
+          elevation={2}
           sx={{
+            top: 0,
+            left: 0,
+            right: 0,
+            width: '100%',
+            zIndex: (theme) => theme.zIndex.drawer + 1,
             bgcolor: muiTheme.palette.background.paper,
             color: muiTheme.palette.text.primary,
             borderBottom: `1px solid ${muiTheme.palette.divider}`,

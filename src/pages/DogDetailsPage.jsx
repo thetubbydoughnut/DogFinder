@@ -106,7 +106,7 @@ const DogDetailsPage = () => {
 
   if (loading) {
     return (
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ pt: 3, pb: 5 }}>
         <Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
           <CircularProgress />
         </Box>
@@ -116,7 +116,7 @@ const DogDetailsPage = () => {
 
   if (error) {
     return (
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ pt: 3, pb: 5 }}>
         <Box my={4}>
           <Alert severity="error">
             <AlertTitle>Error</AlertTitle>
@@ -155,7 +155,7 @@ const DogDetailsPage = () => {
   }
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ pt: 3, pb: 5 }}>
       <Box my={4}>
         <Button
           startIcon={<ArrowBackIcon />}

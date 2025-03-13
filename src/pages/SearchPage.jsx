@@ -386,7 +386,7 @@ const SearchPage = () => {
         </Container>
       </Box>
 
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ pt: 3, pb: 5 }}>
         {/* Loading indicator */}
         {isLoading && (
           <Box sx={{ width: '100%', mb: 2 }}>
