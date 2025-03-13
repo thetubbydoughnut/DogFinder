@@ -55,44 +55,47 @@ function AppWithTheme() {
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route element={<ProtectedRoute />}>
-              <Route
-                path="/search"
-                element={
+            <Route
+              path="/search"
+              element={
+                <ProtectedRoute>
                   <Layout>
-                    <ErrorBoundary>
-                      <Suspense fallback={<LoadingFallback />}>
-                        <SearchPage />
-                      </Suspense>
-                    </ErrorBoundary>
+                    <Suspense fallback={<LoadingFallback />}>
+                      <SearchPage />
+                    </Suspense>
                   </Layout>
-                }
-              />
-              <Route
-                path="/favorites"
-                element={
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/favorites"
+              element={
+                <ProtectedRoute>
                   <Layout>
-                    <ErrorBoundary>
-                      <Suspense fallback={<LoadingFallback />}>
-                        <FavoritesPage />
-                      </Suspense>
-                    </ErrorBoundary>
+                    <Suspense fallback={<LoadingFallback />}>
+                      <FavoritesPage />
+                    </Suspense>
                   </Layout>
-                }
-              />
-              <Route
-                path="/dogs/:id"
-                element={
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dog/:id"
+              element={
+                <ProtectedRoute>
                   <Layout>
-                    <ErrorBoundary>
-                      <Suspense fallback={<LoadingFallback />}>
-                        <DogDetailsPage />
-                      </Suspense>
-                    </ErrorBoundary>
+                    <Suspense fallback={<LoadingFallback />}>
+                      <DogDetailsPage />
+                    </Suspense>
                   </Layout>
-                }
-              />
-            </Route>
+                </ProtectedRoute>
+              }
+            />
+            {/* Fallback route - redirect to login */}
+            <Route
+              path="*"
+              element={<LoginPage />}
+            />
           </Routes>
         </Box>
       </ThemeProvider>

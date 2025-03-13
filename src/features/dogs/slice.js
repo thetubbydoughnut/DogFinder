@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
 import dogService from '../../services/dogService';
+import cacheService from '../../services/cacheService';
 
 // Fetch dogs with filters
 export const fetchDogs = createAsyncThunk(
   'dogs/fetchDogs',
-  async ({ filters, page, size, sort }, { rejectWithValue }) => {
+  async ({ filters, page, size, sort }, { rejectWithValue, getState }) => {
     try {
       // Ensure sort has a default value if not provided
       const sortOption = sort || 'breed:asc';
@@ -18,7 +19,8 @@ export const fetchDogs = createAsyncThunk(
           total: 0,
           resultIds: [],
           next: null,
-          prev: null
+          prev: null,
+          usingCachedData: false
         };
       }
       
@@ -30,10 +32,44 @@ export const fetchDogs = createAsyncThunk(
         total: searchResults.total,
         resultIds: searchResults.resultIds,
         next: searchResults.next,
-        prev: searchResults.prev
+        prev: searchResults.prev,
+        usingCachedData: false
       };
     } catch (error) {
       console.error('Error in fetchDogs thunk:', error);
+      
+      // Attempt to use cached data as fallback
+      try {
+        // First try to get the cached search results
+        const params = {
+          ...filters,
+          size,
+          from: page * size,
+          sort: sort || 'breed:asc'
+        };
+        
+        const cachedSearchResults = cacheService.getCachedDogSearch(params);
+        
+        if (cachedSearchResults && cachedSearchResults.resultIds && cachedSearchResults.resultIds.length > 0) {
+          // If we have cached search results, try to get cached dog details
+          const cachedDogs = cacheService.getCachedDogsByIds(cachedSearchResults.resultIds);
+          
+          if (cachedDogs && cachedDogs.length > 0) {
+            console.log('Using cached dogs data as fallback due to API error');
+            return {
+              dogs: cachedDogs,
+              total: cachedSearchResults.total || cachedDogs.length,
+              resultIds: cachedSearchResults.resultIds,
+              next: cachedSearchResults.next,
+              prev: cachedSearchResults.prev,
+              usingCachedData: true
+            };
+          }
+        }
+      } catch (cacheError) {
+        console.error('Error using cache fallback:', cacheError);
+      }
+      
       return rejectWithValue(
         error.response?.data?.message || 
         'Failed to fetch dogs. Please try again later.'
@@ -50,6 +86,13 @@ export const getBreeds = createAsyncThunk(
       const breeds = await dogService.getBreeds();
       return breeds;
     } catch (error) {
+      // Attempt to use cached breeds as fallback
+      const cachedBreeds = cacheService.getCachedBreeds();
+      if (cachedBreeds && cachedBreeds.length > 0) {
+        console.log('Using cached breeds as fallback due to API error');
+        return cachedBreeds;
+      }
+      
       return rejectWithValue('Failed to fetch breeds. Please try again later.');
     }
   }
@@ -75,7 +118,8 @@ const dogsSlice = createSlice({
     page: 0,
     next: null,
     prev: null,
-    pageSize: 25
+    pageSize: 25,
+    usingCachedData: false
   },
   reducers: {
     setFilters: (state, action) => {
@@ -100,6 +144,9 @@ const dogsSlice = createSlice({
     setPageSize: (state, action) => {
       state.pageSize = action.payload;
       state.page = 0; // Reset page when changing page size
+    },
+    clearCachedDataFlag: (state) => {
+      state.usingCachedData = false;
     }
   },
   extraReducers: (builder) => {
@@ -116,6 +163,7 @@ const dogsSlice = createSlice({
         state.resultIds = action.payload.resultIds;
         state.next = action.payload.next;
         state.prev = action.payload.prev;
+        state.usingCachedData = action.payload.usingCachedData || false;
       })
       .addCase(fetchDogs.rejected, (state, action) => {
         state.isLoading = false;
@@ -138,14 +186,30 @@ const dogsSlice = createSlice({
   }
 });
 
-export const { setFilters, clearFilters, setSortOption, setPage, setPageSize } = dogsSlice.actions;
+export const { 
+  setFilters, 
+  clearFilters, 
+  setSortOption, 
+  setPage, 
+  setPageSize,
+  clearCachedDataFlag
+} = dogsSlice.actions;
 
-// Memoized selectors
+export default dogsSlice.reducer;
+
+// Selectors
 export const selectDogs = state => state.dogs.dogs;
+export const selectBreeds = state => state.dogs.breeds;
 export const selectFilters = state => state.dogs.filters;
 export const selectSortOption = state => state.dogs.sortOption;
 export const selectIsLoading = state => state.dogs.isLoading;
+export const selectIsLoadingBreeds = state => state.dogs.isLoadingBreeds;
+export const selectTotal = state => state.dogs.total;
+export const selectPage = state => state.dogs.page;
+export const selectPageSize = state => state.dogs.pageSize;
 export const selectError = state => state.dogs.error;
+export const selectUsingCachedData = state => state.dogs.usingCachedData;
+
 export const selectPagination = state => ({
   page: state.dogs.page,
   pageSize: state.dogs.pageSize,
@@ -159,6 +223,4 @@ export const selectFilteredDogs = createSelector(
     // The selector will only recalculate when dogs, filters, or sortOption changes
     return dogs;
   }
-);
-
-export default dogsSlice.reducer; 
+); 

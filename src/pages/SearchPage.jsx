@@ -17,6 +17,8 @@ import {
   Stack,
   alpha,
   LinearProgress,
+  Alert,
+  AlertTitle,
 } from '@mui/material';
 import { FixedSizeGrid } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
@@ -38,7 +40,9 @@ import {
   selectFilteredDogs,
   selectIsLoading,
   selectError,
-  selectPagination
+  selectPagination,
+  selectUsingCachedData,
+  clearCachedDataFlag
 } from '../features/dogs/slice';
 
 const SearchPage = () => {
@@ -67,6 +71,7 @@ const SearchPage = () => {
   const { total, page, pageSize } = useSelector(selectPagination);
   const filters = useSelector(state => state.dogs.filters);
   const sortOption = useSelector(state => state.dogs.sortOption);
+  const usingCachedData = useSelector(selectUsingCachedData);
 
   // Toggle filters display on mobile
   const toggleFilters = useCallback(() => {
@@ -277,6 +282,17 @@ const SearchPage = () => {
     );
   };
 
+  // Clear cached data notification after 10 seconds
+  useEffect(() => {
+    if (usingCachedData) {
+      const timer = setTimeout(() => {
+        dispatch(clearCachedDataFlag());
+      }, 10000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [usingCachedData, dispatch]);
+
   return (
     <Box sx={{ overflow: 'hidden' }}>
       {/* Hero Section */}
@@ -405,6 +421,31 @@ const SearchPage = () => {
           <Box sx={{ width: '100%', mb: 2 }}>
             <LinearProgress color="primary" />
           </Box>
+        )}
+        
+        {/* Cached data notification */}
+        {usingCachedData && (
+          <Alert 
+            severity="info" 
+            sx={{ 
+              mb: 3,
+              animation: 'fadeIn 0.5s ease-in',
+              '@keyframes fadeIn': {
+                '0%': { opacity: 0, transform: 'translateY(-10px)' },
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+              },
+            }}
+          >
+            <AlertTitle>Using Cached Data</AlertTitle>
+            We're currently showing results from cached data due to an API connection issue.
+            <Button 
+              size="small" 
+              onClick={() => dispatch(fetchDogs({ filters, page, size: pageSize, sort: sortOption }))}
+              sx={{ ml: 2 }}
+            >
+              Retry API Request
+            </Button>
+          </Alert>
         )}
         
         <Grid container spacing={3}>

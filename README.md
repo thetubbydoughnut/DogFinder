@@ -11,6 +11,7 @@ A web application that helps users search through a database of shelter dogs to 
 - 🤝 Match generation for adoption
 - 📱 Progressive Web App (PWA) support for offline capabilities
 - 🛡️ Error boundaries for graceful error handling
+- 💾 Advanced caching system for API responses
 - 🚀 Code splitting and lazy loading for improved performance
 - 📊 TypeScript for core application files with enhanced type safety
 
@@ -26,6 +27,7 @@ A web application that helps users search through a database of shelter dogs to 
 - **Formik & Yup** - Form handling and validation
 
 ### Performance Optimizations
+- **Custom Cache System** - Dual-layer caching (memory + localStorage) for API responses
 - **React.lazy & Suspense** - Code splitting for better load times
 - **Service Worker** - Offline capabilities and caching
 - **Virtualized Lists** - Efficient rendering of large lists
@@ -44,7 +46,7 @@ A web application that helps users search through a database of shelter dogs to 
 1. Clone the repository:
 ```bash
 git clone https://github.com/thetubbydoughnut/FetchRewardsDogFinder
-cd fetch-rewards-dog-finder
+cd FetchRewardsDogFinder
 ```
 
 2. Install dependencies:
@@ -69,6 +71,7 @@ yarn start
 src/
 ├── components/           # Shared components
 │   ├── ui/               # Pure UI components (buttons, inputs, etc.)
+│   │   └── CacheManager.jsx # Cache management UI component
 │   ├── layout/           # Layout components (Header, Footer, etc.)
 │   └── ErrorBoundary.tsx # Error handling component (TypeScript)
 ├── features/             # Feature modules
@@ -84,7 +87,8 @@ src/
 ├── services/             # API services
 │   ├── api.js            # Base API configuration
 │   ├── authService.js    # Authentication-related API calls
-│   └── dogService.js     # Dog-related API calls
+│   ├── dogService.js     # Dog-related API calls with caching
+│   └── cacheService.js   # Custom caching service
 ├── store/                # Redux store setup
 │   ├── index.js          # Store configuration
 │   └── hooks.js          # Redux hooks
@@ -117,6 +121,20 @@ Users must log in with their name and email to access the application. This crea
 - Add/remove dogs to/from favorites
 - View all favorited dogs in one place
 - Generate a match from your favorite dogs
+
+### Advanced Caching System
+
+The application features a robust caching solution that:
+
+- Stores API responses in localStorage for persistence between sessions
+- Implements in-memory caching for faster access during the current session
+- Automatically falls back to cached data when the API is unavailable
+- Provides a cache management UI for monitoring and clearing cache
+- Shows notifications when cached data is being used
+- Configurable cache expiration times for different data types
+- Cache size management to prevent exceeding storage limits
+
+This caching system significantly improves the application's resilience to network issues and enhances performance by reducing unnecessary API calls.
 
 ### Progressive Web App Features
 
