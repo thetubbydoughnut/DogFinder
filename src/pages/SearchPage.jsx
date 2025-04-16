@@ -272,7 +272,7 @@ const SearchPage = () => {
   }, [usingCachedData, dispatch]);
 
   return (
-    <Box sx={{ overflow: 'hidden' }}>
+    <Box sx={{ overflowX: 'hidden' }}>
       {/* Hero Section */}
       <Box
         sx={{
@@ -561,7 +561,16 @@ const SearchPage = () => {
             {/* Virtualized Dog Grid */}
             {!isLoading && !error && dogs.length > 0 && (
               <>
-                <Card elevation={3} sx={{ height: 800, mb: 3, borderRadius: 3, overflow: 'hidden' }}>
+                <Card 
+                  elevation={3} 
+                  sx={{ 
+                    height: 800, 
+                    mb: 3, 
+                    borderRadius: 3, 
+                    overflow: 'hidden', 
+                    width: '100%'
+                  }}
+                >
                   <AutoSizer>
                     {({ height, width }) => {
                       const rowCount = Math.ceil(dogs.length / columnCount);

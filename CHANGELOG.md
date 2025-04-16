@@ -23,4 +23,6 @@
 - **CHORE**: Disabled `no-restricted-globals` ESLint rule in `public/service-worker.js`.
 - **DOCS**: Created initial `CHANGELOG.md`.
 - **FIX**: Ensure long email addresses don't overflow in the header user menu by applying text truncation.
-- **CHORE**: Removed remaining references to the old Fetch API URL/domain from `.env`, `public/index.html`, `public/service-worker.js`, `deployment-guide.md`, and footer link. 
+- **CHORE**: Removed remaining references to the old Fetch API URL/domain from `.env`, `public/index.html`, `public/service-worker.js`, `deployment-guide.md`, and footer link.
+- **FIX**: Prevent horizontal scrollbar on Search page by applying overflow-x hidden.
+- **DOCS**: Added live deployment URL to README. 

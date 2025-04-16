@@ -2,6 +2,8 @@
 
 A web application that helps users search through a database of shelter dogs to find their perfect match for adoption. Users can browse available dogs, filter by various criteria, select favorites, and generate a match for adoption.
 
+**Live Demo:** Access the deployed application at [https://dog-finder-cameron.vercel.app/](https://dog-finder-cameron.vercel.app/)
+
 **Note:** This version uses static mock data located in `public/mock-data/` derived from the Dog CEO API. Image URLs are dynamically generated placeholders using `placedog.net`. Authentication is handled via **Auth0**.
 
 ## Features
@@ -152,6 +154,8 @@ The application is configured for seamless deployment to Vercel. The deployment 
 - **Error Boundary** - Runtime error handling for production environment
 - **Environment Variables** - Environment-specific settings in `.env` files
 - **Service Worker** - Offline capabilities and improved performance
+
+**The deployed version is live at: [https://dog-finder-cameron.vercel.app/](https://dog-finder-cameron.vercel.app/)**
 
 ### Deploying to Vercel
 
