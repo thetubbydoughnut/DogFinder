@@ -1,5 +1,3 @@
-// import api from './api'; // No longer needed
-
 // --- Data Storage (Loaded from Static JSON) ---
 let allBreeds = [];
 let allDogs = [];
@@ -142,7 +140,4 @@ const dogService = {
   // No cache methods needed anymore
 };
 
-// Remove cache logic wrapper (no longer needed)
-// const cachedDogService = CacheServiceWrapper(dogService, 'dogData');
-
-export default dogService; // Export the direct service 
+export default dogService; // Export the direct service

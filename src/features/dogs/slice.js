@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import dogService from '../../services/dogService';
-// Remove cacheService import if no longer needed
-// import cacheService from '../../services/cacheService';
 
 // Fetch dogs with filters
 export const fetchDogs = createAsyncThunk(

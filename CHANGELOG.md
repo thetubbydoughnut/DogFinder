@@ -1,7 +1,8 @@
 ## Changelog
 
-### 2025-12-2025
+### 4-16-2025
 
+- **CHORE**: Removed residual commented-out code related to the previous API/caching implementation in `dogService.js` and `dogs/slice.js`.
 - **FEAT**: Implemented automatic logout after 10 minutes of user inactivity (`useInactivityLogout` hook).
 - **FIX**: Corrected redirect logic to return users to their intended page after login, resolving issue where users were always sent to `/search` after navigating from a protected route to login.
 - **FIX**: Standardized status handling in `dogs` Redux slice using status strings (`idle`, `loading`, `succeeded`, `failed`) and removed potential inconsistencies.
