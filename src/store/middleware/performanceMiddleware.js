@@ -11,37 +11,30 @@ const trackTiming = (metricName, duration, properties) => {
 };
 
 const performanceMiddleware = store => next => action => {
-  // Only track performance in development or if explicitly enabled
-  if (process.env.NODE_ENV !== 'development' && !process.env.REACT_APP_ENABLE_PERFORMANCE_TRACKING) {
-    return next(action);
-  }
-  
-  // Skip tracking for specific action types or internal Redux actions
-  if (typeof action === 'object' && action.type && action.type.startsWith('@@redux')) {
-    return next(action);
-  }
-  
-  // Start measuring time
-  const actionName = typeof action === 'object' ? action.type : 'unknown';
-  const startTime = performance.now();
-  
-  // Execute the action
+  const start = performance.now();
   const result = next(action);
+  const end = performance.now();
+  const duration = end - start;
   
-  // Measure execution time
-  const endTime = performance.now();
-  const duration = endTime - startTime;
+  // Log performance metrics (consider a more robust analytics tool for production)
+  // Example: Sending timing data to an analytics service
+  // reportTiming('redux_action', action.type, duration);
   
+  // Basic console logging for development
+  const metricName = `redux_action_${action.type}`.replace(/[/.]/g, '_');
+  const properties = { actionType: action.type, hasPayload: !!action.payload };
+  // console.log(`Timing: ${metricName}`, duration, properties);
+
   // Log the performance data
-  const actionType = actionName || 'anonymous';
-  trackTiming(`redux_action_${actionType}`, duration, {
-    actionType,
-    hasPayload: Boolean(action.payload),
-  });
+  const actionType = action.type || 'anonymous';
+  // trackTiming(`redux_action_${actionType}`, duration, {
+  //   actionType,
+  //   hasPayload: Boolean(action.payload),
+  // });
   
   // If the action takes too long, log a warning
   if (duration > 50) {
-    console.warn(`Redux action ${actionType} took ${duration.toFixed(2)}ms to complete`);
+    // console.warn(`Redux action ${actionType} took ${duration.toFixed(2)}ms to complete`);
   }
   
   return result;

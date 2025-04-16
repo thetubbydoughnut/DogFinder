@@ -7,7 +7,7 @@ const useInactivityLogout = (timeout = 600000) => { // Default to 10 minutes (10
 
   const handleLogout = useCallback(async () => {
     if (isAuthenticated) {
-      console.log(`Inactivity detected. Logging out user after ${timeout / 60000} minutes.`);
+      // console.log(`Inactivity detected. Logging out user after ${timeout / 60000} minutes.`);
       try {
         await logout({ logoutParams: { returnTo: window.location.origin } });
         // Redirect is handled by Auth0 after logout

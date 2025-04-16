@@ -9,14 +9,22 @@ let dataLoadPromise = null; // Promise to await ongoing load
  * Fetches and caches the mock data from static JSON files.
  * @returns {Promise<void>} A promise that resolves when data is loaded.
  */
-const loadMockData = () => {
+const loadMockData = async () => {
   if (isDataLoaded) return Promise.resolve(); // Already loaded
   if (isDataLoading) return dataLoadPromise; // Already loading, return existing promise
 
   isDataLoading = true;
   dataLoadPromise = (async () => {
     try {
-      console.log('Attempting to load mock data from static JSON...');
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 100)); 
+
+      // Attempt to load static data first
+      if (!allDogs || !allBreeds) {
+        // console.log('Attempting to load mock data from static JSON...');
+        await loadMockData();
+      }
+
       // Use fetch API to load files from the /public directory
       const [breedsResponse, dogsResponse] = await Promise.all([
         fetch('/mock-data/breeds.json'),
@@ -29,14 +37,14 @@ const loadMockData = () => {
       allBreeds = await breedsResponse.json();
       allDogs = await dogsResponse.json();
       isDataLoaded = true; // Mark as loaded AFTER successful parsing
-      console.log(`Mock data loaded successfully: ${allBreeds.length} breeds, ${allDogs.length} dogs.`);
+      // console.log(`Mock data loaded successfully: ${allBreeds.length} breeds, ${allDogs.length} dogs.`);
 
     } catch (error) {
-      console.error('Fatal Error: Could not load mock data JSON files:', error);
-      allBreeds = []; // Ensure arrays are empty on failure
+      console.error('Error loading or accessing mock data:', error);
+      // If loading fails, ensure we don't return partial data
       allDogs = [];
-      // Optional: Rethrow or handle error state in UI
-      // throw error; // Or set a global error state
+      allBreeds = [];
+      throw new Error('Failed to load dog data. Please try again later.'); 
     } finally {
       isDataLoading = false; // Reset loading flag regardless of outcome
     }

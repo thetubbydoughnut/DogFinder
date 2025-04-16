@@ -11,20 +11,16 @@ import {
   Box,
   IconButton,
   Tooltip,
-  Zoom,
-  Grow,
   Skeleton,
   useTheme,
-  Badge,
-  Paper,
   Divider,
+  Grow
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PetsIcon from '@mui/icons-material/Pets';
 import CakeIcon from '@mui/icons-material/Cake';
-import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import InfoIcon from '@mui/icons-material/Info';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { addToFavorites, removeFromFavorites } from '../../favorites/slice';

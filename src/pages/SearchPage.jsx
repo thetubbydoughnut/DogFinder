@@ -7,13 +7,11 @@ import {
   Grid,
   Container,
   Pagination,
-  Paper,
   useMediaQuery,
   useTheme,
   Chip,
   Fade,
   Button,
-  Divider,
   Card,
   Stack,
   alpha,
@@ -28,7 +26,6 @@ import PetsIcon from '@mui/icons-material/Pets';
 import TuneIcon from '@mui/icons-material/Tune';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import DogCard from '../features/dogs/components/DogCard';
-import DogCardSkeleton from '../features/dogs/components/DogCardSkeleton';
 import DogFilter from '../features/dogs/components/DogFilter';
 import SortSelector from '../features/dogs/components/SortSelector';
 import ErrorState from '../components/ui/ErrorState';
@@ -40,8 +37,6 @@ import {
   fetchDogs, 
   setPage,
   selectFilteredDogs,
-  selectIsLoadingDogs,
-  selectDogError,
   selectPagination,
   selectUsingCachedData,
   clearCachedDataFlag,

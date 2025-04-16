@@ -17,7 +17,7 @@ const LoginPage = () => {
       // Auth0 handles redirect after login automatically based on original path
       // We just need to navigate away from login page if user is already authenticated
       const from = location.state?.from?.pathname || '/search'; 
-      console.log(`LoginPage: User already authenticated. Redirecting to: ${from}`);
+      // console.log(`LoginPage: User already authenticated. Redirecting to: ${from}`);
       navigate(from, { replace: true });
     }
   }, [isAuthenticated, isLoading, navigate, location.state]);

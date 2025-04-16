@@ -44,7 +44,7 @@ const DogDetailsPage = () => {
   const dispatch = useDispatch();
   
   // Log component mount
-  console.log(`DogDetailsPage: Mounting for dog ID: ${id}`);
+  // console.log(`DogDetailsPage: Mounting for dog ID: ${id}`);
 
   const [dog, setDog] = useState(null);
   const [loading, setLoading] = useState(true);

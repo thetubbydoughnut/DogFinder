@@ -9,7 +9,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
-  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   const location = useLocation();
 
   // Show loading indicator while Auth0 is checking authentication state
@@ -23,7 +23,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 
   // If not authenticated, redirect to Auth0 login page
   if (!isAuthenticated) {
-    console.log('ProtectedRoute: User not authenticated. Redirecting to Auth0 login from:', location.pathname);
+    // console.log('ProtectedRoute: User not authenticated. Redirecting to Auth0 login from:', location.pathname);
     // Auth0 handles storing the return path automatically when using loginWithRedirect
     // No need to pass state={{ from: location }}
     // We can call loginWithRedirect here, or let the app redirect to the login page

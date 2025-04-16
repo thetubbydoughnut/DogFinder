@@ -58,7 +58,7 @@ const Header = (props) => {
   const location = useLocation();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('md'));
   
-  const { isAuthenticated, user, logout, isLoading } = useAuth0();
+  const { isAuthenticated, user, logout } = useAuth0();
   const { favorites } = useSelector((state) => state.favorites);
   const favoriteCount = favorites.length;
   
