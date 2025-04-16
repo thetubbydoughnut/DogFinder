@@ -94,7 +94,7 @@ const LoginPage = () => {
                   }} 
                 />
                 <Typography variant="h3" component="h1" fontWeight="bold" color="primary">
-                  Fetch Dog Finder
+                  Find-a-Friend Dog Finder
                 </Typography>
               </Box>
               <Typography variant="h5" color="textSecondary" sx={{ mb: 4 }}>

@@ -4,6 +4,9 @@ import { render as rtlRender } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login, clearError } from '../../../features/auth/slice';
 import theme from '../../../theme';
 import LoginForm from '../../../features/auth/components/LoginForm';
 
@@ -26,19 +29,14 @@ jest.mock('../../../features/auth/slice', () => ({
   clearError: jest.fn()
 }));
 
-// Import the mocked modules
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { login, clearError } from '../../../features/auth/slice';
-
-// Custom render function that doesn't use Redux Provider
+// Custom render function that wraps components in necessary providers
 function render(ui, { ...options } = {}) {
   function Wrapper({ children }) {
     return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <BrowserRouter>
-          {children}
+          {children} 
         </BrowserRouter>
       </ThemeProvider>
     );
@@ -75,9 +73,9 @@ describe('LoginForm Component', () => {
   it('renders the form correctly', () => {
     render(<LoginForm />);
     
-    // Check for heading and text
-    expect(screen.getByText(/Welcome to Fetch Dog Finder/i)).toBeInTheDocument();
-    expect(screen.getByText(/Please log in to find your perfect dog companion/i)).toBeInTheDocument();
+    // Check for welcoming text (updated)
+    expect(screen.getByText(/Welcome to Find-a-Friend Dog Finder/i)).toBeInTheDocument();
+    expect(screen.getByText(/Find your perfect canine companion/i)).toBeInTheDocument();
     
     // Check for form elements
     expect(screen.getByLabelText(/Name/i)).toBeInTheDocument();

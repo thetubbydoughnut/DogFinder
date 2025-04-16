@@ -23,4 +23,10 @@
 - **CHORE**: Removed empty `src/api` directory.
 - **CHORE**: Removed `CHANGELOG.md` from `.gitignore` to allow tracking.
 - **CHORE**: Disabled `no-restricted-globals` ESLint rule in `public/service-worker.js`.
-- **DOCS**: Created initial `CHANGELOG.md`. 
+- **DOCS**: Created initial `CHANGELOG.md`.
+
+### 04-17-2025
+
+- Renamed application title to "Find-a-Friend Dog Finder" in user-facing components (`LoginPage`, `LoadingScreen`).
+- Updated corresponding test (`LoginForm.test.js`) to reflect the name change.
+- Verified login page centering mechanism using Material UI Grid and Box components. 

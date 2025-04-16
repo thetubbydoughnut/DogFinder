@@ -103,7 +103,7 @@ const LoadingScreen = ({ message = "Loading your pawsome experience..." }) => {
             fontFamily: 'Poppins, sans-serif',
           }}
         >
-          Fetch Dog Finder
+          Find a Friend Dog Finder
         </Typography>
         
         <Box 
