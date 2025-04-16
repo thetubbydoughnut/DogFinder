@@ -137,22 +137,24 @@ const LoginForm = () => {
                   placement="top"
                   arrow
                 >
-                  <Field
-                    as={TextField}
-                    fullWidth
-                    id="email"
-                    name="email"
-                    label="Email"
-                    variant="outlined"
-                    error={touched.email && Boolean(errors.email)}
-                    helperText={touched.email && errors.email}
-                    disabled={isLoading}
-                    InputProps={{
-                      startAdornment: (
-                        <EmailIcon sx={{ mr: 1, color: theme.palette.text.secondary }} />
-                      ),
-                    }}
-                  />
+                  <Box>
+                    <Field
+                      as={TextField}
+                      fullWidth
+                      id="email"
+                      name="email"
+                      label="Email"
+                      variant="outlined"
+                      error={touched.email && Boolean(errors.email)}
+                      helperText={touched.email && errors.email}
+                      disabled={isLoading}
+                      InputProps={{
+                        startAdornment: (
+                          <EmailIcon sx={{ mr: 1, color: theme.palette.text.secondary }} />
+                        ),
+                      }}
+                    />
+                  </Box>
                 </Tooltip>
               </Box>
 

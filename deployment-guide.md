@@ -1,6 +1,6 @@
-# Deployment Guide for Fetch Rewards Dog Finder
+# Deployment Guide for Dog Finder
 
-This guide outlines the steps to deploy your Fetch Rewards Dog Finder application to Vercel.
+This guide outlines the steps to deploy your Dog Finder application to Vercel.
 
 ## Prerequisites
 

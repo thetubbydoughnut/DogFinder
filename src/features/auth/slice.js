@@ -26,6 +26,8 @@ export const login = createAsyncThunk(
       await authService.login(name, email);
       return { name, email };
     } catch (error) {
+      // Log the full error for debugging purposes
+      console.error('Login failed:', error);
       return rejectWithValue(
         error.response?.data?.message || 'Authentication failed'
       );
@@ -42,6 +44,8 @@ export const logout = createAsyncThunk(
       localStorage.removeItem(USER_KEY);
       return null;
     } catch (error) {
+      // Log the full error for debugging purposes
+      console.error('Logout failed:', error);
       return rejectWithValue(
         error.response?.data?.message || 'Logout failed'
       );

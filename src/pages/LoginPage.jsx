@@ -1,21 +1,27 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Container, Box, Paper, Typography, useTheme, Grid } from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets';
 import LoginForm from '../features/auth/components/LoginForm';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const theme = useTheme();
   const { isAuthenticated } = useSelector((state) => state.auth);
 
-  // Redirect to search page if already authenticated
+  // Redirect authenticated users
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/search');
+      // Determine the redirect destination
+      const from = location.state?.from?.pathname || '/search'; 
+      // Log the redirection
+      console.log(`LoginPage: User already authenticated. Redirecting to: ${from}`);
+      navigate(from, { replace: true }); // Redirect to the original destination or /search
     }
-  }, [isAuthenticated, navigate]);
+    // Add location.state to dependencies to react to changes in location state
+  }, [isAuthenticated, navigate, location.state]);
 
   return (
     <>

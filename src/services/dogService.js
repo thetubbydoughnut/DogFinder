@@ -1,201 +1,148 @@
-import api from './api';
-import cacheService from './cacheService';
+// import api from './api'; // No longer needed
 
-// Dog services
-const dogService = {
-  // Get all dog breeds
-  getBreeds: async () => {
+// --- Data Storage (Loaded from Static JSON) ---
+let allBreeds = [];
+let allDogs = [];
+let isDataLoaded = false;
+let isDataLoading = false; // Flag to prevent multiple loads
+let dataLoadPromise = null; // Promise to await ongoing load
+
+/**
+ * Fetches and caches the mock data from static JSON files.
+ * @returns {Promise<void>} A promise that resolves when data is loaded.
+ */
+const loadMockData = () => {
+  if (isDataLoaded) return Promise.resolve(); // Already loaded
+  if (isDataLoading) return dataLoadPromise; // Already loading, return existing promise
+
+  isDataLoading = true;
+  dataLoadPromise = (async () => {
     try {
-      // Check cache first
-      const cachedBreeds = cacheService.getCachedBreeds();
-      if (cachedBreeds) {
-        return cachedBreeds;
-      }
-      
-      // If not in cache, fetch from API
-      const response = await api.get('/dogs/breeds');
-      const breeds = response.data;
-      
-      // Store in cache
-      cacheService.storeBreeds(breeds);
-      
-      return breeds;
+      console.log('Attempting to load mock data from static JSON...');
+      // Use fetch API to load files from the /public directory
+      const [breedsResponse, dogsResponse] = await Promise.all([
+        fetch('/mock-data/breeds.json'),
+        fetch('/mock-data/dogs.json')
+      ]);
+
+      if (!breedsResponse.ok) throw new Error(`Failed to load breeds.json: ${breedsResponse.statusText} (Status: ${breedsResponse.status})`);
+      if (!dogsResponse.ok) throw new Error(`Failed to load dogs.json: ${dogsResponse.statusText} (Status: ${dogsResponse.status})`);
+
+      allBreeds = await breedsResponse.json();
+      allDogs = await dogsResponse.json();
+      isDataLoaded = true; // Mark as loaded AFTER successful parsing
+      console.log(`Mock data loaded successfully: ${allBreeds.length} breeds, ${allDogs.length} dogs.`);
+
     } catch (error) {
-      console.error('Error fetching dog breeds:', error);
-      
-      // Check cache again for fallback on API error
-      const cachedBreeds = cacheService.getCachedBreeds();
-      if (cachedBreeds) {
-        console.log('Using cached breeds data due to API error');
-        return cachedBreeds;
-      }
-      
-      throw error;
+      console.error('Fatal Error: Could not load mock data JSON files:', error);
+      allBreeds = []; // Ensure arrays are empty on failure
+      allDogs = [];
+      // Optional: Rethrow or handle error state in UI
+      // throw error; // Or set a global error state
+    } finally {
+      isDataLoading = false; // Reset loading flag regardless of outcome
     }
-  },
-  
-  // Search dogs with filters
-  searchDogs: async (filters = {}, page = 0, size = 25, sort = '') => {
-    // Prepare search params for cache key and API
-    const params = {
-      size,
-      from: page * size
-    };
-    
-    // Add filter parameters if present
-    if (filters.breeds && filters.breeds.length > 0) {
-      params.breeds = filters.breeds;
-    }
-    
-    if (filters.zipCodes && filters.zipCodes.length > 0) {
-      params.zipCodes = filters.zipCodes;
-    }
-    
-    if (filters.ageMin !== undefined) {
-      params.ageMin = filters.ageMin;
-    }
-    
-    if (filters.ageMax !== undefined) {
-      params.ageMax = filters.ageMax;
-    }
-    
-    // Add sort parameter, defaulting to breed:asc if not provided
-    params.sort = sort || 'breed:asc';
-    
-    try {
-      // Check cache first
-      const cachedSearchResults = cacheService.getCachedDogSearch(params);
-      if (cachedSearchResults) {
-        return cachedSearchResults;
-      }
-      
-      // If not in cache, fetch from API
-      const response = await api.get('/dogs/search', { params });
-      
-      const searchResults = {
-        resultIds: response.data.resultIds,
-        total: response.data.total,
-        next: response.data.next,
-        prev: response.data.prev
-      };
-      
-      // Store in cache
-      cacheService.storeDogSearch(params, searchResults);
-      
-      return searchResults;
-    } catch (error) {
-      console.error('Error searching dogs:', error);
-      
-      // Check cache again for fallback on API error
-      const cachedSearchResults = cacheService.getCachedDogSearch(params);
-      if (cachedSearchResults) {
-        console.log('Using cached search results due to API error');
-        return cachedSearchResults;
-      }
-      
-      throw error;
-    }
-  },
-  
-  // Get dogs by IDs
-  getDogsByIds: async (ids) => {
-    try {
-      if (!ids || ids.length === 0) {
-        return [];
-      }
-      
-      // Check cache first
-      const cachedDogs = cacheService.getCachedDogsByIds(ids);
-      if (cachedDogs) {
-        return cachedDogs;
-      }
-      
-      // If not in cache, fetch from API
-      const response = await api.post('/dogs', ids);
-      const dogs = response.data;
-      
-      // Store in cache
-      cacheService.storeDogsByIds(ids, dogs);
-      
-      return dogs;
-    } catch (error) {
-      console.error('Error fetching dogs by IDs:', error);
-      
-      // Check cache again for fallback on API error
-      const cachedDogs = cacheService.getCachedDogsByIds(ids);
-      if (cachedDogs) {
-        console.log('Using cached dogs data due to API error');
-        return cachedDogs;
-      }
-      
-      throw error;
-    }
-  },
-  
-  // Generate a match
-  generateMatch: async (favoriteIds) => {
-    try {
-      const response = await api.post('/dogs/match', favoriteIds);
-      return response.data;
-    } catch (error) {
-      console.error('Error generating match:', error);
-      throw error;
-    }
-  },
-  
-  // Get locations by ZIP codes
-  getLocationsByZip: async (zipCodes) => {
-    try {
-      if (!zipCodes || zipCodes.length === 0) {
-        return [];
-      }
-      
-      // Check cache first
-      const cachedLocations = cacheService.getCachedLocations(zipCodes);
-      if (cachedLocations) {
-        return cachedLocations;
-      }
-      
-      // If not in cache, fetch from API
-      const response = await api.post('/locations', zipCodes);
-      const locations = response.data;
-      
-      // Store in cache
-      cacheService.storeLocations(zipCodes, locations);
-      
-      return locations;
-    } catch (error) {
-      console.error('Error fetching locations by ZIP:', error);
-      
-      // Check cache again for fallback on API error
-      const cachedLocations = cacheService.getCachedLocations(zipCodes);
-      if (cachedLocations) {
-        console.log('Using cached locations data due to API error');
-        return cachedLocations;
-      }
-      
-      throw error;
-    }
-  },
-  
-  // Search locations
-  searchLocations: async (searchParams) => {
-    try {
-      const response = await api.post('/locations/search', searchParams);
-      return response.data;
-    } catch (error) {
-      console.error('Error searching locations:', error);
-      throw error;
-    }
-  },
-  
-  // Clear all dog-related caches
-  clearCache: () => {
-    cacheService.clearCache(cacheService.CACHE_CONFIG.DOGS_SEARCH);
-    cacheService.clearCache(cacheService.CACHE_CONFIG.DOGS_BY_ID);
-    cacheService.clearCache(cacheService.CACHE_CONFIG.BREEDS);
-    console.log('Dog caches cleared');
-  }
+  })();
+
+  return dataLoadPromise;
 };
 
-export default dogService; 
+// --- Dog Data Services using Static JSON ---
+
+const dogService = {
+  // Get list of breeds from loaded static JSON
+  getBreeds: async () => {
+    await loadMockData(); // Ensure data is loaded/loading completes
+    return [...allBreeds]; // Return a copy
+  },
+
+  /**
+   * Search dogs from loaded static JSON with filters/sorting/pagination.
+   * @param {Object} filters - The search filters (breeds, ageMin, ageMax, zipCodes)
+   * @param {number} page - The page number (0-indexed)
+   * @param {number} size - The page size
+   * @param {string} sort - Sort field and direction (e.g., 'breed:asc')
+   * @returns {Promise<Object>} Object containing resultIds, total, and next/prev (mocked)
+   */
+  searchDogs: async (filters = {}, page = 0, size = 25, sort = '') => {
+    await loadMockData(); // Ensure data is loaded/loading completes
+    let dogs = [...allDogs]; // Work with a copy
+
+    // Apply filters
+    if (filters.breeds && filters.breeds.length > 0) {
+      const breedSet = new Set(filters.breeds);
+      dogs = dogs.filter(dog => dog && breedSet.has(dog.breed)); // Added check for dog object
+    }
+    if (filters.ageMin !== undefined) {
+      dogs = dogs.filter(dog => dog && dog.age >= filters.ageMin);
+    }
+    if (filters.ageMax !== undefined) {
+      dogs = dogs.filter(dog => dog && dog.age <= filters.ageMax);
+    }
+    if (filters.zipCodes && filters.zipCodes.length > 0) {
+      const zipSet = new Set(filters.zipCodes);
+      dogs = dogs.filter(dog => dog && zipSet.has(dog.zip_code));
+    }
+
+    // Apply sorting
+    if (sort) {
+      const [field, direction] = sort.split(':');
+      dogs.sort((a, b) => {
+        // Handle cases where dogs might be null/undefined if filtering failed unexpectedly
+        if (!a) return 1;
+        if (!b) return -1;
+
+        let comparison = 0;
+        const valA = a[field] ?? ''; 
+        const valB = b[field] ?? '';
+
+        if (typeof valA === 'string' && typeof valB === 'string') {
+          comparison = valA.localeCompare(valB);
+        } else {
+          // Basic numeric comparison, assumes age is number
+          if (valA < valB) comparison = -1;
+          else if (valA > valB) comparison = 1;
+        }
+        return direction === 'desc' ? comparison * -1 : comparison;
+      });
+    }
+
+    // Apply pagination
+    const total = dogs.length;
+    const start = page * size;
+    const end = start + size;
+    const paginatedDogs = dogs.slice(start, end);
+    // Ensure dogs in the slice are valid before mapping
+    const resultIds = paginatedDogs.filter(dog => dog && dog.id).map(dog => dog.id);
+
+    // Mock API response structure (next/prev are simplified)
+    return {
+      resultIds,
+      total,
+      next: end < total ? `/dogs/search?from=${end}&size=${size}` : null,
+      prev: start > 0 ? `/dogs/search?from=${Math.max(0, start - size)}&size=${size}` : null,
+    };
+  },
+
+  /**
+   * Get dog details by IDs from loaded static JSON.
+   * @param {string[]} ids - Array of dog IDs to fetch
+   * @returns {Promise<Array>} Array of dog objects
+   */
+  getDogsByIds: async (ids) => {
+    await loadMockData(); // Ensure data is loaded/loading completes
+    if (!ids || ids.length === 0) {
+      return [];
+    }
+    const idSet = new Set(ids);
+    // Ensure we only return valid dog objects
+    return allDogs.filter(dog => dog && dog.id && idSet.has(dog.id));
+  },
+
+  // No cache methods needed anymore
+};
+
+// Remove cache logic wrapper (no longer needed)
+// const cachedDogService = CacheServiceWrapper(dogService, 'dogData');
+
+export default dogService; // Export the direct service 

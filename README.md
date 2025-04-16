@@ -1,17 +1,19 @@
-# Fetch Rewards Dog Finder 🐕
+# Dog Finder 🐕
 
 A web application that helps users search through a database of shelter dogs to find their perfect match for adoption. Users can browse available dogs, filter by various criteria, select favorites, and generate a match for adoption.
 
+**Note:** This version uses static mock data located in `public/mock-data/` derived from the Dog CEO API and does not connect to any live external API for core data. Image URLs point to the live Dog CEO API.
+
 ## Features
 
-- 🔐 User authentication with name and email
-- 🔍 Advanced dog search with multiple filters (breed, age, location)
+- 🔐 Mock user authentication
+- ✨ Automatic logout after 10 minutes of inactivity
+- 🔍 Advanced dog search with multiple filters (breed, age, location) on mock data
 - 📄 Paginated and sortable results
 - ❤️ Favorites selection and management
 - 🤝 Match generation for adoption
 - 📱 Progressive Web App (PWA) support for offline capabilities
 - 🛡️ Error boundaries for graceful error handling
-- 💾 Advanced caching system for API responses
 - 🚀 Code splitting and lazy loading for improved performance
 - 📊 TypeScript for core application files with enhanced type safety
 
@@ -27,7 +29,6 @@ A web application that helps users search through a database of shelter dogs to 
 - **Formik & Yup** - Form handling and validation
 
 ### Performance Optimizations
-- **Custom Cache System** - Dual-layer caching (memory + localStorage) for API responses
 - **React.lazy & Suspense** - Code splitting for better load times
 - **Service Worker** - Offline capabilities and caching
 - **Virtualized Lists** - Efficient rendering of large lists
@@ -71,7 +72,6 @@ yarn start
 src/
 ├── components/           # Shared components
 │   ├── ui/               # Pure UI components (buttons, inputs, etc.)
-│   │   └── CacheManager.jsx # Cache management UI component
 │   ├── layout/           # Layout components (Header, Footer, etc.)
 │   └── ErrorBoundary.tsx # Error handling component (TypeScript)
 ├── features/             # Feature modules
@@ -85,10 +85,10 @@ src/
 │       ├── components/   # Favorites-specific components
 │       └── slice.js      # Favorites redux slice
 ├── services/             # API services
-│   ├── api.js            # Base API configuration
 │   ├── authService.js    # Authentication-related API calls
-│   ├── dogService.js     # Dog-related API calls with caching
-│   └── cacheService.js   # Custom caching service
+│   └── dogService.js     # Dog-related API calls
+├── hooks/                # Custom React hooks
+│   └── useInactivityLogout.js # Hook for auto-logout
 ├── store/                # Redux store setup
 │   ├── index.js          # Store configuration
 │   └── hooks.js          # Redux hooks
@@ -97,6 +97,7 @@ src/
 │   ├── LoginPage.jsx     # Login page
 │   ├── SearchPage.jsx    # Dog search page
 │   └── FavoritesPage.jsx # Favorites page
+├── context/              # React Context providers
 ├── App.tsx               # Main app component with routing (TypeScript)
 ├── index.tsx             # Entry point (TypeScript)
 ├── serviceWorkerRegistration.ts # Service worker registration (TypeScript)
@@ -107,7 +108,7 @@ src/
 
 ### Authentication
 
-Users must log in with their name and email to access the application. This creates a session with the API service.
+Users must log in with their name and email to access the application. The application now automatically logs users out after 10 minutes of inactivity.
 
 ### Dog Search
 
@@ -121,20 +122,6 @@ Users must log in with their name and email to access the application. This crea
 - Add/remove dogs to/from favorites
 - View all favorited dogs in one place
 - Generate a match from your favorite dogs
-
-### Advanced Caching System
-
-The application features a robust caching solution that:
-
-- Stores API responses in localStorage for persistence between sessions
-- Implements in-memory caching for faster access during the current session
-- Automatically falls back to cached data when the API is unavailable
-- Provides a cache management UI for monitoring and clearing cache
-- Shows notifications when cached data is being used
-- Configurable cache expiration times for different data types
-- Cache size management to prevent exceeding storage limits
-
-This caching system significantly improves the application's resilience to network issues and enhances performance by reducing unnecessary API calls.
 
 ### Progressive Web App Features
 
@@ -175,12 +162,7 @@ The build artifacts will be in the `build` directory.
 
 ## API Integration
 
-The application integrates with the Fetch API service at `https://frontend-take-home-service.fetch.com`, which provides:
-
-- Authentication endpoints
-- Dog search and filtering
-- Dog details retrieval
-- Match generation
+**This application currently uses static JSON data (`dogs.json`, `breeds.json`) located in `public/mock-data/`. This data was generated once using the Dog CEO API.** The application fetches these static files instead of interacting with a live API for dog or breed information. Authentication is also mocked.
 
 ## License
 
@@ -188,5 +170,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Fetch Rewards for the project requirements and API
 - All the shelter dogs looking for forever homes! 

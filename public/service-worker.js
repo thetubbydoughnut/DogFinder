@@ -1,4 +1,7 @@
-// Service Worker for the Fetch Rewards Dog Finder App
+/* eslint-disable no-restricted-globals */
+
+// Service Worker for the Dog Finder App
+// This service worker handles caching and offline capabilities.
 
 const CACHE_NAME = 'dog-finder-cache-v1';
 const urlsToCache = [

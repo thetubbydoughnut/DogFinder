@@ -45,6 +45,7 @@ const FavoritesPage = () => {
   const { favorites, favoriteDogs, isLoading, error, match } = useSelector(
     (state) => state.favorites
   );
+  const { isAuthenticated } = useSelector((state) => state.auth);
   
   const [showClearDialog, setShowClearDialog] = useState(false);
   const [matchDialogOpen, setMatchDialogOpen] = useState(false);
@@ -58,9 +59,10 @@ const FavoritesPage = () => {
     initialDelay: 1500,
   });
 
-  // Load favorite dogs on component mount
+  // Load favorite dogs on component mount, only if authenticated
   useEffect(() => {
-    if (favorites.length > 0) {
+    // Only fetch if authenticated and there are favorites
+    if (isAuthenticated && favorites.length > 0) {
       dispatch(getFavoriteDogs(favorites));
     }
     
@@ -70,7 +72,7 @@ const FavoritesPage = () => {
     }, 300);
     
     return () => clearTimeout(timer);
-  }, [dispatch, favorites]);
+  }, [dispatch, favorites, isAuthenticated]);
 
   // Handle match generation
   const handleGenerateMatch = async () => {

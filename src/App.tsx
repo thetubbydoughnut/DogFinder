@@ -8,6 +8,7 @@ import ProtectedRoute from './features/auth/components/ProtectedRoute';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoginPage from './pages/LoginPage';
 import LoadingScreen from './components/layout/LoadingScreen';
+import useInactivityLogout from './hooks/useInactivityLogout';
 
 // Lazy load other pages
 const SearchPage = lazy(() => import('./pages/SearchPage'));
@@ -31,6 +32,9 @@ function AppWithTheme() {
   
   // State to track if the app is loading
   const [isLoading, setIsLoading] = useState(true);
+
+  // Call the inactivity logout hook
+  useInactivityLogout();
 
   // Simulate app initialization
   useEffect(() => {

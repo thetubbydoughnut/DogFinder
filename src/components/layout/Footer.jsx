@@ -1,17 +1,10 @@
 import React from 'react';
-import { Box, Container, Typography, Link, useTheme, IconButton, Tooltip } from '@mui/material';
+import { Box, Container, Typography, Link, useTheme, IconButton, Tooltip, Fade } from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import CachedIcon from '@mui/icons-material/Cached';
-import CacheManager from '../ui/CacheManager';
 
 const Footer = () => {
   const theme = useTheme();
-  const [showCacheManager, setShowCacheManager] = React.useState(false);
-  
-  const toggleCacheManager = () => {
-    setShowCacheManager(prev => !prev);
-  };
   
   return (
     <Box
@@ -71,53 +64,15 @@ const Footer = () => {
               Built with React & Material UI
             </Typography>
             
-            {/* Cache Manager Button */}
-            <Tooltip title="Cache Manager">
-              <IconButton 
-                color="primary" 
-                size="small" 
-                onClick={toggleCacheManager}
-                sx={{ 
-                  mx: 1,
-                  backgroundColor: showCacheManager ? 'rgba(63, 81, 181, 0.1)' : 'transparent',
-                }}
-              >
-                <CachedIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-            
             <Link
               href="https://github.com/thetubbydoughnut/FetchRewardsDogFinder"
               target="_blank"
-              rel="noopener"
-              color="inherit"
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                color: theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.grey[700],
-                '&:hover': {
-                  color: theme.palette.primary.main,
-                },
-              }}
+              rel="noopener noreferrer"
             >
-              <GitHubIcon fontSize="small" />
+              View Project on GitHub <GitHubIcon sx={{ ml: 0.5, fontSize: '1rem' }} />
             </Link>
           </Box>
         </Box>
-        
-        {/* Include the cache manager with custom styling to fit in the footer */}
-        {showCacheManager && (
-          <Box 
-            sx={{ 
-              mt: 2, 
-              border: `1px solid ${theme.palette.divider}`, 
-              borderRadius: 2,
-              overflow: 'hidden',
-            }}
-          >
-            <CacheManager inFooter={true} />
-          </Box>
-        )}
       </Container>
     </Box>
   );

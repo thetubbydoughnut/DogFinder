@@ -1,0 +1,4097 @@
+[
+  {
+    "id": "fa9db349-8f53-4a5a-a13c-b9163fcc349a",
+    "img": "https://images.dog.ceo/breeds/affenpinscher/n02110627_12077.jpg",
+    "name": "Ethyl",
+    "age": 599,
+    "zip_code": "60606",
+    "breed": "Affenpinscher",
+    "size": "Large"
+  },
+  {
+    "id": "300b0289-b35d-4e2d-acb9-d8c36c77e58a",
+    "img": "https://images.dog.ceo/breeds/affenpinscher/n02110627_12431.jpg",
+    "name": "Elias",
+    "age": 2212,
+    "zip_code": "94107",
+    "breed": "Affenpinscher",
+    "size": "Extra Large"
+  },
+  {
+    "id": "e2fe0810-9d1e-4a3c-a6f7-0388be442f9b",
+    "img": "https://images.dog.ceo/breeds/affenpinscher/n02110627_13939.jpg",
+    "name": "Kristoffer",
+    "age": 3815,
+    "zip_code": "90210",
+    "breed": "Affenpinscher",
+    "size": "Large"
+  },
+  {
+    "id": "6e3ff0fb-2db9-42e3-8af9-15e8f43bb937",
+    "img": "https://images.dog.ceo/breeds/african/n02116738_10614.jpg",
+    "name": "Hilario",
+    "age": 4066,
+    "zip_code": "78701",
+    "breed": "African",
+    "size": "Large"
+  },
+  {
+    "id": "4a374354-0b97-4867-8593-f0a4cd7eb3ef",
+    "img": "https://images.dog.ceo/breeds/african/n02116738_3589.jpg",
+    "name": "Toby",
+    "age": 5795,
+    "zip_code": "94107",
+    "breed": "African",
+    "size": "Small"
+  },
+  {
+    "id": "3a6d149a-5e1f-46b7-8ed5-c31b2368a7dd",
+    "img": "https://images.dog.ceo/breeds/african/n02116738_5068.jpg",
+    "name": "Maybelle",
+    "age": 1588,
+    "zip_code": "98101",
+    "breed": "African",
+    "size": "Extra Large"
+  },
+  {
+    "id": "e432520c-b769-44da-b9ef-ac1eccc264a9",
+    "img": "https://images.dog.ceo/breeds/airedale/n02096051_7.jpg",
+    "name": "Carlo",
+    "age": 3163,
+    "zip_code": "80202",
+    "breed": "Airedale",
+    "size": "Large"
+  },
+  {
+    "id": "558fa1dc-2165-42e8-b951-a949f464fb53",
+    "img": "https://images.dog.ceo/breeds/airedale/n02096051_8149.jpg",
+    "name": "Vivian",
+    "age": 5666,
+    "zip_code": "02110",
+    "breed": "Airedale",
+    "size": "Small"
+  },
+  {
+    "id": "8d24a41f-6b79-425b-88c5-dfd03a752b93",
+    "img": "https://images.dog.ceo/breeds/airedale/n02096051_8227.jpg",
+    "name": "Dewayne",
+    "age": 4265,
+    "zip_code": "98101",
+    "breed": "Airedale",
+    "size": "Extra Large"
+  },
+  {
+    "id": "d33102ba-573d-41bb-a1cf-026e3bd7958c",
+    "img": "https://images.dog.ceo/breeds/akita/512px-Akita_inu.jpg",
+    "name": "Kenneth",
+    "age": 730,
+    "zip_code": "30303",
+    "breed": "Akita",
+    "size": "Small"
+  },
+  {
+    "id": "191485a7-c472-4d0b-9ab2-b550f2a17cbe",
+    "img": "https://images.dog.ceo/breeds/akita/An_Akita_Inu_resting.jpg",
+    "name": "Deborah",
+    "age": 2146,
+    "zip_code": "02110",
+    "breed": "Akita",
+    "size": "Small"
+  },
+  {
+    "id": "c0b3aa92-86b1-4f43-86fa-e4e4bd48edc9",
+    "img": "https://images.dog.ceo/breeds/akita/Japaneseakita.jpg",
+    "name": "Marlin",
+    "age": 4846,
+    "zip_code": "94107",
+    "breed": "Akita",
+    "size": "Medium"
+  },
+  {
+    "id": "11674c6d-c042-402a-96e6-87c8f3ee4f91",
+    "img": "https://images.dog.ceo/breeds/appenzeller/n02107908_4159.jpg",
+    "name": "Judd",
+    "age": 5687,
+    "zip_code": "75201",
+    "breed": "Appenzeller",
+    "size": "Medium"
+  },
+  {
+    "id": "04390348-0196-4995-893c-ccf44cd56754",
+    "img": "https://images.dog.ceo/breeds/appenzeller/n02107908_4296.jpg",
+    "name": "Derek",
+    "age": 2290,
+    "zip_code": "94107",
+    "breed": "Appenzeller",
+    "size": "Small"
+  },
+  {
+    "id": "a1c5bd22-266e-4321-98e6-a5ff25d47910",
+    "img": "https://images.dog.ceo/breeds/appenzeller/n02107908_91.jpg",
+    "name": "Callie",
+    "age": 3581,
+    "zip_code": "60606",
+    "breed": "Appenzeller",
+    "size": "Extra Large"
+  },
+  {
+    "id": "9784bdff-4b43-4fc6-9213-7c123324a61c",
+    "img": "https://images.dog.ceo/breeds/australian-kelpie/IMG_2599.jpg",
+    "name": "Mikayla",
+    "age": 2824,
+    "zip_code": "30303",
+    "breed": "Kelpie Australian",
+    "size": "Large"
+  },
+  {
+    "id": "8156c510-cdd8-4e0d-b403-4d116fc81654",
+    "img": "https://images.dog.ceo/breeds/australian-kelpie/Resized_20200303_233358_108952253645051.jpg",
+    "name": "River",
+    "age": 379,
+    "zip_code": "02110",
+    "breed": "Kelpie Australian",
+    "size": "Small"
+  },
+  {
+    "id": "b06fa0cd-095f-4f11-83de-d535c5f01f3e",
+    "img": "https://images.dog.ceo/breeds/australian-kelpie/Resized_20200416_142905_108884348190285.jpg",
+    "name": "Darren",
+    "age": 5723,
+    "zip_code": "60606",
+    "breed": "Kelpie Australian",
+    "size": "Extra Large"
+  },
+  {
+    "id": "8b0bc480-e5e9-4a4f-a965-ee75313584e3",
+    "img": "https://images.dog.ceo/breeds/australian-shepherd/forest.jpg",
+    "name": "Mateo",
+    "age": 821,
+    "zip_code": "02110",
+    "breed": "Shepherd Australian",
+    "size": "Large"
+  },
+  {
+    "id": "4ef9f47f-638a-4a15-b156-f3a1193149a9",
+    "img": "https://images.dog.ceo/breeds/australian-shepherd/pepper2.jpg",
+    "name": "Ricardo",
+    "age": 1810,
+    "zip_code": "80202",
+    "breed": "Shepherd Australian",
+    "size": "Small"
+  },
+  {
+    "id": "b38dd22e-6716-41fb-a124-a513fc0cc867",
+    "img": "https://images.dog.ceo/breeds/australian-shepherd/sadie.jpg",
+    "name": "Eliane",
+    "age": 3854,
+    "zip_code": "30303",
+    "breed": "Shepherd Australian",
+    "size": "Small"
+  },
+  {
+    "id": "6f05079c-f22b-4715-a025-07000ad12400",
+    "img": "https://images.dog.ceo/breeds/bakharwal-indian/Bakharwal.jpg",
+    "name": "Blanca",
+    "age": 4625,
+    "zip_code": "94107",
+    "breed": "Indian Bakharwal",
+    "size": "Small"
+  },
+  {
+    "id": "fff03ed0-a351-40f3-93a6-d32228a7efe5",
+    "img": "https://images.dog.ceo/breeds/basenji/n02110806_3971.jpg",
+    "name": "Quinton",
+    "age": 527,
+    "zip_code": "90210",
+    "breed": "Basenji",
+    "size": "Large"
+  },
+  {
+    "id": "0a8d19aa-045b-463b-8577-8c2e9fa7aa3c",
+    "img": "https://images.dog.ceo/breeds/basenji/n02110806_5688.jpg",
+    "name": "Bethany",
+    "age": 4411,
+    "zip_code": "80202",
+    "breed": "Basenji",
+    "size": "Medium"
+  },
+  {
+    "id": "bbf08277-ae3e-4818-a0bd-b42337134e07",
+    "img": "https://images.dog.ceo/breeds/basenji/n02110806_762.jpg",
+    "name": "Randi",
+    "age": 1753,
+    "zip_code": "94107",
+    "breed": "Basenji",
+    "size": "Large"
+  },
+  {
+    "id": "7f20e46b-b0da-4a6a-9585-752980d94548",
+    "img": "https://images.dog.ceo/breeds/beagle/n02088364_10362.jpg",
+    "name": "Davon",
+    "age": 4225,
+    "zip_code": "90210",
+    "breed": "Beagle",
+    "size": "Medium"
+  },
+  {
+    "id": "69ee058e-0638-405f-b430-f6a9d2b83e97",
+    "img": "https://images.dog.ceo/breeds/beagle/n02088364_14095.jpg",
+    "name": "Ivory",
+    "age": 837,
+    "zip_code": "78701",
+    "breed": "Beagle",
+    "size": "Small"
+  },
+  {
+    "id": "521225bb-f8a1-46dd-9e60-91b0146a5ff9",
+    "img": "https://images.dog.ceo/breeds/beagle/n02088364_16704.jpg",
+    "name": "Chelsey",
+    "age": 72,
+    "zip_code": "10001",
+    "breed": "Beagle",
+    "size": "Small"
+  },
+  {
+    "id": "afab7e37-f32b-4ccb-bfa6-3a2938686509",
+    "img": "https://images.dog.ceo/breeds/bluetick/n02088632_2169.jpg",
+    "name": "Sven",
+    "age": 1400,
+    "zip_code": "60606",
+    "breed": "Bluetick",
+    "size": "Extra Large"
+  },
+  {
+    "id": "a6330a2f-d6cc-4a03-ba9a-66964de326f9",
+    "img": "https://images.dog.ceo/breeds/bluetick/n02088632_4334.jpg",
+    "name": "Hyman",
+    "age": 4358,
+    "zip_code": "75201",
+    "breed": "Bluetick",
+    "size": "Medium"
+  },
+  {
+    "id": "33172f0c-d14b-444e-92a4-dc9b73bf7816",
+    "img": "https://images.dog.ceo/breeds/bluetick/n02088632_819.jpg",
+    "name": "Carlie",
+    "age": 4809,
+    "zip_code": "90210",
+    "breed": "Bluetick",
+    "size": "Extra Large"
+  },
+  {
+    "id": "7c8b48de-1eda-4af4-871c-f881bae5c060",
+    "img": "https://images.dog.ceo/breeds/borzoi/n02090622_10492.jpg",
+    "name": "Nasir",
+    "age": 977,
+    "zip_code": "60606",
+    "breed": "Borzoi",
+    "size": "Large"
+  },
+  {
+    "id": "60196a59-1632-4819-9e18-0e106ac05216",
+    "img": "https://images.dog.ceo/breeds/borzoi/n02090622_2688.jpg",
+    "name": "Jamarcus",
+    "age": 1337,
+    "zip_code": "10001",
+    "breed": "Borzoi",
+    "size": "Extra Large"
+  },
+  {
+    "id": "bd45a581-12cf-4e86-a895-3294bcd37530",
+    "img": "https://images.dog.ceo/breeds/borzoi/n02090622_4527.jpg",
+    "name": "Tyler",
+    "age": 944,
+    "zip_code": "02110",
+    "breed": "Borzoi",
+    "size": "Medium"
+  },
+  {
+    "id": "65445915-d5da-4031-b9e7-8b9743f1213d",
+    "img": "https://images.dog.ceo/breeds/bouvier/n02106382_1633.jpg",
+    "name": "Lucy",
+    "age": 5404,
+    "zip_code": "10001",
+    "breed": "Bouvier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "a036d348-da76-4d2d-b46f-8eabee956d1c",
+    "img": "https://images.dog.ceo/breeds/bouvier/n02106382_4629.jpg",
+    "name": "Jayde",
+    "age": 3561,
+    "zip_code": "90210",
+    "breed": "Bouvier",
+    "size": "Medium"
+  },
+  {
+    "id": "ef62808f-d0a2-43d2-a6df-6b45a952de76",
+    "img": "https://images.dog.ceo/breeds/bouvier/n02106382_829.jpg",
+    "name": "Aliya",
+    "age": 1151,
+    "zip_code": "02110",
+    "breed": "Bouvier",
+    "size": "Small"
+  },
+  {
+    "id": "0a7ede98-0ff0-4bbf-991e-717f1d75e840",
+    "img": "https://images.dog.ceo/breeds/boxer/n02108089_15702.jpg",
+    "name": "Hiram",
+    "age": 3843,
+    "zip_code": "90210",
+    "breed": "Boxer",
+    "size": "Extra Large"
+  },
+  {
+    "id": "ff69c9a2-2977-40fa-8d0d-f33505f4aa72",
+    "img": "https://images.dog.ceo/breeds/boxer/n02108089_1675.jpg",
+    "name": "Jarrell",
+    "age": 165,
+    "zip_code": "02110",
+    "breed": "Boxer",
+    "size": "Small"
+  },
+  {
+    "id": "4075e369-2efa-4c6c-b6f8-ce04590492c4",
+    "img": "https://images.dog.ceo/breeds/boxer/n02108089_4158.jpg",
+    "name": "Clifton",
+    "age": 3078,
+    "zip_code": "30303",
+    "breed": "Boxer",
+    "size": "Extra Large"
+  },
+  {
+    "id": "ed6605a0-011e-4fdf-99c3-76574e335d62",
+    "img": "https://images.dog.ceo/breeds/brabancon/n02112706_1586.jpg",
+    "name": "Otha",
+    "age": 5108,
+    "zip_code": "94107",
+    "breed": "Brabancon",
+    "size": "Large"
+  },
+  {
+    "id": "a3802280-b318-4248-b176-0025290b8fb1",
+    "img": "https://images.dog.ceo/breeds/brabancon/n02112706_1764.jpg",
+    "name": "Eduardo",
+    "age": 5785,
+    "zip_code": "94107",
+    "breed": "Brabancon",
+    "size": "Extra Large"
+  },
+  {
+    "id": "05d6464a-2912-4a4c-a519-2700e45d4bc3",
+    "img": "https://images.dog.ceo/breeds/brabancon/n02112706_898.jpg",
+    "name": "Colby",
+    "age": 5189,
+    "zip_code": "94107",
+    "breed": "Brabancon",
+    "size": "Medium"
+  },
+  {
+    "id": "cd1bc09a-e090-4411-86fa-8030906bb333",
+    "img": "https://images.dog.ceo/breeds/briard/n02105251_1676.jpg",
+    "name": "Laura",
+    "age": 2839,
+    "zip_code": "80202",
+    "breed": "Briard",
+    "size": "Extra Large"
+  },
+  {
+    "id": "8a486594-3482-4231-a763-c6b6a6bbccbf",
+    "img": "https://images.dog.ceo/breeds/briard/n02105251_7058.jpg",
+    "name": "Jameson",
+    "age": 3823,
+    "zip_code": "60606",
+    "breed": "Briard",
+    "size": "Medium"
+  },
+  {
+    "id": "3c3a9a63-6b9b-4592-85a9-f4220c84e1c0",
+    "img": "https://images.dog.ceo/breeds/briard/n02105251_7127.jpg",
+    "name": "Violette",
+    "age": 375,
+    "zip_code": "94107",
+    "breed": "Briard",
+    "size": "Small"
+  },
+  {
+    "id": "10fd09e2-0572-4a83-97c5-d4ef35f95a42",
+    "img": "https://images.dog.ceo/breeds/buhund-norwegian/hakon1.jpg",
+    "name": "Gene",
+    "age": 183,
+    "zip_code": "75201",
+    "breed": "Norwegian Buhund",
+    "size": "Small"
+  },
+  {
+    "id": "271cda5c-a97a-4829-ac53-1a2275ae177b",
+    "img": "https://images.dog.ceo/breeds/buhund-norwegian/hakon2.jpg",
+    "name": "Mara",
+    "age": 3094,
+    "zip_code": "75201",
+    "breed": "Norwegian Buhund",
+    "size": "Medium"
+  },
+  {
+    "id": "4de2e39b-6d5b-4820-9e3f-f351694ea5a1",
+    "img": "https://images.dog.ceo/breeds/buhund-norwegian/hakon3.jpg",
+    "name": "Javier",
+    "age": 2245,
+    "zip_code": "30303",
+    "breed": "Norwegian Buhund",
+    "size": "Extra Large"
+  },
+  {
+    "id": "08881fa5-4977-40eb-b75a-5e5b4f9fc0cb",
+    "img": "https://images.dog.ceo/breeds/bulldog-boston/n02096585_10734.jpg",
+    "name": "Kylee",
+    "age": 2855,
+    "zip_code": "80202",
+    "breed": "Boston Bulldog",
+    "size": "Extra Large"
+  },
+  {
+    "id": "570a2a45-c37c-4501-9b0b-971eeb85244f",
+    "img": "https://images.dog.ceo/breeds/bulldog-boston/n02096585_12374.jpg",
+    "name": "Rickie",
+    "age": 5213,
+    "zip_code": "60606",
+    "breed": "Boston Bulldog",
+    "size": "Extra Large"
+  },
+  {
+    "id": "b884632a-6672-42a7-98fb-a45904b13dae",
+    "img": "https://images.dog.ceo/breeds/bulldog-boston/n02096585_3738.jpg",
+    "name": "Hazle",
+    "age": 1372,
+    "zip_code": "10001",
+    "breed": "Boston Bulldog",
+    "size": "Extra Large"
+  },
+  {
+    "id": "2a3ee08b-1dbd-4f99-864e-4418fdaae227",
+    "img": "https://images.dog.ceo/breeds/bulldog-english/bunz.jpg",
+    "name": "Sigurd",
+    "age": 1388,
+    "zip_code": "94107",
+    "breed": "English Bulldog",
+    "size": "Large"
+  },
+  {
+    "id": "73a075c7-6e77-4ed9-bb13-130d7f59a123",
+    "img": "https://images.dog.ceo/breeds/bulldog-english/mami.jpg",
+    "name": "Mollie",
+    "age": 3015,
+    "zip_code": "60606",
+    "breed": "English Bulldog",
+    "size": "Small"
+  },
+  {
+    "id": "416c2c21-ef34-411a-9444-a9354e07ae86",
+    "img": "https://images.dog.ceo/breeds/bulldog-english/murphy.jpg",
+    "name": "Marietta",
+    "age": 676,
+    "zip_code": "75201",
+    "breed": "English Bulldog",
+    "size": "Large"
+  },
+  {
+    "id": "e6c5910f-c0d2-4a51-b8e9-bb5956c1c923",
+    "img": "https://images.dog.ceo/breeds/bulldog-french/IMG_1657.jpg",
+    "name": "Marilie",
+    "age": 4273,
+    "zip_code": "98101",
+    "breed": "French Bulldog",
+    "size": "Large"
+  },
+  {
+    "id": "c478c66b-ae63-43f1-bada-0ece368e713c",
+    "img": "https://images.dog.ceo/breeds/bulldog-french/n02108915_2514.jpg",
+    "name": "Xzavier",
+    "age": 1447,
+    "zip_code": "02110",
+    "breed": "French Bulldog",
+    "size": "Medium"
+  },
+  {
+    "id": "2c376bcb-b63f-487f-8452-c477b39dda16",
+    "img": "https://images.dog.ceo/breeds/bulldog-french/n02108915_9530.jpg",
+    "name": "Caleb",
+    "age": 188,
+    "zip_code": "75201",
+    "breed": "French Bulldog",
+    "size": "Extra Large"
+  },
+  {
+    "id": "18bed72f-3db0-41d6-b7ec-b599fb59c575",
+    "img": "https://images.dog.ceo/breeds/bullterrier-staffordshire/n02093256_1854.jpg",
+    "name": "Elnora",
+    "age": 1785,
+    "zip_code": "94107",
+    "breed": "Staffordshire Bullterrier",
+    "size": "Medium"
+  },
+  {
+    "id": "d327292f-ccd2-46eb-b55b-e4844ec421c2",
+    "img": "https://images.dog.ceo/breeds/bullterrier-staffordshire/n02093256_291.jpg",
+    "name": "Colin",
+    "age": 5028,
+    "zip_code": "02110",
+    "breed": "Staffordshire Bullterrier",
+    "size": "Large"
+  },
+  {
+    "id": "35709711-f668-4864-8d8e-f27dd349a595",
+    "img": "https://images.dog.ceo/breeds/bullterrier-staffordshire/n02093256_4263.jpg",
+    "name": "Norval",
+    "age": 4370,
+    "zip_code": "30303",
+    "breed": "Staffordshire Bullterrier",
+    "size": "Medium"
+  },
+  {
+    "id": "e78d44f3-60d6-4706-9b48-d1651ca98a51",
+    "img": "https://images.dog.ceo/breeds/cattledog-australian/IMG_1418.jpg",
+    "name": "Manuel",
+    "age": 2865,
+    "zip_code": "98101",
+    "breed": "Australian Cattledog",
+    "size": "Large"
+  },
+  {
+    "id": "d169d47b-4493-4642-91d0-a6dc724facc3",
+    "img": "https://images.dog.ceo/breeds/cattledog-australian/IMG_2432.jpg",
+    "name": "Katrina",
+    "age": 5573,
+    "zip_code": "94107",
+    "breed": "Australian Cattledog",
+    "size": "Medium"
+  },
+  {
+    "id": "2fe2e1d5-0258-492d-b9a4-f927e1fa525e",
+    "img": "https://images.dog.ceo/breeds/cattledog-australian/IMG_3469.jpg",
+    "name": "Devyn",
+    "age": 3366,
+    "zip_code": "30303",
+    "breed": "Australian Cattledog",
+    "size": "Large"
+  },
+  {
+    "id": "65f3c02b-28c8-4247-a627-e93ef6d25432",
+    "img": "https://images.dog.ceo/breeds/cavapoo/doggo1.jpg",
+    "name": "Bartholome",
+    "age": 4967,
+    "zip_code": "02110",
+    "breed": "Cavapoo",
+    "size": "Extra Large"
+  },
+  {
+    "id": "a6aebe36-8653-4024-a99d-507f16ef33f3",
+    "img": "https://images.dog.ceo/breeds/cavapoo/doggo2.jpg",
+    "name": "Macie",
+    "age": 1140,
+    "zip_code": "10001",
+    "breed": "Cavapoo",
+    "size": "Medium"
+  },
+  {
+    "id": "4ff53524-9e7d-4b2d-b174-cb104f167c7a",
+    "img": "https://images.dog.ceo/breeds/cavapoo/lulu2.jpg",
+    "name": "Heber",
+    "age": 4133,
+    "zip_code": "60606",
+    "breed": "Cavapoo",
+    "size": "Medium"
+  },
+  {
+    "id": "0a12867e-b791-49e1-8f97-a4ce8be4a4b6",
+    "img": "https://images.dog.ceo/breeds/chihuahua/n02085620_1558.jpg",
+    "name": "Carrie",
+    "age": 4006,
+    "zip_code": "80202",
+    "breed": "Chihuahua",
+    "size": "Medium"
+  },
+  {
+    "id": "0e354634-6235-46b5-b942-6dc78a6967d0",
+    "img": "https://images.dog.ceo/breeds/chihuahua/n02085620_3677.jpg",
+    "name": "Jake",
+    "age": 1224,
+    "zip_code": "78701",
+    "breed": "Chihuahua",
+    "size": "Small"
+  },
+  {
+    "id": "a4f58b2c-4b82-40fb-9ba4-2cb311cb0812",
+    "img": "https://images.dog.ceo/breeds/chihuahua/n02085620_4207.jpg",
+    "name": "Martina",
+    "age": 227,
+    "zip_code": "60606",
+    "breed": "Chihuahua",
+    "size": "Large"
+  },
+  {
+    "id": "e2d8ed99-0560-4b7e-8184-7d96c9bb3317",
+    "img": "https://images.dog.ceo/breeds/chippiparai-indian/Indian-Chippiparai.jpg",
+    "name": "Patrick",
+    "age": 3505,
+    "zip_code": "75201",
+    "breed": "Indian Chippiparai",
+    "size": "Extra Large"
+  },
+  {
+    "id": "4726fab5-c0e3-4c31-8487-0d5b9f3d00b5",
+    "img": "https://images.dog.ceo/breeds/chow/n02112137_10134.jpg",
+    "name": "Abagail",
+    "age": 2030,
+    "zip_code": "78701",
+    "breed": "Chow",
+    "size": "Large"
+  },
+  {
+    "id": "4b767181-45bd-449f-84a8-7bc66bd59d79",
+    "img": "https://images.dog.ceo/breeds/chow/n02112137_17733.jpg",
+    "name": "Carolanne",
+    "age": 4781,
+    "zip_code": "10001",
+    "breed": "Chow",
+    "size": "Extra Large"
+  },
+  {
+    "id": "696c9aa3-1f1b-444f-a1bc-2b537de5ced4",
+    "img": "https://images.dog.ceo/breeds/chow/n02112137_4956.jpg",
+    "name": "Glen",
+    "age": 3152,
+    "zip_code": "30303",
+    "breed": "Chow",
+    "size": "Small"
+  },
+  {
+    "id": "33ad1dbd-6dc9-4814-ba84-e2eb8b4950cd",
+    "img": "https://images.dog.ceo/breeds/clumber/n02101556_1745.jpg",
+    "name": "Leilani",
+    "age": 1828,
+    "zip_code": "94107",
+    "breed": "Clumber",
+    "size": "Medium"
+  },
+  {
+    "id": "f7786f72-ed99-43a9-9a5e-4787308a7466",
+    "img": "https://images.dog.ceo/breeds/clumber/n02101556_4875.jpg",
+    "name": "Tiara",
+    "age": 1695,
+    "zip_code": "90210",
+    "breed": "Clumber",
+    "size": "Extra Large"
+  },
+  {
+    "id": "c78921f6-337b-4bf7-8de0-2d1bd7253fec",
+    "img": "https://images.dog.ceo/breeds/clumber/n02101556_5603.jpg",
+    "name": "Arianna",
+    "age": 1288,
+    "zip_code": "78701",
+    "breed": "Clumber",
+    "size": "Small"
+  },
+  {
+    "id": "79531c6e-2a48-4bf9-8c95-2ccdeca1cad0",
+    "img": "https://images.dog.ceo/breeds/cockapoo/Guri3.jpg",
+    "name": "Adela",
+    "age": 4980,
+    "zip_code": "98101",
+    "breed": "Cockapoo",
+    "size": "Large"
+  },
+  {
+    "id": "2513500b-8692-40b2-b93a-07ff8b9da4ea",
+    "img": "https://images.dog.ceo/breeds/cockapoo/Guri5.jpg",
+    "name": "Dolores",
+    "age": 5051,
+    "zip_code": "80202",
+    "breed": "Cockapoo",
+    "size": "Large"
+  },
+  {
+    "id": "5c1ee6c9-1673-413d-bbcc-5931b31007dc",
+    "img": "https://images.dog.ceo/breeds/cockapoo/Guri6.jpg",
+    "name": "Louisa",
+    "age": 97,
+    "zip_code": "80202",
+    "breed": "Cockapoo",
+    "size": "Small"
+  },
+  {
+    "id": "6c356ab4-8e6d-4907-88ed-9470a4da119e",
+    "img": "https://images.dog.ceo/breeds/collie-border/n02106166_1983.jpg",
+    "name": "Mittie",
+    "age": 5643,
+    "zip_code": "80202",
+    "breed": "Border Collie",
+    "size": "Large"
+  },
+  {
+    "id": "4ada990c-12ac-4ed1-bac1-ad70cab2cee1",
+    "img": "https://images.dog.ceo/breeds/collie-border/n02106166_4625.jpg",
+    "name": "Rashad",
+    "age": 3356,
+    "zip_code": "98101",
+    "breed": "Border Collie",
+    "size": "Extra Large"
+  },
+  {
+    "id": "f2d77c4b-fb3e-485e-82b7-afeda943713c",
+    "img": "https://images.dog.ceo/breeds/collie-border/n02106166_6824.jpg",
+    "name": "Clare",
+    "age": 1746,
+    "zip_code": "10001",
+    "breed": "Border Collie",
+    "size": "Small"
+  },
+  {
+    "id": "fec94096-2ccc-4999-8fe9-aefaefa989cf",
+    "img": "https://images.dog.ceo/breeds/coonhound/n02089078_1245.jpg",
+    "name": "Rosendo",
+    "age": 5032,
+    "zip_code": "75201",
+    "breed": "Coonhound",
+    "size": "Small"
+  },
+  {
+    "id": "79cb3d6e-db36-4575-9140-6ffc8b608823",
+    "img": "https://images.dog.ceo/breeds/coonhound/n02089078_2935.jpg",
+    "name": "Lesly",
+    "age": 633,
+    "zip_code": "10001",
+    "breed": "Coonhound",
+    "size": "Large"
+  },
+  {
+    "id": "9b3bb9f0-a1d1-4cd7-b4dd-13a22af8dd80",
+    "img": "https://images.dog.ceo/breeds/coonhound/n02089078_3196.jpg",
+    "name": "Ettie",
+    "age": 3885,
+    "zip_code": "78701",
+    "breed": "Coonhound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "ea88ee52-fd04-41bd-8a14-4961b85963a6",
+    "img": "https://images.dog.ceo/breeds/corgi-cardigan/n02113186_3832.jpg",
+    "name": "Alexa",
+    "age": 2425,
+    "zip_code": "78701",
+    "breed": "Cardigan Corgi",
+    "size": "Extra Large"
+  },
+  {
+    "id": "465d4b35-45f8-4b67-a291-2b63136908d1",
+    "img": "https://images.dog.ceo/breeds/corgi-cardigan/n02113186_5242.jpg",
+    "name": "Sammy",
+    "age": 4922,
+    "zip_code": "90210",
+    "breed": "Cardigan Corgi",
+    "size": "Large"
+  },
+  {
+    "id": "424e1cd5-e3eb-4091-bfd6-674faf395967",
+    "img": "https://images.dog.ceo/breeds/corgi-cardigan/n02113186_7231.jpg",
+    "name": "Haley",
+    "age": 2802,
+    "zip_code": "02110",
+    "breed": "Cardigan Corgi",
+    "size": "Medium"
+  },
+  {
+    "id": "e38037c9-808d-40ab-8d87-d5f591ee3738",
+    "img": "https://images.dog.ceo/breeds/cotondetulear/100_2397.jpg",
+    "name": "Edd",
+    "age": 5555,
+    "zip_code": "90210",
+    "breed": "Cotondetulear",
+    "size": "Small"
+  },
+  {
+    "id": "513eb9d3-813b-43a0-8bf8-b3ae91a68c3f",
+    "img": "https://images.dog.ceo/breeds/cotondetulear/IMAG1063.jpg",
+    "name": "Camron",
+    "age": 4623,
+    "zip_code": "02110",
+    "breed": "Cotondetulear",
+    "size": "Extra Large"
+  },
+  {
+    "id": "3fa846f2-8171-43c4-8457-bdba96cd7a0a",
+    "img": "https://images.dog.ceo/breeds/cotondetulear/IMG_20160830_202631573.jpg",
+    "name": "Dina",
+    "age": 2849,
+    "zip_code": "30303",
+    "breed": "Cotondetulear",
+    "size": "Extra Large"
+  },
+  {
+    "id": "8247eb63-23fc-46db-a755-cd81a3150ba5",
+    "img": "https://images.dog.ceo/breeds/dachshund/Daschund_Wirehair.jpg",
+    "name": "Carmela",
+    "age": 3561,
+    "zip_code": "10001",
+    "breed": "Dachshund",
+    "size": "Medium"
+  },
+  {
+    "id": "02a3e906-b555-4e55-8efb-cdd592cb694b",
+    "img": "https://images.dog.ceo/breeds/dachshund/dachshund-1920_640.jpg",
+    "name": "Felipe",
+    "age": 1587,
+    "zip_code": "60606",
+    "breed": "Dachshund",
+    "size": "Large"
+  },
+  {
+    "id": "23eb49b9-60a3-4d4f-b209-7b3cc668ac3d",
+    "img": "https://images.dog.ceo/breeds/dachshund/dachshund-6.jpg",
+    "name": "Lowell",
+    "age": 5393,
+    "zip_code": "75201",
+    "breed": "Dachshund",
+    "size": "Medium"
+  },
+  {
+    "id": "e381ae77-f6fb-4d9b-a4e3-839f4ee0195c",
+    "img": "https://images.dog.ceo/breeds/dalmatian/cooper1.jpg",
+    "name": "Albert",
+    "age": 253,
+    "zip_code": "60606",
+    "breed": "Dalmatian",
+    "size": "Extra Large"
+  },
+  {
+    "id": "04fc139d-c4c7-4b81-93c6-a05f0c6fa6d5",
+    "img": "https://images.dog.ceo/breeds/dalmatian/cooper2.jpg",
+    "name": "Evangeline",
+    "age": 5177,
+    "zip_code": "78701",
+    "breed": "Dalmatian",
+    "size": "Large"
+  },
+  {
+    "id": "1d9c59fe-8484-4df9-989c-379f87774d52",
+    "img": "https://images.dog.ceo/breeds/dane-great/n02109047_16735.jpg",
+    "name": "Domingo",
+    "age": 4561,
+    "zip_code": "10001",
+    "breed": "Great Dane",
+    "size": "Small"
+  },
+  {
+    "id": "651c7ee9-99d5-4ec6-9a06-5b0cb0e2e02e",
+    "img": "https://images.dog.ceo/breeds/dane-great/n02109047_22006.jpg",
+    "name": "Darrion",
+    "age": 1540,
+    "zip_code": "90210",
+    "breed": "Great Dane",
+    "size": "Medium"
+  },
+  {
+    "id": "1c08fcd0-ebdb-4014-8864-66b432e84a7a",
+    "img": "https://images.dog.ceo/breeds/dane-great/n02109047_8090.jpg",
+    "name": "Jorge",
+    "age": 3459,
+    "zip_code": "90210",
+    "breed": "Great Dane",
+    "size": "Large"
+  },
+  {
+    "id": "a0c9dc06-34cc-4fe1-9276-7653e21e0302",
+    "img": "https://images.dog.ceo/breeds/danish-swedish-farmdog/ebba_001.jpg",
+    "name": "Antone",
+    "age": 4240,
+    "zip_code": "78701",
+    "breed": "Swedish Danish",
+    "size": "Small"
+  },
+  {
+    "id": "e3c3a9ce-9e1e-4088-a99f-888d0e0e821b",
+    "img": "https://images.dog.ceo/breeds/danish-swedish-farmdog/ebba_002.jpg",
+    "name": "Lewis",
+    "age": 3162,
+    "zip_code": "80202",
+    "breed": "Swedish Danish",
+    "size": "Large"
+  },
+  {
+    "id": "0b2b3254-78d3-496a-be0d-de89c2e77527",
+    "img": "https://images.dog.ceo/breeds/danish-swedish-farmdog/ebba_004.jpg",
+    "name": "Maegan",
+    "age": 457,
+    "zip_code": "10001",
+    "breed": "Swedish Danish",
+    "size": "Small"
+  },
+  {
+    "id": "22cec196-14f8-4319-aba7-125ec2887caa",
+    "img": "https://images.dog.ceo/breeds/deerhound-scottish/n02092002_228.jpg",
+    "name": "Willa",
+    "age": 5500,
+    "zip_code": "75201",
+    "breed": "Scottish Deerhound",
+    "size": "Large"
+  },
+  {
+    "id": "6cb964e0-8887-4490-8ec3-bf2c0b9455da",
+    "img": "https://images.dog.ceo/breeds/deerhound-scottish/n02092002_2311.jpg",
+    "name": "Uriel",
+    "age": 1071,
+    "zip_code": "60606",
+    "breed": "Scottish Deerhound",
+    "size": "Small"
+  },
+  {
+    "id": "339896ca-77c3-4f0b-8308-77e06d4b04d9",
+    "img": "https://images.dog.ceo/breeds/deerhound-scottish/n02092002_817.jpg",
+    "name": "Lonzo",
+    "age": 1570,
+    "zip_code": "60606",
+    "breed": "Scottish Deerhound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "4df5b585-6536-48d6-ae12-38bca6d078f8",
+    "img": "https://images.dog.ceo/breeds/dhole/n02115913_1188.jpg",
+    "name": "Okey",
+    "age": 4334,
+    "zip_code": "80202",
+    "breed": "Dhole",
+    "size": "Large"
+  },
+  {
+    "id": "6adb9535-808a-4a31-8c3b-bec7d43bd1b3",
+    "img": "https://images.dog.ceo/breeds/dhole/n02115913_2320.jpg",
+    "name": "Maia",
+    "age": 846,
+    "zip_code": "30303",
+    "breed": "Dhole",
+    "size": "Medium"
+  },
+  {
+    "id": "ea8786e9-8e31-4ed4-bed3-c18bc39453a0",
+    "img": "https://images.dog.ceo/breeds/dhole/n02115913_4082.jpg",
+    "name": "Mustafa",
+    "age": 4015,
+    "zip_code": "60606",
+    "breed": "Dhole",
+    "size": "Small"
+  },
+  {
+    "id": "5d1ecbcf-cec4-459f-b90e-b0d7ab4b70bf",
+    "img": "https://images.dog.ceo/breeds/dingo/n02115641_1513.jpg",
+    "name": "King",
+    "age": 349,
+    "zip_code": "10001",
+    "breed": "Dingo",
+    "size": "Extra Large"
+  },
+  {
+    "id": "7f4ecd9b-eaa2-44ba-bdce-170aca20c2bc",
+    "img": "https://images.dog.ceo/breeds/dingo/n02115641_2096.jpg",
+    "name": "Ezra",
+    "age": 816,
+    "zip_code": "30303",
+    "breed": "Dingo",
+    "size": "Extra Large"
+  },
+  {
+    "id": "49f3a923-136c-459a-8721-99732188e076",
+    "img": "https://images.dog.ceo/breeds/dingo/n02115641_9272.jpg",
+    "name": "Hulda",
+    "age": 144,
+    "zip_code": "80202",
+    "breed": "Dingo",
+    "size": "Extra Large"
+  },
+  {
+    "id": "2b585d17-f188-4caa-b406-b7cbe4d33fa0",
+    "img": "https://images.dog.ceo/breeds/doberman/n02107142_15936.jpg",
+    "name": "Robb",
+    "age": 5337,
+    "zip_code": "10001",
+    "breed": "Doberman",
+    "size": "Large"
+  },
+  {
+    "id": "2323fd0e-a666-46f8-9a4d-e71b48e28a56",
+    "img": "https://images.dog.ceo/breeds/doberman/n02107142_1694.jpg",
+    "name": "Ernestine",
+    "age": 4430,
+    "zip_code": "10001",
+    "breed": "Doberman",
+    "size": "Extra Large"
+  },
+  {
+    "id": "6f6f84b3-8409-4a0e-9ee8-8ef15b14bdc7",
+    "img": "https://images.dog.ceo/breeds/doberman/n02107142_413.jpg",
+    "name": "Laney",
+    "age": 5029,
+    "zip_code": "90210",
+    "breed": "Doberman",
+    "size": "Extra Large"
+  },
+  {
+    "id": "580f7e64-b243-45ca-bf10-a37207e09188",
+    "img": "https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_2159.jpg",
+    "name": "Adolphus",
+    "age": 2526,
+    "zip_code": "30303",
+    "breed": "Norwegian Elkhound",
+    "size": "Medium"
+  },
+  {
+    "id": "6727331d-1b2e-425e-9afb-e4e4e8cb68c9",
+    "img": "https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_5367.jpg",
+    "name": "Pietro",
+    "age": 4600,
+    "zip_code": "30303",
+    "breed": "Norwegian Elkhound",
+    "size": "Medium"
+  },
+  {
+    "id": "1abc5b5b-e4c0-4c0b-aade-fd0370304afe",
+    "img": "https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_780.jpg",
+    "name": "Elenor",
+    "age": 3295,
+    "zip_code": "30303",
+    "breed": "Norwegian Elkhound",
+    "size": "Large"
+  },
+  {
+    "id": "498f7030-c852-4234-bda2-0f657eed5517",
+    "img": "https://images.dog.ceo/breeds/entlebucher/n02108000_1195.jpg",
+    "name": "Mable",
+    "age": 1111,
+    "zip_code": "75201",
+    "breed": "Entlebucher",
+    "size": "Large"
+  },
+  {
+    "id": "3ade1b34-0f8f-45c3-bbec-7215793b9725",
+    "img": "https://images.dog.ceo/breeds/entlebucher/n02108000_2163.jpg",
+    "name": "Casper",
+    "age": 2357,
+    "zip_code": "98101",
+    "breed": "Entlebucher",
+    "size": "Large"
+  },
+  {
+    "id": "1a7cd011-a961-4dec-9631-5d5d26c57512",
+    "img": "https://images.dog.ceo/breeds/entlebucher/n02108000_995.jpg",
+    "name": "Maritza",
+    "age": 4453,
+    "zip_code": "78701",
+    "breed": "Entlebucher",
+    "size": "Extra Large"
+  },
+  {
+    "id": "9fd3d625-4e83-47d7-abf6-a4636d635f22",
+    "img": "https://images.dog.ceo/breeds/eskimo/n02109961_131.jpg",
+    "name": "Shawn",
+    "age": 1255,
+    "zip_code": "75201",
+    "breed": "Eskimo",
+    "size": "Large"
+  },
+  {
+    "id": "dce39619-1920-43cc-a664-87f5ef22d064",
+    "img": "https://images.dog.ceo/breeds/eskimo/n02109961_16311.jpg",
+    "name": "Lilyan",
+    "age": 151,
+    "zip_code": "94107",
+    "breed": "Eskimo",
+    "size": "Large"
+  },
+  {
+    "id": "cd067c02-863e-47f8-b1d4-5786a30c09f9",
+    "img": "https://images.dog.ceo/breeds/eskimo/n02109961_546.jpg",
+    "name": "Marcos",
+    "age": 4398,
+    "zip_code": "30303",
+    "breed": "Eskimo",
+    "size": "Large"
+  },
+  {
+    "id": "7fc2f084-d46a-49f5-ad93-a8a50122a1b8",
+    "img": "https://images.dog.ceo/breeds/finnish-lapphund/img_3801.jpg",
+    "name": "Demetris",
+    "age": 2273,
+    "zip_code": "60606",
+    "breed": "Lapphund Finnish",
+    "size": "Large"
+  },
+  {
+    "id": "7b2c6513-8693-44f9-bc07-7c33900d3c1c",
+    "img": "https://images.dog.ceo/breeds/finnish-lapphund/mochilamvan.jpg",
+    "name": "Bell",
+    "age": 2988,
+    "zip_code": "98101",
+    "breed": "Lapphund Finnish",
+    "size": "Medium"
+  },
+  {
+    "id": "7a333781-9b5e-46f7-be26-228f8dd1047e",
+    "img": "https://images.dog.ceo/breeds/frise-bichon/2.jpg",
+    "name": "Lurline",
+    "age": 2584,
+    "zip_code": "78701",
+    "breed": "Bichon Frise",
+    "size": "Extra Large"
+  },
+  {
+    "id": "ad29dd18-4305-49a1-959a-61f5c99d6436",
+    "img": "https://images.dog.ceo/breeds/frise-bichon/7.jpg",
+    "name": "Enrique",
+    "age": 391,
+    "zip_code": "94107",
+    "breed": "Bichon Frise",
+    "size": "Small"
+  },
+  {
+    "id": "c22e7821-5287-4ae9-99bc-14dd43dc16ec",
+    "img": "https://images.dog.ceo/breeds/frise-bichon/jh-ezio-2.jpg",
+    "name": "Kenneth",
+    "age": 4878,
+    "zip_code": "60606",
+    "breed": "Bichon Frise",
+    "size": "Extra Large"
+  },
+  {
+    "id": "cb41cd4d-6085-4210-80fd-d7c87076c511",
+    "img": "https://images.dog.ceo/breeds/gaddi-indian/Gaddi.jpg",
+    "name": "Robert",
+    "age": 513,
+    "zip_code": "80202",
+    "breed": "Indian Gaddi",
+    "size": "Extra Large"
+  },
+  {
+    "id": "1f39c523-fcd2-45a3-81b5-b706c3f0e4eb",
+    "img": "https://images.dog.ceo/breeds/germanshepherd/IMG_20200801_005834_050.jpg",
+    "name": "Kayley",
+    "age": 4454,
+    "zip_code": "90210",
+    "breed": "Germanshepherd",
+    "size": "Extra Large"
+  },
+  {
+    "id": "2c815cb7-193f-48e9-868f-b0839e7631f1",
+    "img": "https://images.dog.ceo/breeds/germanshepherd/n02106662_662.jpg",
+    "name": "Cristian",
+    "age": 108,
+    "zip_code": "10001",
+    "breed": "Germanshepherd",
+    "size": "Large"
+  },
+  {
+    "id": "794c476d-c539-4a4c-be6f-bcffa5524502",
+    "img": "https://images.dog.ceo/breeds/germanshepherd/n02106662_9481.jpg",
+    "name": "Izabella",
+    "age": 2252,
+    "zip_code": "90210",
+    "breed": "Germanshepherd",
+    "size": "Large"
+  },
+  {
+    "id": "0c176a01-c8f1-43c2-b535-1bae2d979294",
+    "img": "https://images.dog.ceo/breeds/greyhound-indian/rampur-greyhound.jpg",
+    "name": "Flo",
+    "age": 5511,
+    "zip_code": "78701",
+    "breed": "Indian Greyhound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "67ba4261-6bf2-402a-b2fb-09362e588de0",
+    "img": "https://images.dog.ceo/breeds/greyhound-italian/n02091032_20.jpg",
+    "name": "Katelynn",
+    "age": 2547,
+    "zip_code": "80202",
+    "breed": "Italian Greyhound",
+    "size": "Small"
+  },
+  {
+    "id": "a5dd6e70-210a-4e88-a254-daa568d7d358",
+    "img": "https://images.dog.ceo/breeds/greyhound-italian/n02091032_561.jpg",
+    "name": "Marge",
+    "age": 996,
+    "zip_code": "75201",
+    "breed": "Italian Greyhound",
+    "size": "Medium"
+  },
+  {
+    "id": "ca34e9ec-2986-4552-8878-29acc36cbd4d",
+    "img": "https://images.dog.ceo/breeds/greyhound-italian/n02091032_7548.jpg",
+    "name": "Krystina",
+    "age": 1068,
+    "zip_code": "90210",
+    "breed": "Italian Greyhound",
+    "size": "Small"
+  },
+  {
+    "id": "5401cd19-223a-4b50-8168-9b806aa5c777",
+    "img": "https://images.dog.ceo/breeds/groenendael/n02105056_143.jpg",
+    "name": "Zelma",
+    "age": 3504,
+    "zip_code": "10001",
+    "breed": "Groenendael",
+    "size": "Medium"
+  },
+  {
+    "id": "5b0744ed-0c4a-4a1b-8c10-31ad0016532a",
+    "img": "https://images.dog.ceo/breeds/groenendael/n02105056_2649.jpg",
+    "name": "Vivianne",
+    "age": 1263,
+    "zip_code": "94107",
+    "breed": "Groenendael",
+    "size": "Small"
+  },
+  {
+    "id": "8872649f-8ce1-4d1b-9eeb-66ea3c6fabbf",
+    "img": "https://images.dog.ceo/breeds/groenendael/n02105056_5276.jpg",
+    "name": "Kaylie",
+    "age": 1719,
+    "zip_code": "80202",
+    "breed": "Groenendael",
+    "size": "Small"
+  },
+  {
+    "id": "b8f3d623-89e9-4823-b42a-88259fcc4a3b",
+    "img": "https://images.dog.ceo/breeds/havanese/00100trPORTRAIT_00100_BURST20191030212452971_COVER.jpg",
+    "name": "Jeffrey",
+    "age": 5209,
+    "zip_code": "80202",
+    "breed": "Havanese",
+    "size": "Extra Large"
+  },
+  {
+    "id": "eb6f6492-45f2-4f3d-b7d4-141c789ea60f",
+    "img": "https://images.dog.ceo/breeds/havanese/00100trPORTRAIT_00100_BURST20191103202017556_COVER.jpg",
+    "name": "Keenan",
+    "age": 162,
+    "zip_code": "75201",
+    "breed": "Havanese",
+    "size": "Medium"
+  },
+  {
+    "id": "8b27fbbb-0f31-4870-9e98-af9e247d8d69",
+    "img": "https://images.dog.ceo/breeds/havanese/00100trPORTRAIT_00100_BURST20191112123933390_COVER.jpg",
+    "name": "Orlando",
+    "age": 4354,
+    "zip_code": "94107",
+    "breed": "Havanese",
+    "size": "Medium"
+  },
+  {
+    "id": "81f43244-ed4b-4020-afb6-b7189c09a8bb",
+    "img": "https://images.dog.ceo/breeds/hound-afghan/n02088094_1234.jpg",
+    "name": "Barrett",
+    "age": 234,
+    "zip_code": "78701",
+    "breed": "Afghan Hound",
+    "size": "Medium"
+  },
+  {
+    "id": "36bee1b2-ba6a-4394-a4a0-94692be3c582",
+    "img": "https://images.dog.ceo/breeds/hound-afghan/n02088094_3201.jpg",
+    "name": "Reagan",
+    "age": 2473,
+    "zip_code": "90210",
+    "breed": "Afghan Hound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "f3663957-8dfe-43bc-ae24-647456b5ee06",
+    "img": "https://images.dog.ceo/breeds/hound-afghan/n02088094_986.jpg",
+    "name": "Rachel",
+    "age": 5509,
+    "zip_code": "10001",
+    "breed": "Afghan Hound",
+    "size": "Medium"
+  },
+  {
+    "id": "722d1f00-b456-43f0-b861-cb3d4f1ef522",
+    "img": "https://images.dog.ceo/breeds/hound-basset/n02088238_10142.jpg",
+    "name": "Carolyn",
+    "age": 1644,
+    "zip_code": "94107",
+    "breed": "Basset Hound",
+    "size": "Large"
+  },
+  {
+    "id": "04e4a117-c80a-4511-b363-2e1a94ae8543",
+    "img": "https://images.dog.ceo/breeds/hound-basset/n02088238_13079.jpg",
+    "name": "Tania",
+    "age": 208,
+    "zip_code": "94107",
+    "breed": "Basset Hound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "08f01be2-c018-4fff-889b-3fdf6e06ab0a",
+    "img": "https://images.dog.ceo/breeds/hound-basset/n02088238_5239.jpg",
+    "name": "Nicholaus",
+    "age": 2860,
+    "zip_code": "30303",
+    "breed": "Basset Hound",
+    "size": "Medium"
+  },
+  {
+    "id": "2f9454be-bf77-4be7-9c6f-fcb5a2be96ad",
+    "img": "https://images.dog.ceo/breeds/hound-blood/n02088466_6532.jpg",
+    "name": "Lilyan",
+    "age": 4700,
+    "zip_code": "98101",
+    "breed": "Blood Hound",
+    "size": "Medium"
+  },
+  {
+    "id": "c8a31ea1-5a46-46ca-a8bd-6ecd4a00bc91",
+    "img": "https://images.dog.ceo/breeds/hound-blood/n02088466_6901.jpg",
+    "name": "Marge",
+    "age": 2818,
+    "zip_code": "80202",
+    "breed": "Blood Hound",
+    "size": "Medium"
+  },
+  {
+    "id": "7cc49b52-ad2c-4763-8f50-0344f50f4a21",
+    "img": "https://images.dog.ceo/breeds/hound-blood/n02088466_8820.jpg",
+    "name": "Buck",
+    "age": 3900,
+    "zip_code": "60606",
+    "breed": "Blood Hound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "7766417b-d182-4ebf-a58a-881bacf34141",
+    "img": "https://images.dog.ceo/breeds/hound-english/n02089973_1352.jpg",
+    "name": "Elta",
+    "age": 1779,
+    "zip_code": "94107",
+    "breed": "English Hound",
+    "size": "Large"
+  },
+  {
+    "id": "67a7b407-2a41-4342-81d5-c8ab9990be1a",
+    "img": "https://images.dog.ceo/breeds/hound-english/n02089973_2150.jpg",
+    "name": "Mckenzie",
+    "age": 5711,
+    "zip_code": "80202",
+    "breed": "English Hound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "cd500a48-1fd4-49f1-a924-f12aa59fb1ca",
+    "img": "https://images.dog.ceo/breeds/hound-english/n02089973_4084.jpg",
+    "name": "Alyce",
+    "age": 4003,
+    "zip_code": "90210",
+    "breed": "English Hound",
+    "size": "Small"
+  },
+  {
+    "id": "1f9ff272-86ef-4e32-8028-c9eba455dd51",
+    "img": "https://images.dog.ceo/breeds/hound-ibizan/n02091244_119.jpg",
+    "name": "Marisol",
+    "age": 3340,
+    "zip_code": "94107",
+    "breed": "Ibizan Hound",
+    "size": "Medium"
+  },
+  {
+    "id": "f054337d-9a3f-4b36-9786-cd63ad7b2cf3",
+    "img": "https://images.dog.ceo/breeds/hound-ibizan/n02091244_3320.jpg",
+    "name": "Myrtice",
+    "age": 625,
+    "zip_code": "02110",
+    "breed": "Ibizan Hound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "a0fc2345-97a5-4072-a867-92a825cc381c",
+    "img": "https://images.dog.ceo/breeds/hound-ibizan/n02091244_4110.jpg",
+    "name": "Kenya",
+    "age": 5168,
+    "zip_code": "30303",
+    "breed": "Ibizan Hound",
+    "size": "Large"
+  },
+  {
+    "id": "5c08d76e-2f1b-4f9b-addd-3db6d1be394c",
+    "img": "https://images.dog.ceo/breeds/hound-plott/hhh-23456.jpg",
+    "name": "Shannon",
+    "age": 5264,
+    "zip_code": "75201",
+    "breed": "Plott Hound",
+    "size": "Small"
+  },
+  {
+    "id": "9480cdc7-5180-4eb9-bdb7-40ddcab1b12d",
+    "img": "https://images.dog.ceo/breeds/hound-plott/hhh_plott002.jpg",
+    "name": "Kaylin",
+    "age": 1165,
+    "zip_code": "10001",
+    "breed": "Plott Hound",
+    "size": "Large"
+  },
+  {
+    "id": "05214c10-9313-440d-a7c8-12865d65e5a7",
+    "img": "https://images.dog.ceo/breeds/hound-walker/n02089867_1787.jpg",
+    "name": "Madalyn",
+    "age": 2254,
+    "zip_code": "94107",
+    "breed": "Walker Hound",
+    "size": "Small"
+  },
+  {
+    "id": "ba75ef88-473a-42ae-9c93-808b4b34e1fe",
+    "img": "https://images.dog.ceo/breeds/hound-walker/n02089867_1824.jpg",
+    "name": "Thalia",
+    "age": 1756,
+    "zip_code": "90210",
+    "breed": "Walker Hound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "5bebbc67-f817-41dc-8941-0f55007b489d",
+    "img": "https://images.dog.ceo/breeds/hound-walker/n02089867_3023.jpg",
+    "name": "Hans",
+    "age": 3563,
+    "zip_code": "30303",
+    "breed": "Walker Hound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "af0dd34f-dbd5-486d-8303-22d675bb407e",
+    "img": "https://images.dog.ceo/breeds/husky/n02110185_10171.jpg",
+    "name": "Brooks",
+    "age": 4116,
+    "zip_code": "78701",
+    "breed": "Husky",
+    "size": "Large"
+  },
+  {
+    "id": "53a3c108-db68-424c-9cfb-8d6c0ca9e816",
+    "img": "https://images.dog.ceo/breeds/husky/n02110185_7879.jpg",
+    "name": "Curtis",
+    "age": 3229,
+    "zip_code": "98101",
+    "breed": "Husky",
+    "size": "Large"
+  },
+  {
+    "id": "ac3dd146-380c-4103-9d86-d2186bc51f31",
+    "img": "https://images.dog.ceo/breeds/husky/n02110185_8154.jpg",
+    "name": "Kaitlyn",
+    "age": 853,
+    "zip_code": "98101",
+    "breed": "Husky",
+    "size": "Large"
+  },
+  {
+    "id": "93be2f83-d3f9-40d4-9d23-729ec4e43945",
+    "img": "https://images.dog.ceo/breeds/keeshond/n02112350_7335.jpg",
+    "name": "Tyreek",
+    "age": 2986,
+    "zip_code": "80202",
+    "breed": "Keeshond",
+    "size": "Extra Large"
+  },
+  {
+    "id": "9f184bdf-1644-4703-8480-943dad5c089e",
+    "img": "https://images.dog.ceo/breeds/keeshond/n02112350_8390.jpg",
+    "name": "Wilton",
+    "age": 248,
+    "zip_code": "10001",
+    "breed": "Keeshond",
+    "size": "Small"
+  },
+  {
+    "id": "7a251596-67db-4573-ac08-751a197c7cf4",
+    "img": "https://images.dog.ceo/breeds/keeshond/n02112350_8391.jpg",
+    "name": "Adela",
+    "age": 5537,
+    "zip_code": "90210",
+    "breed": "Keeshond",
+    "size": "Medium"
+  },
+  {
+    "id": "971e4bdc-f427-46cc-a29a-41c9272037d7",
+    "img": "https://images.dog.ceo/breeds/kelpie/n02105412_2249.jpg",
+    "name": "Royce",
+    "age": 69,
+    "zip_code": "98101",
+    "breed": "Kelpie",
+    "size": "Extra Large"
+  },
+  {
+    "id": "9679b813-5e6b-4d9a-baec-b444e3c35756",
+    "img": "https://images.dog.ceo/breeds/kelpie/n02105412_2589.jpg",
+    "name": "Mohamed",
+    "age": 1397,
+    "zip_code": "78701",
+    "breed": "Kelpie",
+    "size": "Medium"
+  },
+  {
+    "id": "54ea4e78-7130-4575-8b75-6b09d9964901",
+    "img": "https://images.dog.ceo/breeds/kelpie/n02105412_7843.jpg",
+    "name": "Opal",
+    "age": 5581,
+    "zip_code": "30303",
+    "breed": "Kelpie",
+    "size": "Large"
+  },
+  {
+    "id": "efd05872-a7aa-4351-b45a-fa1e32b6ba55",
+    "img": "https://images.dog.ceo/breeds/kombai/Kombai-indian-Dog.jpg",
+    "name": "Jason",
+    "age": 876,
+    "zip_code": "80202",
+    "breed": "Kombai",
+    "size": "Extra Large"
+  },
+  {
+    "id": "a78de8bd-1cf8-402e-a583-c928de870e2b",
+    "img": "https://images.dog.ceo/breeds/komondor/n02105505_1383.jpg",
+    "name": "Lexus",
+    "age": 1725,
+    "zip_code": "02110",
+    "breed": "Komondor",
+    "size": "Extra Large"
+  },
+  {
+    "id": "79fc4be2-958d-4834-8ffe-d3f5e122503c",
+    "img": "https://images.dog.ceo/breeds/komondor/n02105505_4398.jpg",
+    "name": "Leann",
+    "age": 5768,
+    "zip_code": "75201",
+    "breed": "Komondor",
+    "size": "Large"
+  },
+  {
+    "id": "0fdb5bf9-b90a-42eb-922f-a7f092849f73",
+    "img": "https://images.dog.ceo/breeds/komondor/n02105505_955.jpg",
+    "name": "Abdiel",
+    "age": 780,
+    "zip_code": "30303",
+    "breed": "Komondor",
+    "size": "Large"
+  },
+  {
+    "id": "ca12197f-6278-41dc-9148-e0a4d4417bc8",
+    "img": "https://images.dog.ceo/breeds/kuvasz/n02104029_4666.jpg",
+    "name": "Maynard",
+    "age": 1719,
+    "zip_code": "98101",
+    "breed": "Kuvasz",
+    "size": "Small"
+  },
+  {
+    "id": "53c545a5-aec8-4555-b591-bbc3775554cf",
+    "img": "https://images.dog.ceo/breeds/kuvasz/n02104029_4789.jpg",
+    "name": "Eileen",
+    "age": 3321,
+    "zip_code": "75201",
+    "breed": "Kuvasz",
+    "size": "Medium"
+  },
+  {
+    "id": "337202f6-3511-436f-be7e-9dc610dc9bf8",
+    "img": "https://images.dog.ceo/breeds/kuvasz/n02104029_897.jpg",
+    "name": "Lucio",
+    "age": 5513,
+    "zip_code": "10001",
+    "breed": "Kuvasz",
+    "size": "Extra Large"
+  },
+  {
+    "id": "a0e33774-c229-4c6c-b78e-6f48511157c5",
+    "img": "https://images.dog.ceo/breeds/labradoodle/Cali.jpg",
+    "name": "Ibrahim",
+    "age": 2645,
+    "zip_code": "80202",
+    "breed": "Labradoodle",
+    "size": "Small"
+  },
+  {
+    "id": "ba3b363e-2898-42ff-885a-ff0f58eb31a9",
+    "img": "https://images.dog.ceo/breeds/labradoodle/labradoodle-forrest.jpg",
+    "name": "Violet",
+    "age": 3858,
+    "zip_code": "10001",
+    "breed": "Labradoodle",
+    "size": "Large"
+  },
+  {
+    "id": "6fcb5468-593f-4210-ac37-57658d92f7c7",
+    "img": "https://images.dog.ceo/breeds/labradoodle/lola.jpg",
+    "name": "Willis",
+    "age": 1479,
+    "zip_code": "78701",
+    "breed": "Labradoodle",
+    "size": "Extra Large"
+  },
+  {
+    "id": "fa439ca2-e116-4c42-8a3e-b7462bafadbe",
+    "img": "https://images.dog.ceo/breeds/labrador/n02099712_209.jpg",
+    "name": "Celine",
+    "age": 3235,
+    "zip_code": "60606",
+    "breed": "Labrador",
+    "size": "Medium"
+  },
+  {
+    "id": "22e6ddbc-f1d9-42d5-9cd2-83f5f7dfc7b5",
+    "img": "https://images.dog.ceo/breeds/labrador/n02099712_3988.jpg",
+    "name": "Theodore",
+    "age": 211,
+    "zip_code": "90210",
+    "breed": "Labrador",
+    "size": "Small"
+  },
+  {
+    "id": "0bfbe33e-a867-4f6e-89ac-8b73a2785f81",
+    "img": "https://images.dog.ceo/breeds/labrador/n02099712_4133.jpg",
+    "name": "Pamela",
+    "age": 1969,
+    "zip_code": "75201",
+    "breed": "Labrador",
+    "size": "Small"
+  },
+  {
+    "id": "04335d31-1423-4920-8fdb-d9377d44166e",
+    "img": "https://images.dog.ceo/breeds/leonberg/n02111129_1832.jpg",
+    "name": "Otis",
+    "age": 5070,
+    "zip_code": "60606",
+    "breed": "Leonberg",
+    "size": "Medium"
+  },
+  {
+    "id": "c58bc70a-b4b0-42e0-a3db-4b9ce02cde16",
+    "img": "https://images.dog.ceo/breeds/leonberg/n02111129_2594.jpg",
+    "name": "Hayden",
+    "age": 5162,
+    "zip_code": "80202",
+    "breed": "Leonberg",
+    "size": "Large"
+  },
+  {
+    "id": "da5d1790-84a3-4905-bc90-0cfa17726623",
+    "img": "https://images.dog.ceo/breeds/leonberg/n02111129_976.jpg",
+    "name": "Janice",
+    "age": 4315,
+    "zip_code": "98101",
+    "breed": "Leonberg",
+    "size": "Small"
+  },
+  {
+    "id": "ed132108-e740-4048-a543-8c392f0c47c1",
+    "img": "https://images.dog.ceo/breeds/lhasa/n02098413_14953.jpg",
+    "name": "Alia",
+    "age": 873,
+    "zip_code": "02110",
+    "breed": "Lhasa",
+    "size": "Large"
+  },
+  {
+    "id": "629281ca-1843-4d1d-a51e-39fa8acf0db1",
+    "img": "https://images.dog.ceo/breeds/lhasa/n02098413_5594.jpg",
+    "name": "Natasha",
+    "age": 1163,
+    "zip_code": "78701",
+    "breed": "Lhasa",
+    "size": "Extra Large"
+  },
+  {
+    "id": "0c33d098-9763-4a11-9db1-a24ebb22306e",
+    "img": "https://images.dog.ceo/breeds/lhasa/n02098413_575.jpg",
+    "name": "Trever",
+    "age": 4434,
+    "zip_code": "90210",
+    "breed": "Lhasa",
+    "size": "Large"
+  },
+  {
+    "id": "59703acc-566e-42f0-9e12-e388f166232a",
+    "img": "https://images.dog.ceo/breeds/malamute/n02110063_11814.jpg",
+    "name": "Adelle",
+    "age": 4242,
+    "zip_code": "80202",
+    "breed": "Malamute",
+    "size": "Large"
+  },
+  {
+    "id": "d1dfcfc2-276e-4964-b003-f5421be049ce",
+    "img": "https://images.dog.ceo/breeds/malamute/n02110063_12294.jpg",
+    "name": "Gene",
+    "age": 517,
+    "zip_code": "98101",
+    "breed": "Malamute",
+    "size": "Small"
+  },
+  {
+    "id": "f510a3a3-a44c-4f45-9fb1-d7e8d61a23b7",
+    "img": "https://images.dog.ceo/breeds/malamute/n02110063_8977.jpg",
+    "name": "Urban",
+    "age": 1439,
+    "zip_code": "75201",
+    "breed": "Malamute",
+    "size": "Medium"
+  },
+  {
+    "id": "fb464532-be8e-4668-97a5-fc09fa6d053c",
+    "img": "https://images.dog.ceo/breeds/malinois/n02105162_175.jpg",
+    "name": "Eusebio",
+    "age": 1342,
+    "zip_code": "94107",
+    "breed": "Malinois",
+    "size": "Extra Large"
+  },
+  {
+    "id": "fe5034d7-a936-4904-b943-3349869d104d",
+    "img": "https://images.dog.ceo/breeds/malinois/n02105162_6459.jpg",
+    "name": "Eula",
+    "age": 4593,
+    "zip_code": "80202",
+    "breed": "Malinois",
+    "size": "Small"
+  },
+  {
+    "id": "88343e0a-6e16-49df-9bbd-eefa48b43322",
+    "img": "https://images.dog.ceo/breeds/malinois/n02105162_747.jpg",
+    "name": "Domenica",
+    "age": 4994,
+    "zip_code": "60606",
+    "breed": "Malinois",
+    "size": "Large"
+  },
+  {
+    "id": "d257fb7e-e7ed-4d18-ae5c-b4dda543efb4",
+    "img": "https://images.dog.ceo/breeds/maltese/n02085936_10377.jpg",
+    "name": "Faye",
+    "age": 2382,
+    "zip_code": "94107",
+    "breed": "Maltese",
+    "size": "Small"
+  },
+  {
+    "id": "d851da4f-5b3a-4c42-95db-200f92af7ebc",
+    "img": "https://images.dog.ceo/breeds/maltese/n02085936_14432.jpg",
+    "name": "Leo",
+    "age": 3553,
+    "zip_code": "02110",
+    "breed": "Maltese",
+    "size": "Small"
+  },
+  {
+    "id": "32014107-16c4-45d3-8dd7-5f383d89cf2e",
+    "img": "https://images.dog.ceo/breeds/maltese/n02085936_6348.jpg",
+    "name": "Greta",
+    "age": 2839,
+    "zip_code": "78701",
+    "breed": "Maltese",
+    "size": "Large"
+  },
+  {
+    "id": "9569f141-d1ee-4970-92ca-33762d4af900",
+    "img": "https://images.dog.ceo/breeds/mastiff-bull/n02108422_2207.jpg",
+    "name": "Schuyler",
+    "age": 3521,
+    "zip_code": "90210",
+    "breed": "Bull Mastiff",
+    "size": "Medium"
+  },
+  {
+    "id": "5939a295-6b05-4f99-8344-e5076a3de9c8",
+    "img": "https://images.dog.ceo/breeds/mastiff-bull/n02108422_2338.jpg",
+    "name": "Celia",
+    "age": 454,
+    "zip_code": "60606",
+    "breed": "Bull Mastiff",
+    "size": "Medium"
+  },
+  {
+    "id": "edfc1b65-b435-417e-89e6-9a819751534e",
+    "img": "https://images.dog.ceo/breeds/mastiff-bull/n02108422_4064.jpg",
+    "name": "Amya",
+    "age": 726,
+    "zip_code": "78701",
+    "breed": "Bull Mastiff",
+    "size": "Small"
+  },
+  {
+    "id": "32b7ce24-b839-4fd2-b9ba-c6688eca2d23",
+    "img": "https://images.dog.ceo/breeds/mastiff-english/1.jpg",
+    "name": "Abel",
+    "age": 4289,
+    "zip_code": "80202",
+    "breed": "English Mastiff",
+    "size": "Small"
+  },
+  {
+    "id": "cc716c03-50bc-4432-b90d-10d737395129",
+    "img": "https://images.dog.ceo/breeds/mastiff-english/2.jpg",
+    "name": "Shayne",
+    "age": 3303,
+    "zip_code": "94107",
+    "breed": "English Mastiff",
+    "size": "Large"
+  },
+  {
+    "id": "8bd813bb-389e-4830-863d-d2276a8b501f",
+    "img": "https://images.dog.ceo/breeds/mastiff-english/3.jpg",
+    "name": "Omari",
+    "age": 3158,
+    "zip_code": "80202",
+    "breed": "English Mastiff",
+    "size": "Large"
+  },
+  {
+    "id": "a4086218-8162-46b9-b8a9-da6a2eb9a301",
+    "img": "https://images.dog.ceo/breeds/mastiff-indian/Indian_Mastiff.jpg",
+    "name": "Duane",
+    "age": 2807,
+    "zip_code": "80202",
+    "breed": "Indian Mastiff",
+    "size": "Medium"
+  },
+  {
+    "id": "5edc5e74-a73e-4523-83b7-fd7cf0887368",
+    "img": "https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_2014.jpg",
+    "name": "Brycen",
+    "age": 4592,
+    "zip_code": "78701",
+    "breed": "Tibetan Mastiff",
+    "size": "Extra Large"
+  },
+  {
+    "id": "18ab1ba1-4e68-4115-b93d-d82c6b83b4a7",
+    "img": "https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_4790.jpg",
+    "name": "Abby",
+    "age": 4784,
+    "zip_code": "02110",
+    "breed": "Tibetan Mastiff",
+    "size": "Extra Large"
+  },
+  {
+    "id": "3d50777d-349c-4196-bc52-cc448eb2aeab",
+    "img": "https://images.dog.ceo/breeds/mastiff-tibetan/n02108551_9622.jpg",
+    "name": "Maia",
+    "age": 4529,
+    "zip_code": "10001",
+    "breed": "Tibetan Mastiff",
+    "size": "Large"
+  },
+  {
+    "id": "14ff7aa9-e0c9-4360-9946-5a5ce70c0080",
+    "img": "https://images.dog.ceo/breeds/mexicanhairless/n02113978_2121.jpg",
+    "name": "Jacquelyn",
+    "age": 3283,
+    "zip_code": "60606",
+    "breed": "Mexicanhairless",
+    "size": "Extra Large"
+  },
+  {
+    "id": "90d7684f-db99-47f4-844f-d09a72e5ebdb",
+    "img": "https://images.dog.ceo/breeds/mexicanhairless/n02113978_593.jpg",
+    "name": "Watson",
+    "age": 4636,
+    "zip_code": "90210",
+    "breed": "Mexicanhairless",
+    "size": "Medium"
+  },
+  {
+    "id": "fcee1659-598f-442d-8e2d-e02a009a7a4a",
+    "img": "https://images.dog.ceo/breeds/mexicanhairless/n02113978_632.jpg",
+    "name": "Otto",
+    "age": 4339,
+    "zip_code": "30303",
+    "breed": "Mexicanhairless",
+    "size": "Extra Large"
+  },
+  {
+    "id": "6dbf28f0-bd58-4020-b067-3474f870ed41",
+    "img": "https://images.dog.ceo/breeds/mix/Cali-Mini-Labradoodle.jpg",
+    "name": "Caitlyn",
+    "age": 2139,
+    "zip_code": "98101",
+    "breed": "Mix",
+    "size": "Large"
+  },
+  {
+    "id": "5bad0dd1-9239-436d-89d2-a9a02292de09",
+    "img": "https://images.dog.ceo/breeds/mix/dog1.jpg",
+    "name": "Augusta",
+    "age": 2033,
+    "zip_code": "60606",
+    "breed": "Mix",
+    "size": "Large"
+  },
+  {
+    "id": "3e9170e1-69f2-4924-b2e3-44678515fe10",
+    "img": "https://images.dog.ceo/breeds/mix/mikey2.jpg",
+    "name": "Chadrick",
+    "age": 3785,
+    "zip_code": "94107",
+    "breed": "Mix",
+    "size": "Extra Large"
+  },
+  {
+    "id": "14878da1-ba6e-4df5-892b-0e78725a9093",
+    "img": "https://images.dog.ceo/breeds/mountain-bernese/n02107683_1977.jpg",
+    "name": "Letitia",
+    "age": 3297,
+    "zip_code": "78701",
+    "breed": "Bernese Mountain",
+    "size": "Medium"
+  },
+  {
+    "id": "3670f547-1983-44d4-afbf-274923a91e4d",
+    "img": "https://images.dog.ceo/breeds/mountain-bernese/n02107683_2007.jpg",
+    "name": "Pinkie",
+    "age": 713,
+    "zip_code": "75201",
+    "breed": "Bernese Mountain",
+    "size": "Extra Large"
+  },
+  {
+    "id": "606319bc-63bf-4300-96de-72fa79cb1aad",
+    "img": "https://images.dog.ceo/breeds/mountain-bernese/n02107683_34.jpg",
+    "name": "Trycia",
+    "age": 3708,
+    "zip_code": "02110",
+    "breed": "Bernese Mountain",
+    "size": "Large"
+  },
+  {
+    "id": "40398333-8ac4-497b-ade7-429ebfa77005",
+    "img": "https://images.dog.ceo/breeds/mountain-swiss/n02107574_169.jpg",
+    "name": "Ora",
+    "age": 2624,
+    "zip_code": "60606",
+    "breed": "Swiss Mountain",
+    "size": "Small"
+  },
+  {
+    "id": "08a8d343-412b-4a0b-876a-91b3293f1829",
+    "img": "https://images.dog.ceo/breeds/mountain-swiss/n02107574_1817.jpg",
+    "name": "Cesar",
+    "age": 2456,
+    "zip_code": "02110",
+    "breed": "Swiss Mountain",
+    "size": "Large"
+  },
+  {
+    "id": "e02b4846-c984-4bde-9c08-111f9b891016",
+    "img": "https://images.dog.ceo/breeds/mountain-swiss/n02107574_988.jpg",
+    "name": "Sylvia",
+    "age": 4287,
+    "zip_code": "10001",
+    "breed": "Swiss Mountain",
+    "size": "Small"
+  },
+  {
+    "id": "e47e8c9c-b38e-40bf-be76-54a66dcea150",
+    "img": "https://images.dog.ceo/breeds/mudhol-indian/Indian-Mudhol.jpg",
+    "name": "Ebony",
+    "age": 4047,
+    "zip_code": "10001",
+    "breed": "Indian Mudhol",
+    "size": "Medium"
+  },
+  {
+    "id": "d653c7bb-965e-497b-bee9-ebb8250aa6e2",
+    "img": "https://images.dog.ceo/breeds/newfoundland/n02111277_5249.jpg",
+    "name": "Major",
+    "age": 1497,
+    "zip_code": "98101",
+    "breed": "Newfoundland",
+    "size": "Large"
+  },
+  {
+    "id": "e76026be-7ae6-4197-b432-27b1d20e0829",
+    "img": "https://images.dog.ceo/breeds/newfoundland/n02111277_6229.jpg",
+    "name": "Bernice",
+    "age": 4137,
+    "zip_code": "02110",
+    "breed": "Newfoundland",
+    "size": "Extra Large"
+  },
+  {
+    "id": "52f7ed52-ca5a-4ff0-81b4-441f8c21f68e",
+    "img": "https://images.dog.ceo/breeds/newfoundland/n02111277_7395.jpg",
+    "name": "Larue",
+    "age": 4324,
+    "zip_code": "30303",
+    "breed": "Newfoundland",
+    "size": "Medium"
+  },
+  {
+    "id": "1d4006ca-b27b-413a-b745-d05279d23aaf",
+    "img": "https://images.dog.ceo/breeds/otterhound/n02091635_3900.jpg",
+    "name": "Iliana",
+    "age": 3910,
+    "zip_code": "94107",
+    "breed": "Otterhound",
+    "size": "Medium"
+  },
+  {
+    "id": "2a14c654-b347-4ebb-b120-ef6b20b14f46",
+    "img": "https://images.dog.ceo/breeds/otterhound/n02091635_831.jpg",
+    "name": "Alexandrine",
+    "age": 3936,
+    "zip_code": "02110",
+    "breed": "Otterhound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "a43afc3f-4660-4b10-9cd8-e3b7513f22e4",
+    "img": "https://images.dog.ceo/breeds/otterhound/n02091635_971.jpg",
+    "name": "Luz",
+    "age": 3783,
+    "zip_code": "75201",
+    "breed": "Otterhound",
+    "size": "Large"
+  },
+  {
+    "id": "54245a49-266b-4d69-b901-7f412745bb2d",
+    "img": "https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20191108_140150.jpg",
+    "name": "Saul",
+    "age": 1622,
+    "zip_code": "30303",
+    "breed": "Caucasian Ovcharka",
+    "size": "Medium"
+  },
+  {
+    "id": "33584f7d-d4c6-400a-8781-d70224a40ef4",
+    "img": "https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20191108_140417.jpg",
+    "name": "Rey",
+    "age": 5009,
+    "zip_code": "60606",
+    "breed": "Caucasian Ovcharka",
+    "size": "Large"
+  },
+  {
+    "id": "fa34bd36-31ab-4a19-a1d2-4f8656f7f666",
+    "img": "https://images.dog.ceo/breeds/ovcharka-caucasian/IMG_20191130_155610.jpg",
+    "name": "Nathaniel",
+    "age": 76,
+    "zip_code": "60606",
+    "breed": "Caucasian Ovcharka",
+    "size": "Medium"
+  },
+  {
+    "id": "0a44fc6f-93ea-4194-abee-1ed1962efda1",
+    "img": "https://images.dog.ceo/breeds/papillon/n02086910_1048.jpg",
+    "name": "Jessyca",
+    "age": 3853,
+    "zip_code": "98101",
+    "breed": "Papillon",
+    "size": "Large"
+  },
+  {
+    "id": "47f7b86c-0cd8-4eb7-bd12-f6128ee4dc8d",
+    "img": "https://images.dog.ceo/breeds/papillon/n02086910_2670.jpg",
+    "name": "Jasper",
+    "age": 2403,
+    "zip_code": "30303",
+    "breed": "Papillon",
+    "size": "Extra Large"
+  },
+  {
+    "id": "4aaff728-2f14-4395-a65d-47df8168e7bf",
+    "img": "https://images.dog.ceo/breeds/papillon/n02086910_3523.jpg",
+    "name": "Haylee",
+    "age": 2370,
+    "zip_code": "30303",
+    "breed": "Papillon",
+    "size": "Extra Large"
+  },
+  {
+    "id": "b9c16456-e97d-4618-896d-64a5e72794f4",
+    "img": "https://images.dog.ceo/breeds/pariah-indian/The_Indian_Pariah_Dog.jpg",
+    "name": "Troy",
+    "age": 1207,
+    "zip_code": "30303",
+    "breed": "Indian Pariah",
+    "size": "Small"
+  },
+  {
+    "id": "4ebca27a-445e-4311-a5fd-a378c27ced2d",
+    "img": "https://images.dog.ceo/breeds/pekinese/n02086079_10627.jpg",
+    "name": "Conrad",
+    "age": 1165,
+    "zip_code": "30303",
+    "breed": "Pekinese",
+    "size": "Medium"
+  },
+  {
+    "id": "d93a1e9c-c207-4da7-9b50-9b0a5133c704",
+    "img": "https://images.dog.ceo/breeds/pekinese/n02086079_17205.jpg",
+    "name": "Cale",
+    "age": 2290,
+    "zip_code": "10001",
+    "breed": "Pekinese",
+    "size": "Medium"
+  },
+  {
+    "id": "04bcec20-13e8-4235-96e9-834197a8008c",
+    "img": "https://images.dog.ceo/breeds/pekinese/n02086079_22136.jpg",
+    "name": "Erna",
+    "age": 1741,
+    "zip_code": "80202",
+    "breed": "Pekinese",
+    "size": "Medium"
+  },
+  {
+    "id": "c823f060-dfe2-456f-b246-f10c5b7756d6",
+    "img": "https://images.dog.ceo/breeds/pembroke/n02113023_1307.jpg",
+    "name": "Arvilla",
+    "age": 4818,
+    "zip_code": "98101",
+    "breed": "Pembroke",
+    "size": "Medium"
+  },
+  {
+    "id": "4d3062ab-78a1-43ea-b094-8e2cc53b0475",
+    "img": "https://images.dog.ceo/breeds/pembroke/n02113023_1976.jpg",
+    "name": "Quinn",
+    "age": 2933,
+    "zip_code": "60606",
+    "breed": "Pembroke",
+    "size": "Medium"
+  },
+  {
+    "id": "c32b8f1b-c917-4713-8371-8697efdde0c4",
+    "img": "https://images.dog.ceo/breeds/pembroke/n02113023_6548.jpg",
+    "name": "Martina",
+    "age": 1279,
+    "zip_code": "80202",
+    "breed": "Pembroke",
+    "size": "Large"
+  },
+  {
+    "id": "b292d9f1-9d75-415a-b6b2-5a06efb97194",
+    "img": "https://images.dog.ceo/breeds/pinscher-miniature/n02107312_2706.jpg",
+    "name": "Alia",
+    "age": 3215,
+    "zip_code": "90210",
+    "breed": "Miniature Pinscher",
+    "size": "Small"
+  },
+  {
+    "id": "e6213d0a-28f8-4205-92f7-b3feb6a3546e",
+    "img": "https://images.dog.ceo/breeds/pinscher-miniature/n02107312_612.jpg",
+    "name": "Otho",
+    "age": 2520,
+    "zip_code": "98101",
+    "breed": "Miniature Pinscher",
+    "size": "Large"
+  },
+  {
+    "id": "5b85768f-30e6-4101-be35-4afa53910653",
+    "img": "https://images.dog.ceo/breeds/pinscher-miniature/n02107312_7018.jpg",
+    "name": "Antonina",
+    "age": 2083,
+    "zip_code": "30303",
+    "breed": "Miniature Pinscher",
+    "size": "Medium"
+  },
+  {
+    "id": "f2e0adb4-a10b-4963-a723-a43806229e51",
+    "img": "https://images.dog.ceo/breeds/pitbull/20190801_154956.jpg",
+    "name": "Ryann",
+    "age": 2877,
+    "zip_code": "94107",
+    "breed": "Pitbull",
+    "size": "Extra Large"
+  },
+  {
+    "id": "dc15d471-bea2-4995-87fc-eb884bd4f6da",
+    "img": "https://images.dog.ceo/breeds/pitbull/IMG_20190826_121528_876.jpg",
+    "name": "Reyna",
+    "age": 3001,
+    "zip_code": "78701",
+    "breed": "Pitbull",
+    "size": "Small"
+  },
+  {
+    "id": "f25af650-e238-468b-9076-9daab3df85b8",
+    "img": "https://images.dog.ceo/breeds/pitbull/pitbull_dog.jpg",
+    "name": "Ottis",
+    "age": 4617,
+    "zip_code": "10001",
+    "breed": "Pitbull",
+    "size": "Medium"
+  },
+  {
+    "id": "3101301c-ec12-412b-953c-3d625ccdd727",
+    "img": "https://images.dog.ceo/breeds/pointer-german/n02100236_3683.jpg",
+    "name": "Alayna",
+    "age": 1655,
+    "zip_code": "94107",
+    "breed": "German Pointer",
+    "size": "Small"
+  },
+  {
+    "id": "e514a531-fbdc-4bc1-b1ac-132d9e671c4b",
+    "img": "https://images.dog.ceo/breeds/pointer-german/n02100236_4235.jpg",
+    "name": "Guiseppe",
+    "age": 4465,
+    "zip_code": "78701",
+    "breed": "German Pointer",
+    "size": "Extra Large"
+  },
+  {
+    "id": "794ab392-9be5-464f-ab27-ae045069d5e8",
+    "img": "https://images.dog.ceo/breeds/pointer-german/n02100236_5643.jpg",
+    "name": "Bettye",
+    "age": 638,
+    "zip_code": "30303",
+    "breed": "German Pointer",
+    "size": "Large"
+  },
+  {
+    "id": "101bbc72-cae3-46c1-a574-a16f61888423",
+    "img": "https://images.dog.ceo/breeds/pointer-germanlonghair/hans1.jpg",
+    "name": "Cory",
+    "age": 605,
+    "zip_code": "80202",
+    "breed": "Germanlonghair Pointer",
+    "size": "Small"
+  },
+  {
+    "id": "54b59b8a-b82d-440c-b164-7b8c66814498",
+    "img": "https://images.dog.ceo/breeds/pointer-germanlonghair/hans3.jpg",
+    "name": "Hazel",
+    "age": 4358,
+    "zip_code": "78701",
+    "breed": "Germanlonghair Pointer",
+    "size": "Small"
+  },
+  {
+    "id": "3104a55f-d203-4623-8ce8-50bbf1d7c0ee",
+    "img": "https://images.dog.ceo/breeds/pointer-germanlonghair/hans4.jpg",
+    "name": "Suzanne",
+    "age": 4389,
+    "zip_code": "30303",
+    "breed": "Germanlonghair Pointer",
+    "size": "Large"
+  },
+  {
+    "id": "0e89869b-b92c-4bc0-8c22-a28cd569c0d6",
+    "img": "https://images.dog.ceo/breeds/pomeranian/n02112018_12493.jpg",
+    "name": "Easter",
+    "age": 454,
+    "zip_code": "94107",
+    "breed": "Pomeranian",
+    "size": "Extra Large"
+  },
+  {
+    "id": "a99b5b6d-3834-4385-9b14-049891075dc8",
+    "img": "https://images.dog.ceo/breeds/pomeranian/n02112018_6121.jpg",
+    "name": "Jaycee",
+    "age": 800,
+    "zip_code": "98101",
+    "breed": "Pomeranian",
+    "size": "Large"
+  },
+  {
+    "id": "c11038e5-caed-4d59-bec8-4b4968c4fbee",
+    "img": "https://images.dog.ceo/breeds/pomeranian/n02112018_9861.jpg",
+    "name": "Nickolas",
+    "age": 5329,
+    "zip_code": "75201",
+    "breed": "Pomeranian",
+    "size": "Large"
+  },
+  {
+    "id": "7c95a708-b50e-4944-a55c-17fa24077c01",
+    "img": "https://images.dog.ceo/breeds/poodle-medium/PXL_20210220_100624962.jpg",
+    "name": "Fay",
+    "age": 1080,
+    "zip_code": "60606",
+    "breed": "Medium Poodle",
+    "size": "Medium"
+  },
+  {
+    "id": "c310bf71-d8b4-4238-aa1a-ec0e2a55251d",
+    "img": "https://images.dog.ceo/breeds/poodle-medium/WhatsApp_Image_2022-08-06_at_4.48.38_PM.jpg",
+    "name": "Ricky",
+    "age": 335,
+    "zip_code": "02110",
+    "breed": "Medium Poodle",
+    "size": "Small"
+  },
+  {
+    "id": "504ee28a-c2ce-4203-b248-3549f15dfa23",
+    "img": "https://images.dog.ceo/breeds/poodle-miniature/n02113712_2021.jpg",
+    "name": "Alvis",
+    "age": 5693,
+    "zip_code": "78701",
+    "breed": "Miniature Poodle",
+    "size": "Medium"
+  },
+  {
+    "id": "a204e39f-b1a1-4f13-b55a-9ab64b3d5329",
+    "img": "https://images.dog.ceo/breeds/poodle-miniature/n02113712_317.jpg",
+    "name": "Larry",
+    "age": 3547,
+    "zip_code": "60606",
+    "breed": "Miniature Poodle",
+    "size": "Large"
+  },
+  {
+    "id": "f62c7f3f-ad5a-4f3c-bd86-14a5043f1700",
+    "img": "https://images.dog.ceo/breeds/poodle-miniature/n02113712_8008.jpg",
+    "name": "Jeffry",
+    "age": 1640,
+    "zip_code": "02110",
+    "breed": "Miniature Poodle",
+    "size": "Large"
+  },
+  {
+    "id": "7dc929f5-26d8-482b-98a0-279d40b26667",
+    "img": "https://images.dog.ceo/breeds/poodle-standard/n02113799_2504.jpg",
+    "name": "Easton",
+    "age": 844,
+    "zip_code": "10001",
+    "breed": "Standard Poodle",
+    "size": "Extra Large"
+  },
+  {
+    "id": "d950f22c-8084-4221-8e99-59b166edafa3",
+    "img": "https://images.dog.ceo/breeds/poodle-standard/n02113799_2648.jpg",
+    "name": "Heidi",
+    "age": 5611,
+    "zip_code": "90210",
+    "breed": "Standard Poodle",
+    "size": "Small"
+  },
+  {
+    "id": "7a222fac-606c-4e21-9975-dea4d22506f3",
+    "img": "https://images.dog.ceo/breeds/poodle-standard/n02113799_300.jpg",
+    "name": "Bernita",
+    "age": 5784,
+    "zip_code": "98101",
+    "breed": "Standard Poodle",
+    "size": "Small"
+  },
+  {
+    "id": "c46fb0c2-ec45-4c77-a747-60be50161df6",
+    "img": "https://images.dog.ceo/breeds/poodle-toy/n02113624_1801.jpg",
+    "name": "Josh",
+    "age": 4243,
+    "zip_code": "90210",
+    "breed": "Toy Poodle",
+    "size": "Small"
+  },
+  {
+    "id": "cd5e4b7d-fa31-4007-ba68-894b97e99768",
+    "img": "https://images.dog.ceo/breeds/poodle-toy/n02113624_3517.jpg",
+    "name": "Pink",
+    "age": 4016,
+    "zip_code": "30303",
+    "breed": "Toy Poodle",
+    "size": "Medium"
+  },
+  {
+    "id": "e96f5e0f-4535-4979-98ce-d0e1f92db000",
+    "img": "https://images.dog.ceo/breeds/poodle-toy/n02113624_6921.jpg",
+    "name": "Noe",
+    "age": 4166,
+    "zip_code": "94107",
+    "breed": "Toy Poodle",
+    "size": "Large"
+  },
+  {
+    "id": "81bfe853-2cae-40ff-9609-b29acabd3fb2",
+    "img": "https://images.dog.ceo/breeds/pug/n02110958_1108.jpg",
+    "name": "Brionna",
+    "age": 2545,
+    "zip_code": "98101",
+    "breed": "Pug",
+    "size": "Small"
+  },
+  {
+    "id": "dc20222d-6303-4846-967c-ae49099e44f9",
+    "img": "https://images.dog.ceo/breeds/pug/n02110958_15014.jpg",
+    "name": "Makenna",
+    "age": 2311,
+    "zip_code": "02110",
+    "breed": "Pug",
+    "size": "Small"
+  },
+  {
+    "id": "14806f9c-d065-4e9b-b9c0-f647486b70d2",
+    "img": "https://images.dog.ceo/breeds/puggle/IMG_174753.jpg",
+    "name": "Pattie",
+    "age": 5589,
+    "zip_code": "60606",
+    "breed": "Pug",
+    "size": "Small"
+  },
+  {
+    "id": "2bc536a5-c2aa-43f0-b63b-ea86b823e7b0",
+    "img": "https://images.dog.ceo/breeds/puggle/IMG_041234.jpg",
+    "name": "Melissa",
+    "age": 906,
+    "zip_code": "02110",
+    "breed": "Puggle",
+    "size": "Large"
+  },
+  {
+    "id": "36736ac2-3d4a-4a5c-860b-ac948a566c61",
+    "img": "https://images.dog.ceo/breeds/puggle/IMG_074532.jpg",
+    "name": "Amelie",
+    "age": 2859,
+    "zip_code": "75201",
+    "breed": "Puggle",
+    "size": "Medium"
+  },
+  {
+    "id": "8c425dd1-b2e0-4977-b606-749a53222946",
+    "img": "https://images.dog.ceo/breeds/puggle/IMG_124524.jpg",
+    "name": "Willis",
+    "age": 915,
+    "zip_code": "30303",
+    "breed": "Puggle",
+    "size": "Large"
+  },
+  {
+    "id": "15f0b190-f642-4eb8-a428-ed87508f5b8c",
+    "img": "https://images.dog.ceo/breeds/pyrenees/n02111500_1474.jpg",
+    "name": "Patience",
+    "age": 2759,
+    "zip_code": "78701",
+    "breed": "Pyrenees",
+    "size": "Large"
+  },
+  {
+    "id": "11fbe4c7-d389-4ae1-ae1f-c81c83b92464",
+    "img": "https://images.dog.ceo/breeds/pyrenees/n02111500_2596.jpg",
+    "name": "Elenora",
+    "age": 2808,
+    "zip_code": "30303",
+    "breed": "Pyrenees",
+    "size": "Large"
+  },
+  {
+    "id": "47944d37-a058-4cf9-8fdd-b261b63e8433",
+    "img": "https://images.dog.ceo/breeds/pyrenees/n02111500_4678.jpg",
+    "name": "Lauren",
+    "age": 787,
+    "zip_code": "94107",
+    "breed": "Pyrenees",
+    "size": "Extra Large"
+  },
+  {
+    "id": "9c43c357-c39e-4731-b8fd-9d39dba2eca9",
+    "img": "https://images.dog.ceo/breeds/rajapalayam-indian/Rajapalayam-dog.jpg",
+    "name": "Jamar",
+    "age": 2719,
+    "zip_code": "98101",
+    "breed": "Indian Rajapalayam",
+    "size": "Extra Large"
+  },
+  {
+    "id": "61790926-db4f-47e9-bda2-f96f156a2cfa",
+    "img": "https://images.dog.ceo/breeds/redbone/n02090379_3721.jpg",
+    "name": "Joseph",
+    "age": 4564,
+    "zip_code": "98101",
+    "breed": "Redbone",
+    "size": "Large"
+  },
+  {
+    "id": "139886d2-524d-4fe0-8adf-3e3bd0bb42a9",
+    "img": "https://images.dog.ceo/breeds/redbone/n02090379_3734.jpg",
+    "name": "Celia",
+    "age": 4506,
+    "zip_code": "10001",
+    "breed": "Redbone",
+    "size": "Medium"
+  },
+  {
+    "id": "31dfca2b-bd9d-45ea-9093-aa4ed72a84e6",
+    "img": "https://images.dog.ceo/breeds/redbone/n02090379_5409.jpg",
+    "name": "Bonita",
+    "age": 205,
+    "zip_code": "80202",
+    "breed": "Redbone",
+    "size": "Medium"
+  },
+  {
+    "id": "bcde7003-be4b-4388-876e-c153a5b21fe6",
+    "img": "https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_3266.jpg",
+    "name": "Merl",
+    "age": 3679,
+    "zip_code": "02110",
+    "breed": "Chesapeake Retriever",
+    "size": "Small"
+  },
+  {
+    "id": "49701361-73ad-4a79-8fba-1fc5df9ca8cb",
+    "img": "https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_435.jpg",
+    "name": "Houston",
+    "age": 2434,
+    "zip_code": "90210",
+    "breed": "Chesapeake Retriever",
+    "size": "Extra Large"
+  },
+  {
+    "id": "d9f29194-0b94-4ebd-a37c-29e4d14df480",
+    "img": "https://images.dog.ceo/breeds/retriever-chesapeake/n02099849_605.jpg",
+    "name": "Vernie",
+    "age": 5720,
+    "zip_code": "60606",
+    "breed": "Chesapeake Retriever",
+    "size": "Extra Large"
+  },
+  {
+    "id": "f0b7142e-8e7d-401e-8585-da7957ac8e06",
+    "img": "https://images.dog.ceo/breeds/retriever-curly/n02099429_2186.jpg",
+    "name": "Dayana",
+    "age": 830,
+    "zip_code": "94107",
+    "breed": "Curly Retriever",
+    "size": "Extra Large"
+  },
+  {
+    "id": "9e4a4478-e64b-4b48-9699-1df1a2272f24",
+    "img": "https://images.dog.ceo/breeds/retriever-curly/n02099429_2936.jpg",
+    "name": "Hortense",
+    "age": 5837,
+    "zip_code": "60606",
+    "breed": "Curly Retriever",
+    "size": "Extra Large"
+  },
+  {
+    "id": "859d555a-e0cc-47ba-9d2f-60d54bf4c41e",
+    "img": "https://images.dog.ceo/breeds/retriever-curly/n02099429_3024.jpg",
+    "name": "Gus",
+    "age": 590,
+    "zip_code": "60606",
+    "breed": "Curly Retriever",
+    "size": "Medium"
+  },
+  {
+    "id": "f648a712-1469-4f02-8833-e02e04a47c24",
+    "img": "https://images.dog.ceo/breeds/retriever-flatcoated/n02099267_1909.jpg",
+    "name": "Cesar",
+    "age": 3128,
+    "zip_code": "98101",
+    "breed": "Flatcoated Retriever",
+    "size": "Large"
+  },
+  {
+    "id": "d9f26183-e1b3-43fc-94b0-741494b0b7d7",
+    "img": "https://images.dog.ceo/breeds/retriever-flatcoated/n02099267_2284.jpg",
+    "name": "Edythe",
+    "age": 3537,
+    "zip_code": "94107",
+    "breed": "Flatcoated Retriever",
+    "size": "Extra Large"
+  },
+  {
+    "id": "ba57991b-f136-4738-b50b-be9d07897c85",
+    "img": "https://images.dog.ceo/breeds/retriever-flatcoated/n02099267_3494.jpg",
+    "name": "Samantha",
+    "age": 2240,
+    "zip_code": "80202",
+    "breed": "Flatcoated Retriever",
+    "size": "Extra Large"
+  },
+  {
+    "id": "a8e3ee9e-5d25-476e-9ccc-b7124668df61",
+    "img": "https://images.dog.ceo/breeds/retriever-golden/Z6A_4928_200816.jpg",
+    "name": "Luella",
+    "age": 5792,
+    "zip_code": "78701",
+    "breed": "Golden Retriever",
+    "size": "Extra Large"
+  },
+  {
+    "id": "397d4e2e-2cd9-4282-b1fb-d34c286628e3",
+    "img": "https://images.dog.ceo/breeds/retriever-golden/n02099601_3262.jpg",
+    "name": "Pete",
+    "age": 3397,
+    "zip_code": "30303",
+    "breed": "Golden Retriever",
+    "size": "Small"
+  },
+  {
+    "id": "2ab7a4fd-1a95-4426-877c-8bd889c4e6f8",
+    "img": "https://images.dog.ceo/breeds/retriever-golden/n02099601_7709.jpg",
+    "name": "Cristal",
+    "age": 4941,
+    "zip_code": "10001",
+    "breed": "Golden Retriever",
+    "size": "Medium"
+  },
+  {
+    "id": "72d3f80a-fc92-4503-ad2e-1483687cb099",
+    "img": "https://images.dog.ceo/breeds/ridgeback-rhodesian/boaz-4.jpg",
+    "name": "Edgar",
+    "age": 4220,
+    "zip_code": "10001",
+    "breed": "Rhodesian Ridgeback",
+    "size": "Large"
+  },
+  {
+    "id": "0c858b3c-d7ca-44c3-a707-ddce1e9499ea",
+    "img": "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_1099.jpg",
+    "name": "Russ",
+    "age": 1033,
+    "zip_code": "75201",
+    "breed": "Rhodesian Ridgeback",
+    "size": "Large"
+  },
+  {
+    "id": "bfb69a22-e0c0-438d-99ab-7a720b0d2142",
+    "img": "https://images.dog.ceo/breeds/ridgeback-rhodesian/n02087394_8742.jpg",
+    "name": "Otho",
+    "age": 1608,
+    "zip_code": "60606",
+    "breed": "Rhodesian Ridgeback",
+    "size": "Large"
+  },
+  {
+    "id": "70d90476-5912-4004-9af7-57baf9f82119",
+    "img": "https://images.dog.ceo/breeds/rottweiler/n02106550_12160.jpg",
+    "name": "Aimee",
+    "age": 513,
+    "zip_code": "94107",
+    "breed": "Rottweiler",
+    "size": "Small"
+  },
+  {
+    "id": "bfda33f9-dc3a-47a8-ace6-f67b9f85a165",
+    "img": "https://images.dog.ceo/breeds/rottweiler/n02106550_148.jpg",
+    "name": "Name",
+    "age": 3996,
+    "zip_code": "80202",
+    "breed": "Rottweiler",
+    "size": "Large"
+  },
+  {
+    "id": "3c81579f-d547-44cf-90eb-140206cd5849",
+    "img": "https://images.dog.ceo/breeds/rottweiler/n02106550_193.jpg",
+    "name": "Boyd",
+    "age": 731,
+    "zip_code": "75201",
+    "breed": "Rottweiler",
+    "size": "Large"
+  },
+  {
+    "id": "80b55b31-ec0c-4127-917f-921ff8e2f2f8",
+    "img": "https://images.dog.ceo/breeds/saluki/n02091831_1801.jpg",
+    "name": "Fatima",
+    "age": 435,
+    "zip_code": "10001",
+    "breed": "Saluki",
+    "size": "Small"
+  },
+  {
+    "id": "1ffd6926-08d4-4b34-a60c-6fad1b4d64f7",
+    "img": "https://images.dog.ceo/breeds/saluki/n02091831_3433.jpg",
+    "name": "Mario",
+    "age": 714,
+    "zip_code": "98101",
+    "breed": "Saluki",
+    "size": "Medium"
+  },
+  {
+    "id": "24065d17-92fb-4f87-8af2-5132c0a05073",
+    "img": "https://images.dog.ceo/breeds/saluki/n02091831_5436.jpg",
+    "name": "Kali",
+    "age": 5810,
+    "zip_code": "78701",
+    "breed": "Saluki",
+    "size": "Medium"
+  },
+  {
+    "id": "20477f9c-7c20-463c-84ce-c4c29ee6aee9",
+    "img": "https://images.dog.ceo/breeds/samoyed/n02111889_108.jpg",
+    "name": "Magnolia",
+    "age": 3788,
+    "zip_code": "10001",
+    "breed": "Samoyed",
+    "size": "Small"
+  },
+  {
+    "id": "24dd4287-b7d6-430d-b294-059ee2fd1a8c",
+    "img": "https://images.dog.ceo/breeds/samoyed/n02111889_15299.jpg",
+    "name": "Camilla",
+    "age": 711,
+    "zip_code": "02110",
+    "breed": "Samoyed",
+    "size": "Medium"
+  },
+  {
+    "id": "c4c3c56b-501d-4820-b889-8b2352db555e",
+    "img": "https://images.dog.ceo/breeds/samoyed/n02111889_8240.jpg",
+    "name": "Jeffry",
+    "age": 5613,
+    "zip_code": "90210",
+    "breed": "Samoyed",
+    "size": "Large"
+  },
+  {
+    "id": "0b3900d1-1d6c-4cc4-882c-de330cc083e8",
+    "img": "https://images.dog.ceo/breeds/schipperke/n02104365_6489.jpg",
+    "name": "Queenie",
+    "age": 3530,
+    "zip_code": "94107",
+    "breed": "Schipperke",
+    "size": "Medium"
+  },
+  {
+    "id": "6b3a12db-0dae-438e-9147-eefebcd3adf1",
+    "img": "https://images.dog.ceo/breeds/schipperke/n02104365_7791.jpg",
+    "name": "Mohammad",
+    "age": 4454,
+    "zip_code": "75201",
+    "breed": "Schipperke",
+    "size": "Small"
+  },
+  {
+    "id": "462e7289-7921-440e-923b-1c6181f7800f",
+    "img": "https://images.dog.ceo/breeds/schipperke/n02104365_999.jpg",
+    "name": "Leopold",
+    "age": 1081,
+    "zip_code": "90210",
+    "breed": "Schipperke",
+    "size": "Large"
+  },
+  {
+    "id": "f30bd805-381d-4d56-a72d-e67a77ac8e12",
+    "img": "https://images.dog.ceo/breeds/schnauzer-giant/n02097130_344.jpg",
+    "name": "Walton",
+    "age": 1409,
+    "zip_code": "30303",
+    "breed": "Giant Schnauzer",
+    "size": "Extra Large"
+  },
+  {
+    "id": "99d6dad7-be15-4660-82e1-88bb8e719103",
+    "img": "https://images.dog.ceo/breeds/schnauzer-giant/n02097130_4888.jpg",
+    "name": "Stefan",
+    "age": 5259,
+    "zip_code": "75201",
+    "breed": "Giant Schnauzer",
+    "size": "Medium"
+  },
+  {
+    "id": "9d3ba09c-b2d5-4dc2-8e87-029c1abcca57",
+    "img": "https://images.dog.ceo/breeds/schnauzer-giant/n02097130_5882.jpg",
+    "name": "Ben",
+    "age": 724,
+    "zip_code": "60606",
+    "breed": "Giant Schnauzer",
+    "size": "Large"
+  },
+  {
+    "id": "83837c90-adf1-4d4d-aec2-fbae39fc2641",
+    "img": "https://images.dog.ceo/breeds/schnauzer-miniature/n02097047_1028.jpg",
+    "name": "Tyrese",
+    "age": 2843,
+    "zip_code": "75201",
+    "breed": "Miniature Schnauzer",
+    "size": "Large"
+  },
+  {
+    "id": "5cc4fea4-e315-42a0-bf0e-6eac288c2f2b",
+    "img": "https://images.dog.ceo/breeds/schnauzer-miniature/n02097047_1556.jpg",
+    "name": "Orland",
+    "age": 1056,
+    "zip_code": "80202",
+    "breed": "Miniature Schnauzer",
+    "size": "Extra Large"
+  },
+  {
+    "id": "259b2144-4c82-48c9-bdbf-3e0a781b1379",
+    "img": "https://images.dog.ceo/breeds/schnauzer-miniature/n02097047_2470.jpg",
+    "name": "Dixie",
+    "age": 2977,
+    "zip_code": "10001",
+    "breed": "Miniature Schnauzer",
+    "size": "Extra Large"
+  },
+  {
+    "id": "86150979-afef-47e6-a823-ba373bc38e97",
+    "img": "https://images.dog.ceo/breeds/segugio-italian/n02090722_001.jpg",
+    "name": "Rahul",
+    "age": 5486,
+    "zip_code": "80202",
+    "breed": "Italian Segugio",
+    "size": "Large"
+  },
+  {
+    "id": "e0954354-f9ba-42b3-8dfe-e425ef188fca",
+    "img": "https://images.dog.ceo/breeds/segugio-italian/n02090722_002.jpg",
+    "name": "Zachariah",
+    "age": 1134,
+    "zip_code": "90210",
+    "breed": "Italian Segugio",
+    "size": "Extra Large"
+  },
+  {
+    "id": "640990df-e3aa-4999-a604-ee313097b9e2",
+    "img": "https://images.dog.ceo/breeds/setter-english/n02100735_2375.jpg",
+    "name": "Raven",
+    "age": 4279,
+    "zip_code": "90210",
+    "breed": "English Setter",
+    "size": "Extra Large"
+  },
+  {
+    "id": "be6e9ea1-bbab-47a0-a272-ab72bd4dbe82",
+    "img": "https://images.dog.ceo/breeds/setter-english/n02100735_3.jpg",
+    "name": "Eloisa",
+    "age": 373,
+    "zip_code": "60606",
+    "breed": "English Setter",
+    "size": "Medium"
+  },
+  {
+    "id": "20c699a2-484d-4dd3-9569-18eceb9d5339",
+    "img": "https://images.dog.ceo/breeds/setter-english/n02100735_5852.jpg",
+    "name": "Chase",
+    "age": 1115,
+    "zip_code": "02110",
+    "breed": "English Setter",
+    "size": "Large"
+  },
+  {
+    "id": "a7c583d2-066e-4172-9a62-6c6dbea61a4e",
+    "img": "https://images.dog.ceo/breeds/setter-gordon/n02101006_4491.jpg",
+    "name": "Katlyn",
+    "age": 1789,
+    "zip_code": "75201",
+    "breed": "Gordon Setter",
+    "size": "Extra Large"
+  },
+  {
+    "id": "4a8c4e32-284d-42dc-aae5-e6f943f35ecc",
+    "img": "https://images.dog.ceo/breeds/setter-gordon/n02101006_4757.jpg",
+    "name": "Roberta",
+    "age": 2870,
+    "zip_code": "78701",
+    "breed": "Gordon Setter",
+    "size": "Extra Large"
+  },
+  {
+    "id": "6d8ad057-a2d3-446d-9548-79855666de82",
+    "img": "https://images.dog.ceo/breeds/setter-gordon/n02101006_8067.jpg",
+    "name": "Ewell",
+    "age": 3778,
+    "zip_code": "30303",
+    "breed": "Gordon Setter",
+    "size": "Small"
+  },
+  {
+    "id": "2c14f39d-f6a0-41f7-a083-b4ebec46659f",
+    "img": "https://images.dog.ceo/breeds/setter-irish/n02100877_1776.jpg",
+    "name": "Jeffery",
+    "age": 2323,
+    "zip_code": "78701",
+    "breed": "Irish Setter",
+    "size": "Small"
+  },
+  {
+    "id": "ec814cac-4aed-47d1-9c33-3922eff00ebf",
+    "img": "https://images.dog.ceo/breeds/setter-irish/n02100877_5184.jpg",
+    "name": "Brendon",
+    "age": 2032,
+    "zip_code": "30303",
+    "breed": "Irish Setter",
+    "size": "Large"
+  },
+  {
+    "id": "1ee773e2-f1c3-4982-861f-6b4eeddd9eff",
+    "img": "https://images.dog.ceo/breeds/setter-irish/n02100877_828.jpg",
+    "name": "Elena",
+    "age": 1109,
+    "zip_code": "78701",
+    "breed": "Irish Setter",
+    "size": "Large"
+  },
+  {
+    "id": "6731be32-13c7-49a8-b41c-7588109c96fc",
+    "img": "https://images.dog.ceo/breeds/sharpei/noel.jpg",
+    "name": "Serena",
+    "age": 4505,
+    "zip_code": "02110",
+    "breed": "Sharpei",
+    "size": "Small"
+  },
+  {
+    "id": "bda37a3c-a3a0-402b-90bb-ac100c8c90ca",
+    "img": "https://images.dog.ceo/breeds/sheepdog-english/n02105641_1881.jpg",
+    "name": "Trace",
+    "age": 2434,
+    "zip_code": "80202",
+    "breed": "English Sheepdog",
+    "size": "Extra Large"
+  },
+  {
+    "id": "027c5e27-5584-4965-beb8-6ceedbdd343f",
+    "img": "https://images.dog.ceo/breeds/sheepdog-english/n02105641_4751.jpg",
+    "name": "Lenora",
+    "age": 2932,
+    "zip_code": "02110",
+    "breed": "English Sheepdog",
+    "size": "Medium"
+  },
+  {
+    "id": "d5ce33e5-2621-46ea-8dbd-912d1f5022bd",
+    "img": "https://images.dog.ceo/breeds/sheepdog-english/n02105641_8760.jpg",
+    "name": "Antoinette",
+    "age": 4734,
+    "zip_code": "30303",
+    "breed": "English Sheepdog",
+    "size": "Medium"
+  },
+  {
+    "id": "3ac57748-72a0-4027-8675-68fe80090950",
+    "img": "https://images.dog.ceo/breeds/sheepdog-indian/Himalayan_Sheepdog.jpg",
+    "name": "Bridie",
+    "age": 2016,
+    "zip_code": "60606",
+    "breed": "Indian Sheepdog",
+    "size": "Large"
+  },
+  {
+    "id": "c68f7701-8eb7-4157-ac8a-264e3f7079a9",
+    "img": "https://images.dog.ceo/breeds/sheepdog-shetland/n02105855_11445.jpg",
+    "name": "Berniece",
+    "age": 438,
+    "zip_code": "78701",
+    "breed": "Shetland Sheepdog",
+    "size": "Extra Large"
+  },
+  {
+    "id": "3feed7c3-6a47-4da0-ae8e-7ce830e4b24a",
+    "img": "https://images.dog.ceo/breeds/sheepdog-shetland/n02105855_12087.jpg",
+    "name": "Verona",
+    "age": 4480,
+    "zip_code": "10001",
+    "breed": "Shetland Sheepdog",
+    "size": "Large"
+  },
+  {
+    "id": "8b1aafbf-4ec4-4420-b1cc-1b1f8afdf97d",
+    "img": "https://images.dog.ceo/breeds/sheepdog-shetland/n02105855_142.jpg",
+    "name": "Braden",
+    "age": 4056,
+    "zip_code": "98101",
+    "breed": "Shetland Sheepdog",
+    "size": "Extra Large"
+  },
+  {
+    "id": "2c1bd501-1d52-4d42-939e-6a95cdd316cc",
+    "img": "https://images.dog.ceo/breeds/shiba/shiba-11.jpg",
+    "name": "Ila",
+    "age": 812,
+    "zip_code": "10001",
+    "breed": "Shiba",
+    "size": "Small"
+  },
+  {
+    "id": "7cb2b444-c547-4e60-97d4-55981ccc111d",
+    "img": "https://images.dog.ceo/breeds/shiba/shiba-8.jpg",
+    "name": "Cristian",
+    "age": 3565,
+    "zip_code": "75201",
+    "breed": "Shiba",
+    "size": "Small"
+  },
+  {
+    "id": "75a83c2d-9f7c-49f2-84e8-89edad5e8688",
+    "img": "https://images.dog.ceo/breeds/shiba/shiba_20.jpg",
+    "name": "Ryder",
+    "age": 1479,
+    "zip_code": "10001",
+    "breed": "Shiba",
+    "size": "Large"
+  },
+  {
+    "id": "8bc31b9f-8e2c-445a-a897-56ddd29df9ed",
+    "img": "https://images.dog.ceo/breeds/shihtzu/n02086240_1011.jpg",
+    "name": "Lucinda",
+    "age": 2032,
+    "zip_code": "10001",
+    "breed": "Shihtzu",
+    "size": "Small"
+  },
+  {
+    "id": "28b5c998-2feb-4f9d-b20d-41318a578846",
+    "img": "https://images.dog.ceo/breeds/shihtzu/n02086240_4808.jpg",
+    "name": "Jasmin",
+    "age": 3154,
+    "zip_code": "90210",
+    "breed": "Shihtzu",
+    "size": "Extra Large"
+  },
+  {
+    "id": "0f7c46cf-f13b-4977-b4bd-f33fb99d3bfe",
+    "img": "https://images.dog.ceo/breeds/shihtzu/n02086240_8825.jpg",
+    "name": "Trevion",
+    "age": 961,
+    "zip_code": "02110",
+    "breed": "Shihtzu",
+    "size": "Medium"
+  },
+  {
+    "id": "72dcec67-776e-4454-a181-98a4f455ef30",
+    "img": "https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_1959.jpg",
+    "name": "Newton",
+    "age": 395,
+    "zip_code": "02110",
+    "breed": "Blenheim Spaniel",
+    "size": "Medium"
+  },
+  {
+    "id": "7e81221b-6a5d-497c-a714-95ada592932d",
+    "img": "https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_2355.jpg",
+    "name": "Adele",
+    "age": 1617,
+    "zip_code": "98101",
+    "breed": "Blenheim Spaniel",
+    "size": "Large"
+  },
+  {
+    "id": "2900aaf2-e802-40d4-9f6a-ea36f49a09fd",
+    "img": "https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_3680.jpg",
+    "name": "Vada",
+    "age": 1179,
+    "zip_code": "75201",
+    "breed": "Blenheim Spaniel",
+    "size": "Small"
+  },
+  {
+    "id": "e65b5590-5f20-4684-990d-410ab9506e42",
+    "img": "https://images.dog.ceo/breeds/spaniel-brittany/n02101388_10017.jpg",
+    "name": "Brook",
+    "age": 648,
+    "zip_code": "10001",
+    "breed": "Brittany Spaniel",
+    "size": "Extra Large"
+  },
+  {
+    "id": "7d6832ee-98a0-4b8a-836f-e2960e322ecf",
+    "img": "https://images.dog.ceo/breeds/spaniel-brittany/n02101388_4240.jpg",
+    "name": "Dayne",
+    "age": 404,
+    "zip_code": "60606",
+    "breed": "Brittany Spaniel",
+    "size": "Extra Large"
+  },
+  {
+    "id": "53d7265f-1755-4936-b03b-ca87ae1de085",
+    "img": "https://images.dog.ceo/breeds/spaniel-brittany/n02101388_6797.jpg",
+    "name": "Judd",
+    "age": 3281,
+    "zip_code": "80202",
+    "breed": "Brittany Spaniel",
+    "size": "Small"
+  },
+  {
+    "id": "c99bf07b-561a-41bd-8485-211e6f1ccbe9",
+    "img": "https://images.dog.ceo/breeds/spaniel-cocker/n02102318_10261.jpg",
+    "name": "Desmond",
+    "age": 638,
+    "zip_code": "10001",
+    "breed": "Cocker Spaniel",
+    "size": "Medium"
+  },
+  {
+    "id": "0e952f50-f0de-4cbe-98a0-c373e68fe57e",
+    "img": "https://images.dog.ceo/breeds/spaniel-cocker/n02102318_11769.jpg",
+    "name": "Juvenal",
+    "age": 3824,
+    "zip_code": "78701",
+    "breed": "Cocker Spaniel",
+    "size": "Extra Large"
+  },
+  {
+    "id": "59da6f55-6d8a-466a-a165-322f90658957",
+    "img": "https://images.dog.ceo/breeds/spaniel-cocker/n02102318_7059.jpg",
+    "name": "Rosario",
+    "age": 3960,
+    "zip_code": "78701",
+    "breed": "Cocker Spaniel",
+    "size": "Medium"
+  },
+  {
+    "id": "b30b92ac-ff02-464d-8171-c88ad945ee7d",
+    "img": "https://images.dog.ceo/breeds/spaniel-irish/n02102973_2579.jpg",
+    "name": "Antoinette",
+    "age": 3410,
+    "zip_code": "02110",
+    "breed": "Irish Spaniel",
+    "size": "Extra Large"
+  },
+  {
+    "id": "63d99d8c-f18b-4b99-aa0f-8274d90f2b2a",
+    "img": "https://images.dog.ceo/breeds/spaniel-irish/n02102973_3461.jpg",
+    "name": "Sigmund",
+    "age": 647,
+    "zip_code": "10001",
+    "breed": "Irish Spaniel",
+    "size": "Small"
+  },
+  {
+    "id": "cf236bc4-0206-4252-8a26-b2b8fa0d708e",
+    "img": "https://images.dog.ceo/breeds/spaniel-irish/n02102973_652.jpg",
+    "name": "Lamar",
+    "age": 2400,
+    "zip_code": "98101",
+    "breed": "Irish Spaniel",
+    "size": "Large"
+  },
+  {
+    "id": "f1117ead-7b2f-4163-82d2-9a21720c3273",
+    "img": "https://images.dog.ceo/breeds/spaniel-japanese/n02085782_3052.jpg",
+    "name": "Jaclyn",
+    "age": 2359,
+    "zip_code": "10001",
+    "breed": "Japanese Spaniel",
+    "size": "Small"
+  },
+  {
+    "id": "25785817-40bf-44bc-a1c3-14cacb8088d4",
+    "img": "https://images.dog.ceo/breeds/spaniel-japanese/n02085782_309.jpg",
+    "name": "Vivian",
+    "age": 5248,
+    "zip_code": "94107",
+    "breed": "Japanese Spaniel",
+    "size": "Small"
+  },
+  {
+    "id": "370bf076-e23c-4442-849e-e0e1266d73ed",
+    "img": "https://images.dog.ceo/breeds/spaniel-japanese/n02085782_668.jpg",
+    "name": "Rose",
+    "age": 5699,
+    "zip_code": "90210",
+    "breed": "Japanese Spaniel",
+    "size": "Extra Large"
+  },
+  {
+    "id": "b565cefb-b434-45f0-8f4d-aa06cc71f540",
+    "img": "https://images.dog.ceo/breeds/spaniel-sussex/n02102480_267.jpg",
+    "name": "Alessandro",
+    "age": 1232,
+    "zip_code": "02110",
+    "breed": "Sussex Spaniel",
+    "size": "Small"
+  },
+  {
+    "id": "9426fa3e-9bea-459c-8f5a-8b4e9f8f9c5a",
+    "img": "https://images.dog.ceo/breeds/spaniel-sussex/n02102480_5760.jpg",
+    "name": "Michel",
+    "age": 4521,
+    "zip_code": "78701",
+    "breed": "Sussex Spaniel",
+    "size": "Large"
+  },
+  {
+    "id": "1938b568-fca6-493d-9f13-61be62f6f3f4",
+    "img": "https://images.dog.ceo/breeds/spaniel-sussex/n02102480_633.jpg",
+    "name": "Lucas",
+    "age": 4055,
+    "zip_code": "98101",
+    "breed": "Sussex Spaniel",
+    "size": "Extra Large"
+  },
+  {
+    "id": "0ba4a5ac-1540-43e3-b1c7-2bbc481b91b9",
+    "img": "https://images.dog.ceo/breeds/spaniel-welsh/n02102177_3142.jpg",
+    "name": "Annabel",
+    "age": 1077,
+    "zip_code": "02110",
+    "breed": "Welsh Spaniel",
+    "size": "Small"
+  },
+  {
+    "id": "882869e3-ffca-4509-abfe-fe29a1fb8f99",
+    "img": "https://images.dog.ceo/breeds/spaniel-welsh/n02102177_3607.jpg",
+    "name": "Jevon",
+    "age": 3276,
+    "zip_code": "90210",
+    "breed": "Welsh Spaniel",
+    "size": "Small"
+  },
+  {
+    "id": "d018ad60-1a00-4e84-9d75-6946a23e26ab",
+    "img": "https://images.dog.ceo/breeds/spaniel-welsh/n02102177_555.jpg",
+    "name": "Sheldon",
+    "age": 3959,
+    "zip_code": "75201",
+    "breed": "Welsh Spaniel",
+    "size": "Extra Large"
+  },
+  {
+    "id": "944eb824-a9ae-401a-a53a-04a64ed079e2",
+    "img": "https://images.dog.ceo/breeds/spitz-indian/Indian_Spitz.jpg",
+    "name": "Antwan",
+    "age": 1738,
+    "zip_code": "30303",
+    "breed": "Indian Spitz",
+    "size": "Extra Large"
+  },
+  {
+    "id": "e95f7ec9-c1cc-4ee0-8470-518f11c00ef6",
+    "img": "https://images.dog.ceo/breeds/spitz-japanese/beet-002.jpg",
+    "name": "Alysha",
+    "age": 4966,
+    "zip_code": "90210",
+    "breed": "Japanese Spitz",
+    "size": "Medium"
+  },
+  {
+    "id": "ecbfba9b-0dab-41ec-bd05-15912b3d2c42",
+    "img": "https://images.dog.ceo/breeds/spitz-japanese/beet-004.jpg",
+    "name": "Madaline",
+    "age": 563,
+    "zip_code": "98101",
+    "breed": "Japanese Spitz",
+    "size": "Small"
+  },
+  {
+    "id": "8d720811-ba8e-499b-b6eb-da75876a2d5c",
+    "img": "https://images.dog.ceo/breeds/spitz-japanese/tofu.jpg",
+    "name": "Terence",
+    "age": 1955,
+    "zip_code": "10001",
+    "breed": "Japanese Spitz",
+    "size": "Medium"
+  },
+  {
+    "id": "32cb3d1e-6791-42f9-961d-4d9fe2355545",
+    "img": "https://images.dog.ceo/breeds/springer-english/n02102040_3156.jpg",
+    "name": "Kaitlyn",
+    "age": 646,
+    "zip_code": "94107",
+    "breed": "English Springer",
+    "size": "Small"
+  },
+  {
+    "id": "1583442f-be79-4359-9eff-d5f936dc6603",
+    "img": "https://images.dog.ceo/breeds/springer-english/n02102040_5388.jpg",
+    "name": "Cathy",
+    "age": 1918,
+    "zip_code": "94107",
+    "breed": "English Springer",
+    "size": "Medium"
+  },
+  {
+    "id": "6e6fd41a-7023-4375-9e32-f89159b7deda",
+    "img": "https://images.dog.ceo/breeds/springer-english/n02102040_835.jpg",
+    "name": "Meta",
+    "age": 4556,
+    "zip_code": "10001",
+    "breed": "English Springer",
+    "size": "Small"
+  },
+  {
+    "id": "367b4952-8e13-4f9f-9caa-701dee30a334",
+    "img": "https://images.dog.ceo/breeds/stbernard/n02109525_13988.jpg",
+    "name": "Ryley",
+    "age": 2427,
+    "zip_code": "98101",
+    "breed": "Stbernard",
+    "size": "Medium"
+  },
+  {
+    "id": "53d9f692-dd25-4aed-a720-862565a7b777",
+    "img": "https://images.dog.ceo/breeds/stbernard/n02109525_370.jpg",
+    "name": "Deshawn",
+    "age": 87,
+    "zip_code": "60606",
+    "breed": "Stbernard",
+    "size": "Extra Large"
+  },
+  {
+    "id": "eb4cfafb-7e54-4cbe-9c4e-3ad1495c771c",
+    "img": "https://images.dog.ceo/breeds/stbernard/n02109525_8211.jpg",
+    "name": "Janis",
+    "age": 2058,
+    "zip_code": "94107",
+    "breed": "Stbernard",
+    "size": "Extra Large"
+  },
+  {
+    "id": "e65f943d-c638-4077-b3f6-fe59a4e632c5",
+    "img": "https://images.dog.ceo/breeds/terrier-american/n02093428_12462.jpg",
+    "name": "Ebony",
+    "age": 2788,
+    "zip_code": "80202",
+    "breed": "American Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "53f37393-9757-4a9b-baf1-f460a11f7009",
+    "img": "https://images.dog.ceo/breeds/terrier-american/n02093428_416.jpg",
+    "name": "Cary",
+    "age": 2728,
+    "zip_code": "80202",
+    "breed": "American Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "f5cefa4f-407f-4e8a-80d8-33c02029a03d",
+    "img": "https://images.dog.ceo/breeds/terrier-american/n02093428_9346.jpg",
+    "name": "Karelle",
+    "age": 5623,
+    "zip_code": "02110",
+    "breed": "American Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "317bb719-7c3e-428b-99c3-23c2526a0fad",
+    "img": "https://images.dog.ceo/breeds/terrier-australian/n02096294_2821.jpg",
+    "name": "Evangeline",
+    "age": 4586,
+    "zip_code": "78701",
+    "breed": "Australian Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "892d8688-e484-4d8f-87d5-aed2372e1087",
+    "img": "https://images.dog.ceo/breeds/terrier-australian/n02096294_6299.jpg",
+    "name": "Maida",
+    "age": 4970,
+    "zip_code": "78701",
+    "breed": "Australian Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "229f430a-9cb8-4127-88b1-72a9d32bdf81",
+    "img": "https://images.dog.ceo/breeds/terrier-australian/n02096294_8157.jpg",
+    "name": "Lavonne",
+    "age": 4857,
+    "zip_code": "30303",
+    "breed": "Australian Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "bce3a46d-159b-4365-b4c2-ff0a8e5b5d28",
+    "img": "https://images.dog.ceo/breeds/terrier-bedlington/n02093647_2626.jpg",
+    "name": "Elisa",
+    "age": 1680,
+    "zip_code": "90210",
+    "breed": "Bedlington Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "b8bf49be-70ad-422f-9835-a071c2582e41",
+    "img": "https://images.dog.ceo/breeds/terrier-bedlington/n02093647_291.jpg",
+    "name": "Ciara",
+    "age": 1839,
+    "zip_code": "98101",
+    "breed": "Bedlington Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "a06f7a29-bed0-4f89-8129-241c91a03e2c",
+    "img": "https://images.dog.ceo/breeds/terrier-bedlington/n02093647_3335.jpg",
+    "name": "Meta",
+    "age": 3771,
+    "zip_code": "78701",
+    "breed": "Bedlington Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "b2b7602f-f081-48ae-9902-d5f4c4754180",
+    "img": "https://images.dog.ceo/breeds/terrier-border/n02093754_1148.jpg",
+    "name": "Percy",
+    "age": 3175,
+    "zip_code": "60606",
+    "breed": "Border Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "2ee2dbc5-8cde-4f92-a26c-909947241f6a",
+    "img": "https://images.dog.ceo/breeds/terrier-border/n02093754_186.jpg",
+    "name": "Alvis",
+    "age": 1968,
+    "zip_code": "60606",
+    "breed": "Border Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "8ddcf3df-35f6-4da0-b2d7-831ccecc545f",
+    "img": "https://images.dog.ceo/breeds/terrier-border/n02093754_2801.jpg",
+    "name": "Austen",
+    "age": 4627,
+    "zip_code": "02110",
+    "breed": "Border Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "2ac284ae-0bc5-49b4-bda5-034fa0f62021",
+    "img": "https://images.dog.ceo/breeds/terrier-cairn/n02096177_2127.jpg",
+    "name": "Gabriel",
+    "age": 3525,
+    "zip_code": "98101",
+    "breed": "Cairn Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "98388d83-c65f-44f6-a1ce-87357f099ab9",
+    "img": "https://images.dog.ceo/breeds/terrier-cairn/n02096177_424.jpg",
+    "name": "Russell",
+    "age": 312,
+    "zip_code": "90210",
+    "breed": "Cairn Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "57b5895c-0ad4-4225-ac57-f1e78d555cb8",
+    "img": "https://images.dog.ceo/breeds/terrier-cairn/n02096177_4520.jpg",
+    "name": "Allie",
+    "age": 1465,
+    "zip_code": "30303",
+    "breed": "Cairn Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "8c8e1aaa-e2f5-430b-8a2a-49911a575086",
+    "img": "https://images.dog.ceo/breeds/terrier-dandie/n02096437_179.jpg",
+    "name": "Marcelle",
+    "age": 1123,
+    "zip_code": "78701",
+    "breed": "Dandie Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "aa1a474a-1951-426b-84b5-338159fba5b8",
+    "img": "https://images.dog.ceo/breeds/terrier-dandie/n02096437_290.jpg",
+    "name": "Elvera",
+    "age": 1948,
+    "zip_code": "98101",
+    "breed": "Dandie Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "c89f69f5-01ea-4b66-b685-9c269c2e0a41",
+    "img": "https://images.dog.ceo/breeds/terrier-dandie/n02096437_3195.jpg",
+    "name": "Alva",
+    "age": 2407,
+    "zip_code": "75201",
+    "breed": "Dandie Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "bbbf323d-944d-4683-b027-e1a6ad007e5c",
+    "img": "https://images.dog.ceo/breeds/terrier-fox/n02095314_1577.jpg",
+    "name": "Jeromy",
+    "age": 1674,
+    "zip_code": "60606",
+    "breed": "Fox Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "2a1a23d5-17d8-4a13-8198-0a685c3a9ea1",
+    "img": "https://images.dog.ceo/breeds/terrier-fox/n02095314_2198.jpg",
+    "name": "Jean",
+    "age": 1096,
+    "zip_code": "10001",
+    "breed": "Fox Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "4a7ab940-edba-4413-989f-ba0baabdce41",
+    "img": "https://images.dog.ceo/breeds/terrier-fox/n02095314_969.jpg",
+    "name": "Prince",
+    "age": 2176,
+    "zip_code": "60606",
+    "breed": "Fox Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "c690b02f-1e52-48f4-a95c-9c25266abc16",
+    "img": "https://images.dog.ceo/breeds/terrier-irish/n02093991_122.jpg",
+    "name": "Tyson",
+    "age": 3785,
+    "zip_code": "98101",
+    "breed": "Irish Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "995d14b7-5a05-430f-91a6-68b45da2e6c5",
+    "img": "https://images.dog.ceo/breeds/terrier-irish/n02093991_2437.jpg",
+    "name": "Amya",
+    "age": 977,
+    "zip_code": "10001",
+    "breed": "Irish Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "1ef0ca64-b5c1-450d-909e-515ec60e984d",
+    "img": "https://images.dog.ceo/breeds/terrier-irish/n02093991_3952.jpg",
+    "name": "Theron",
+    "age": 5367,
+    "zip_code": "75201",
+    "breed": "Irish Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "a5cf0db2-fbf0-46d8-b07d-408f5afd1f23",
+    "img": "https://images.dog.ceo/breeds/terrier-kerryblue/n02093859_2124.jpg",
+    "name": "Bria",
+    "age": 452,
+    "zip_code": "90210",
+    "breed": "Kerryblue Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "e5fd8676-6078-4e90-b1fb-dc776b9fcd0b",
+    "img": "https://images.dog.ceo/breeds/terrier-kerryblue/n02093859_3168.jpg",
+    "name": "Davon",
+    "age": 4910,
+    "zip_code": "02110",
+    "breed": "Kerryblue Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "dc6b1d89-ef35-4833-9748-71d6bd8ef1a6",
+    "img": "https://images.dog.ceo/breeds/terrier-kerryblue/n02093859_428.jpg",
+    "name": "Jasper",
+    "age": 5105,
+    "zip_code": "75201",
+    "breed": "Kerryblue Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "b1c812f1-8387-474c-ab36-42bcb9ad4433",
+    "img": "https://images.dog.ceo/breeds/terrier-lakeland/n02095570_2882.jpg",
+    "name": "Kattie",
+    "age": 319,
+    "zip_code": "94107",
+    "breed": "Lakeland Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "9b53bd89-c8e2-4cd6-97ca-5a2f10faa9d2",
+    "img": "https://images.dog.ceo/breeds/terrier-lakeland/n02095570_5800.jpg",
+    "name": "Daniella",
+    "age": 1089,
+    "zip_code": "80202",
+    "breed": "Lakeland Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "41bca18f-5498-493e-9431-163a31ce2892",
+    "img": "https://images.dog.ceo/breeds/terrier-lakeland/n02095570_6339.jpg",
+    "name": "Reanna",
+    "age": 5661,
+    "zip_code": "30303",
+    "breed": "Lakeland Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "353632d2-efde-40f0-9a7c-f54f088b22f9",
+    "img": "https://images.dog.ceo/breeds/terrier-norfolk/n02094114_2428.jpg",
+    "name": "Annamae",
+    "age": 5578,
+    "zip_code": "02110",
+    "breed": "Norfolk Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "8f101ec4-3d06-450d-991f-8aac41d3ba33",
+    "img": "https://images.dog.ceo/breeds/terrier-norfolk/n02094114_297.jpg",
+    "name": "Kurt",
+    "age": 3155,
+    "zip_code": "98101",
+    "breed": "Norfolk Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "ab1b32b8-587c-4118-8ca8-290bc021767e",
+    "img": "https://images.dog.ceo/breeds/terrier-norfolk/n02094114_4266.jpg",
+    "name": "Aniyah",
+    "age": 4710,
+    "zip_code": "98101",
+    "breed": "Norfolk Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "114116e2-a784-4b1f-b2d9-8393d3af48e9",
+    "img": "https://images.dog.ceo/breeds/terrier-norwich/n02094258_1004.jpg",
+    "name": "Esmeralda",
+    "age": 3817,
+    "zip_code": "60606",
+    "breed": "Norwich Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "4ec68f4f-6401-4cc1-a785-4a8476f6df9c",
+    "img": "https://images.dog.ceo/breeds/terrier-norwich/n02094258_1278.jpg",
+    "name": "Mekhi",
+    "age": 2680,
+    "zip_code": "30303",
+    "breed": "Norwich Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "8a0e209e-81a4-4289-a007-72718a456c30",
+    "img": "https://images.dog.ceo/breeds/terrier-norwich/n02094258_230.jpg",
+    "name": "Khalid",
+    "age": 4853,
+    "zip_code": "10001",
+    "breed": "Norwich Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "3f9bd19a-41da-4559-a566-bc900516c878",
+    "img": "https://images.dog.ceo/breeds/terrier-patterdale/320px-05078045_Patterdale_Terrier.jpg",
+    "name": "Maiya",
+    "age": 1575,
+    "zip_code": "80202",
+    "breed": "Patterdale Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "d92d731e-90a5-4be5-97cb-9ac88696862e",
+    "img": "https://images.dog.ceo/breeds/terrier-patterdale/dog-1268559_640.jpg",
+    "name": "Raymundo",
+    "age": 1140,
+    "zip_code": "60606",
+    "breed": "Patterdale Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "b43f4f5a-7087-4508-b968-b7c4b6a4d0eb",
+    "img": "https://images.dog.ceo/breeds/terrier-patterdale/patterdale-terrier-287612805105275kBT.jpg",
+    "name": "Davonte",
+    "age": 5010,
+    "zip_code": "75201",
+    "breed": "Patterdale Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "585fc209-4d41-474c-b5e4-f62085e38220",
+    "img": "https://images.dog.ceo/breeds/terrier-russell/IMG_7489.jpg",
+    "name": "Denis",
+    "age": 5761,
+    "zip_code": "10001",
+    "breed": "Russell Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "bface838-cbd7-44a4-b979-bcbaf1d1ca05",
+    "img": "https://images.dog.ceo/breeds/terrier-russell/IMG_7564.jpg",
+    "name": "Verner",
+    "age": 1290,
+    "zip_code": "75201",
+    "breed": "Russell Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "9deb6992-ac1d-4fa8-b7e1-7f264b43a25a",
+    "img": "https://images.dog.ceo/breeds/terrier-russell/jack-koda-2.jpg",
+    "name": "Jewell",
+    "age": 1306,
+    "zip_code": "78701",
+    "breed": "Russell Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "cb7a7b89-fc36-4706-a562-cb38e4dbb81a",
+    "img": "https://images.dog.ceo/breeds/terrier-scottish/n02097298_12063.jpg",
+    "name": "Bethany",
+    "age": 3980,
+    "zip_code": "75201",
+    "breed": "Scottish Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "529b6024-3532-48fa-8c9f-35a41c91a819",
+    "img": "https://images.dog.ceo/breeds/terrier-scottish/n02097298_2492.jpg",
+    "name": "Karine",
+    "age": 3349,
+    "zip_code": "30303",
+    "breed": "Scottish Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "de685cd7-2f85-4468-a414-7050bf7fdf68",
+    "img": "https://images.dog.ceo/breeds/terrier-scottish/n02097298_7639.jpg",
+    "name": "Loma",
+    "age": 4380,
+    "zip_code": "02110",
+    "breed": "Scottish Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "e2691820-7360-430e-be30-1cf24fca9761",
+    "img": "https://images.dog.ceo/breeds/terrier-sealyham/n02095889_1044.jpg",
+    "name": "Gayle",
+    "age": 4326,
+    "zip_code": "02110",
+    "breed": "Sealyham Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "40e6296e-cb02-4005-a0cf-46a6b076fe22",
+    "img": "https://images.dog.ceo/breeds/terrier-sealyham/n02095889_1208.jpg",
+    "name": "Gaetano",
+    "age": 4706,
+    "zip_code": "80202",
+    "breed": "Sealyham Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "bdfb541b-57e3-4ae9-9ced-c6833dea3a00",
+    "img": "https://images.dog.ceo/breeds/terrier-sealyham/n02095889_6382.jpg",
+    "name": "Ruby",
+    "age": 3939,
+    "zip_code": "98101",
+    "breed": "Sealyham Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "d7aed7fb-3983-459b-86b9-2ddfd7ebd2d5",
+    "img": "https://images.dog.ceo/breeds/terrier-silky/n02097658_1793.jpg",
+    "name": "Dewayne",
+    "age": 2471,
+    "zip_code": "30303",
+    "breed": "Silky Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "e989f329-b414-4c53-9f9f-61cce5e5461b",
+    "img": "https://images.dog.ceo/breeds/terrier-silky/n02097658_7619.jpg",
+    "name": "Trevor",
+    "age": 2996,
+    "zip_code": "75201",
+    "breed": "Silky Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "8a892ea8-21ab-44e2-8408-1598f2811378",
+    "img": "https://images.dog.ceo/breeds/terrier-silky/n02097658_7970.jpg",
+    "name": "David",
+    "age": 5745,
+    "zip_code": "94107",
+    "breed": "Silky Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "c57670ba-aea5-495e-b7a5-e4a32f770ef8",
+    "img": "https://images.dog.ceo/breeds/terrier-tibetan/n02097474_425.jpg",
+    "name": "Cristina",
+    "age": 1918,
+    "zip_code": "98101",
+    "breed": "Tibetan Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "ccadaeed-1a7e-4528-877f-45bbe4ff4da2",
+    "img": "https://images.dog.ceo/breeds/terrier-tibetan/n02097474_5572.jpg",
+    "name": "Rosario",
+    "age": 5702,
+    "zip_code": "90210",
+    "breed": "Tibetan Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "66932209-f586-4003-8ebd-dfacc4ae37c5",
+    "img": "https://images.dog.ceo/breeds/terrier-tibetan/n02097474_8670.jpg",
+    "name": "Whitney",
+    "age": 3792,
+    "zip_code": "98101",
+    "breed": "Tibetan Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "b563d37e-a99f-472a-a915-948d6e5bc509",
+    "img": "https://images.dog.ceo/breeds/terrier-toy/20220613_132740-min.jpg",
+    "name": "Eulah",
+    "age": 2650,
+    "zip_code": "60606",
+    "breed": "Toy Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "1fa430e1-aaa1-4296-a147-45bf36fdacb7",
+    "img": "https://images.dog.ceo/breeds/terrier-toy/n02087046_3471.jpg",
+    "name": "Isabell",
+    "age": 1543,
+    "zip_code": "30303",
+    "breed": "Toy Terrier",
+    "size": "Large"
+  },
+  {
+    "id": "ccdb73c1-52e8-4ade-ab5e-46e28ed58c09",
+    "img": "https://images.dog.ceo/breeds/terrier-toy/n02087046_4129.jpg",
+    "name": "Llewellyn",
+    "age": 1552,
+    "zip_code": "10001",
+    "breed": "Toy Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "0714f108-718c-484d-b177-878e22f46217",
+    "img": "https://images.dog.ceo/breeds/terrier-welsh/lucy.jpg",
+    "name": "Krista",
+    "age": 4840,
+    "zip_code": "10001",
+    "breed": "Welsh Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "3fea1d63-4d72-40cb-8d3b-59bfa296f148",
+    "img": "https://images.dog.ceo/breeds/terrier-westhighland/n02098286_1079.jpg",
+    "name": "Kallie",
+    "age": 5269,
+    "zip_code": "30303",
+    "breed": "Westhighland Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "5c8ae306-1fbc-46d1-b8d8-bce6d4b5f758",
+    "img": "https://images.dog.ceo/breeds/terrier-westhighland/n02098286_2743.jpg",
+    "name": "Rebeka",
+    "age": 4232,
+    "zip_code": "94107",
+    "breed": "Westhighland Terrier",
+    "size": "Medium"
+  },
+  {
+    "id": "bb35992d-b21c-4b96-a57f-41951b7669d8",
+    "img": "https://images.dog.ceo/breeds/terrier-westhighland/n02098286_4154.jpg",
+    "name": "Favian",
+    "age": 1348,
+    "zip_code": "60606",
+    "breed": "Westhighland Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "07ba57e9-569e-4867-9438-2df258fee7e1",
+    "img": "https://images.dog.ceo/breeds/terrier-wheaten/n02098105_205.jpg",
+    "name": "Vaughn",
+    "age": 5270,
+    "zip_code": "75201",
+    "breed": "Wheaten Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "6d4249e8-eacd-4046-84e7-368bb38d4da2",
+    "img": "https://images.dog.ceo/breeds/terrier-wheaten/n02098105_3664.jpg",
+    "name": "Georgette",
+    "age": 527,
+    "zip_code": "10001",
+    "breed": "Wheaten Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "ae8b9b6b-fb44-4c87-88cb-92fca9a90776",
+    "img": "https://images.dog.ceo/breeds/terrier-wheaten/n02098105_707.jpg",
+    "name": "Audrey",
+    "age": 3863,
+    "zip_code": "10001",
+    "breed": "Wheaten Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "b2ee2244-dba1-4d64-ba0d-187957108622",
+    "img": "https://images.dog.ceo/breeds/terrier-yorkshire/n02094433_10126.jpg",
+    "name": "Lola",
+    "age": 159,
+    "zip_code": "30303",
+    "breed": "Yorkshire Terrier",
+    "size": "Extra Large"
+  },
+  {
+    "id": "23adebd9-d86f-44d1-a503-95116dd0a486",
+    "img": "https://images.dog.ceo/breeds/terrier-yorkshire/n02094433_1312.jpg",
+    "name": "Robyn",
+    "age": 3605,
+    "zip_code": "30303",
+    "breed": "Yorkshire Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "4da4ed50-94a3-4c69-bcdd-c46340276e13",
+    "img": "https://images.dog.ceo/breeds/terrier-yorkshire/n02094433_2115.jpg",
+    "name": "Nickolas",
+    "age": 5227,
+    "zip_code": "78701",
+    "breed": "Yorkshire Terrier",
+    "size": "Small"
+  },
+  {
+    "id": "3f479f8a-a0c1-4617-bd55-f7135006fb0c",
+    "img": "https://images.dog.ceo/breeds/tervuren/shadow_and_frisbee.jpg",
+    "name": "Waylon",
+    "age": 3197,
+    "zip_code": "78701",
+    "breed": "Tervuren",
+    "size": "Extra Large"
+  },
+  {
+    "id": "8925510d-52c2-4906-a389-1e1ef62ba425",
+    "img": "https://images.dog.ceo/breeds/tervuren/shadow_and_lake.jpg",
+    "name": "Dejuan",
+    "age": 5022,
+    "zip_code": "30303",
+    "breed": "Tervuren",
+    "size": "Extra Large"
+  },
+  {
+    "id": "25739e7f-66ab-411c-b80e-ec3b30f242e6",
+    "img": "https://images.dog.ceo/breeds/tervuren/yoda_in_car.jpg",
+    "name": "Kathryn",
+    "age": 1878,
+    "zip_code": "90210",
+    "breed": "Tervuren",
+    "size": "Medium"
+  },
+  {
+    "id": "fc893f93-1038-4f24-b05d-6a5c55b6070a",
+    "img": "https://images.dog.ceo/breeds/vizsla/n02100583_10358.jpg",
+    "name": "Danial",
+    "age": 1946,
+    "zip_code": "94107",
+    "breed": "Vizsla",
+    "size": "Large"
+  },
+  {
+    "id": "2214a7d5-7b0f-4ba0-aa6b-2643bcff5c5c",
+    "img": "https://images.dog.ceo/breeds/vizsla/n02100583_12253.jpg",
+    "name": "Iliana",
+    "age": 1886,
+    "zip_code": "98101",
+    "breed": "Vizsla",
+    "size": "Large"
+  },
+  {
+    "id": "f7b14d77-2795-4a8e-8765-2b7cc8907ed8",
+    "img": "https://images.dog.ceo/breeds/vizsla/n02100583_1475.jpg",
+    "name": "Rodolfo",
+    "age": 4461,
+    "zip_code": "10001",
+    "breed": "Vizsla",
+    "size": "Medium"
+  },
+  {
+    "id": "b6b340f8-d961-4055-9d45-e05b41de5c84",
+    "img": "https://images.dog.ceo/breeds/waterdog-spanish/20180714_201544.jpg",
+    "name": "Nakia",
+    "age": 4493,
+    "zip_code": "10001",
+    "breed": "Spanish Waterdog",
+    "size": "Medium"
+  },
+  {
+    "id": "a32696cb-417e-4b94-8b2a-defb897684be",
+    "img": "https://images.dog.ceo/breeds/waterdog-spanish/20180723_185544.jpg",
+    "name": "Fleta",
+    "age": 4767,
+    "zip_code": "10001",
+    "breed": "Spanish Waterdog",
+    "size": "Medium"
+  },
+  {
+    "id": "573c3a1c-b5cc-491e-8e92-95ca79c24057",
+    "img": "https://images.dog.ceo/breeds/waterdog-spanish/20180723_185559.jpg",
+    "name": "Jewel",
+    "age": 661,
+    "zip_code": "94107",
+    "breed": "Spanish Waterdog",
+    "size": "Extra Large"
+  },
+  {
+    "id": "161e6b9f-4cc1-48db-854e-06f03a7d58ee",
+    "img": "https://images.dog.ceo/breeds/weimaraner/n02092339_2731.jpg",
+    "name": "Kale",
+    "age": 1750,
+    "zip_code": "30303",
+    "breed": "Weimaraner",
+    "size": "Small"
+  },
+  {
+    "id": "2e963863-4593-470e-aea2-eccdad5727bf",
+    "img": "https://images.dog.ceo/breeds/weimaraner/n02092339_3222.jpg",
+    "name": "Mauricio",
+    "age": 1943,
+    "zip_code": "80202",
+    "breed": "Weimaraner",
+    "size": "Extra Large"
+  },
+  {
+    "id": "44cfef3f-3ca5-412d-83cf-1c0d6553e2fc",
+    "img": "https://images.dog.ceo/breeds/weimaraner/n02092339_4003.jpg",
+    "name": "Maximilian",
+    "age": 5694,
+    "zip_code": "60606",
+    "breed": "Weimaraner",
+    "size": "Small"
+  },
+  {
+    "id": "4a35eec1-f82d-40e4-b019-679d752d361f",
+    "img": "https://images.dog.ceo/breeds/whippet/n02091134_14828.jpg",
+    "name": "Marcia",
+    "age": 2287,
+    "zip_code": "10001",
+    "breed": "Whippet",
+    "size": "Small"
+  },
+  {
+    "id": "f79744e8-ea6e-4be7-a934-e80d371f3efe",
+    "img": "https://images.dog.ceo/breeds/whippet/n02091134_4002.jpg",
+    "name": "Margarita",
+    "age": 4097,
+    "zip_code": "30303",
+    "breed": "Whippet",
+    "size": "Medium"
+  },
+  {
+    "id": "0173bc48-7340-4c1b-a98c-cb4694a14905",
+    "img": "https://images.dog.ceo/breeds/whippet/n02091134_7232.jpg",
+    "name": "Arno",
+    "age": 5168,
+    "zip_code": "60606",
+    "breed": "Whippet",
+    "size": "Large"
+  },
+  {
+    "id": "5e47301a-7f0f-4801-9835-4c7dae4e5870",
+    "img": "https://images.dog.ceo/breeds/wolfhound-irish/n02090721_1728.jpg",
+    "name": "Madalyn",
+    "age": 5062,
+    "zip_code": "90210",
+    "breed": "Irish Wolfhound",
+    "size": "Extra Large"
+  },
+  {
+    "id": "f5745186-f0a2-4c3a-beba-7b5a4e235a35",
+    "img": "https://images.dog.ceo/breeds/wolfhound-irish/n02090721_1845.jpg",
+    "name": "Ruthe",
+    "age": 1492,
+    "zip_code": "94107",
+    "breed": "Irish Wolfhound",
+    "size": "Medium"
+  },
+  {
+    "id": "5d256497-444c-4ffa-9c4b-4606663c8284",
+    "img": "https://images.dog.ceo/breeds/wolfhound-irish/n02090721_607.jpg",
+    "name": "Raven",
+    "age": 2742,
+    "zip_code": "75201",
+    "breed": "Irish Wolfhound",
+    "size": "Medium"
+  }
+]

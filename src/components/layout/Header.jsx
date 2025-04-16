@@ -160,7 +160,7 @@ const Header = (props) => {
                       fontSize: { xs: '1.2rem', sm: '1.5rem' },
                     }}
                   >
-                    Fetch Dog Finder
+                    Dog Finder
                   </Typography>
                 </Box>
               </Fade>

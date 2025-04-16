@@ -281,7 +281,7 @@ const DogCard = ({ dog, hideActions = false }) => {
               <Button
                 size="small"
                 component={RouterLink}
-                to={`/dogs/${dog.id}`}
+                to={`/dog/${dog.id}`}
                 sx={{ 
                   borderRadius: 2,
                   fontWeight: 'medium',

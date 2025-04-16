@@ -42,12 +42,16 @@ const DogDetailsPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
+  // Log component mount
+  console.log(`DogDetailsPage: Mounting for dog ID: ${id}`);
+
   const [dog, setDog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
   const { favorites } = useSelector((state) => state.favorites);
   const isFavorite = favorites.includes(id);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const fetchDogDetails = async () => {
@@ -67,8 +71,10 @@ const DogDetailsPage = () => {
       }
     };
 
-    fetchDogDetails();
-  }, [id]);
+    if (isAuthenticated) {
+      fetchDogDetails();
+    }
+  }, [id, isAuthenticated]);
 
   const handleToggleFavorite = () => {
     if (isFavorite) {

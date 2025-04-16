@@ -33,16 +33,18 @@ import SortSelector from '../features/dogs/components/SortSelector';
 import ErrorState from '../components/ui/ErrorState';
 import EmptyState from '../components/ui/EmptyState';
 import useApiErrorHandler from '../hooks/useApiErrorHandler';
+import useDogFilters from '../hooks/useDogFilters';
+import { getColumnCount, renderSkeletons } from '../utils/gridUtils';
 import { 
   fetchDogs, 
   setPage,
-  setFilters,
   selectFilteredDogs,
-  selectIsLoading,
-  selectError,
+  selectIsLoadingDogs,
+  selectDogError,
   selectPagination,
   selectUsingCachedData,
-  clearCachedDataFlag
+  clearCachedDataFlag,
+  selectDogLoadingState
 } from '../features/dogs/slice';
 
 const SearchPage = () => {
@@ -56,6 +58,9 @@ const SearchPage = () => {
   // Add ref for the search results section
   const searchResultsRef = useRef(null);
   
+  // Use the custom filters hook
+  const { filters, setFilters, resetFilters } = useDogFilters();
+  
   // Use API error handler hook
   const { retryApiCall } = useApiErrorHandler({
     maxRetries: 3,
@@ -64,14 +69,11 @@ const SearchPage = () => {
   
   // Use memoized selectors
   const dogs = useSelector(selectFilteredDogs);
-  const { isLoading, error } = useSelector(state => ({
-    isLoading: selectIsLoading(state),
-    error: selectError(state)
-  }));
+  const { isLoading, error } = useSelector(selectDogLoadingState);
   const { total, page, pageSize } = useSelector(selectPagination);
-  const filters = useSelector(state => state.dogs.filters);
   const sortOption = useSelector(state => state.dogs.sortOption);
   const usingCachedData = useSelector(selectUsingCachedData);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   // Toggle filters display on mobile
   const toggleFilters = useCallback(() => {
@@ -93,19 +95,21 @@ const SearchPage = () => {
     setShowFilters(!isMobile);
   }, [isMobile]);
 
-  // Fetch dogs on component mount and when search parameters change
+  // Fetch dogs on component mount and when search parameters change, only if authenticated
   useEffect(() => {
-    dispatch(fetchDogs({ 
-      filters, 
-      page, 
-      size: pageSize, 
-      sort: sortOption 
-    }));
-  }, [dispatch, filters, page, pageSize, sortOption]);
+    if (isAuthenticated) {
+      dispatch(fetchDogs({ 
+        filters,
+        page, 
+        size: pageSize, 
+        sort: sortOption 
+      }));
+    }
+  }, [dispatch, filters, page, pageSize, sortOption, isAuthenticated]);
 
   // Handle page change with useCallback
   const handlePageChange = useCallback((event, value) => {
-    dispatch(setPage(value - 1)); // API is 0-indexed, UI is 1-indexed
+    dispatch(setPage(value - 1));
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -114,14 +118,14 @@ const SearchPage = () => {
 
   // Handle filter change with useCallback
   const handleFilterChange = useCallback((newFilters) => {
-    dispatch(setFilters(newFilters));
-  }, [dispatch]);
+    setFilters(newFilters);
+  }, [setFilters]);
 
   // Handle retry for fetching dogs
   const handleRetry = useCallback(() => {
     retryApiCall(() => 
       dispatch(fetchDogs({ 
-        filters, 
+        filters,
         page, 
         size: pageSize, 
         sort: sortOption 
@@ -131,28 +135,17 @@ const SearchPage = () => {
 
   // Handle reset filters
   const handleResetFilters = useCallback(() => {
-    dispatch(setFilters({
-      breeds: [],
-      ageMin: undefined,
-      ageMax: undefined,
-      zipCodes: undefined,
-    }));
-  }, [dispatch]);
+    resetFilters();
+  }, [resetFilters]);
 
   // Calculate total pages
   const totalPages = Math.ceil(total / pageSize);
 
-  // Calculate grid layout based on screen size - wrapped in useCallback
-  const getColumnCount = useCallback(() => {
-    if (isMobile) return 1;
-    if (isTablet) return 2;
-    if (isDesktop) return 3;
-    return 4; // xl screens
-  }, [isMobile, isTablet, isDesktop]);
+  // Calculate column count using utility function
+  const columnCount = getColumnCount(isMobile, isTablet, isDesktop);
 
   // Cell renderer for virtualized grid
   const Cell = useCallback(({ columnIndex, rowIndex, style }) => {
-    const columnCount = getColumnCount();
     const index = rowIndex * columnCount + columnIndex;
     
     if (index >= dogs.length) {
@@ -169,23 +162,7 @@ const SearchPage = () => {
         <DogCard dog={dog} />
       </div>
     );
-  }, [dogs, getColumnCount]);
-
-  // Generate a skeleton loading grid based on screen size
-  const renderSkeletons = () => {
-    const columnCount = getColumnCount();
-    const skeletonCount = columnCount * 2; // Show 2 rows of skeletons
-    
-    return (
-      <Grid container spacing={2}>
-        {Array.from(new Array(skeletonCount)).map((_, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={`skeleton-${index}`}>
-            <DogCardSkeleton />
-          </Grid>
-        ))}
-      </Grid>
-    );
-  };
+  }, [dogs, columnCount]);
 
   // Determine the error type
   const getErrorType = (errorMessage) => {
@@ -479,7 +456,11 @@ const SearchPage = () => {
                     <Typography variant="h6" fontWeight="bold">Search Filters</Typography>
                   </Stack>
                 </Box>
-                <DogFilter onFilterChange={handleFilterChange} />
+                <DogFilter 
+                  onFilterChange={handleFilterChange} 
+                  currentFilters={filters}
+                  onResetFilters={handleResetFilters}
+                />
               </Card>
             </Grid>
           </Fade>
@@ -550,7 +531,7 @@ const SearchPage = () => {
             </Card>
 
             {/* Loading skeletons */}
-            {isLoading && renderSkeletons()}
+            {isLoading && renderSkeletons(columnCount)}
 
             {/* Error message */}
             {error && !isLoading && (
@@ -582,11 +563,10 @@ const SearchPage = () => {
                 <Card elevation={3} sx={{ height: 800, mb: 3, borderRadius: 3, overflow: 'hidden' }}>
                   <AutoSizer>
                     {({ height, width }) => {
-                      const columnCount = getColumnCount();
                       const rowCount = Math.ceil(dogs.length / columnCount);
-                      const columnWidth = width / columnCount;
-                      const rowHeight = 450; // Adjust based on your card height
-                      
+                      const columnWidth = Math.floor(width / columnCount);
+                      const rowHeight = 430; // Adjust based on DogCard height + padding
+
                       return (
                         <FixedSizeGrid
                           columnCount={columnCount}
@@ -595,6 +575,7 @@ const SearchPage = () => {
                           rowCount={rowCount}
                           rowHeight={rowHeight}
                           width={width}
+                          itemData={{ dogs, columnCount }} // Optional: pass data if needed in Cell
                         >
                           {Cell}
                         </FixedSizeGrid>
