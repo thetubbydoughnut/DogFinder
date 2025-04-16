@@ -42,19 +42,15 @@ const Footer = () => {
               {new Date().getFullYear()}{' '}
               <Link 
                 color="inherit" 
-                href="https://fetch.com/" 
                 target="_blank" 
                 rel="noopener"
                 sx={{ 
                   textDecoration: 'none', 
                   fontWeight: 'medium',
                   color: theme.palette.primary.main,
-                  '&:hover': {
-                    textDecoration: 'underline',
-                  }
                 }}
               >
-                Fetch Dog Finder
+                Dog Finder
               </Link>
             </Typography>
           </Box>

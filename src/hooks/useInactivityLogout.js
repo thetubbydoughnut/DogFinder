@@ -1,22 +1,21 @@
 import { useEffect, useCallback, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { logout } from '../features/auth/slice'; // Adjust path as needed
+import { useAuth0 } from '@auth0/auth0-react'; // Import useAuth0
 
 const useInactivityLogout = (timeout = 600000) => { // Default to 10 minutes (10 * 60 * 1000 ms)
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated, logout } = useAuth0(); // Get Auth0 state and logout function
   const timerRef = useRef(null);
 
-  const handleLogout = useCallback(() => {
+  const handleLogout = useCallback(async () => {
     if (isAuthenticated) {
       console.log(`Inactivity detected. Logging out user after ${timeout / 60000} minutes.`);
-      dispatch(logout()).then(() => {
-        navigate('/'); // Redirect to login page after logout
-      });
+      try {
+        await logout({ logoutParams: { returnTo: window.location.origin } });
+        // Redirect is handled by Auth0 after logout
+      } catch (error) {
+        console.error('Error during inactivity logout:', error);
+      }
     }
-  }, [dispatch, navigate, isAuthenticated, timeout]);
+  }, [isAuthenticated, logout, timeout]);
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) {
@@ -32,8 +31,9 @@ const useInactivityLogout = (timeout = 600000) => { // Default to 10 minutes (10
     const events = ['mousemove', 'mousedown', 'keypress', 'scroll', 'touchstart'];
 
     // Add event listeners to reset the timer on activity
+    const handleActivity = () => resetTimer(); // Renamed for clarity
     events.forEach((event) => {
-      window.addEventListener(event, resetTimer);
+      window.addEventListener(event, handleActivity);
     });
 
     // Initialize the timer when the hook mounts or auth state changes
@@ -45,7 +45,7 @@ const useInactivityLogout = (timeout = 600000) => { // Default to 10 minutes (10
         clearTimeout(timerRef.current);
       }
       events.forEach((event) => {
-        window.removeEventListener(event, resetTimer);
+        window.removeEventListener(event, handleActivity);
       });
     };
   }, [resetTimer]); // Rerun effect if resetTimer changes (due to dependencies changing)

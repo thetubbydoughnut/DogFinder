@@ -132,9 +132,16 @@ const dogService = {
     if (!ids || ids.length === 0) {
       return [];
     }
-    const idSet = new Set(ids);
-    // Ensure we only return valid dog objects
-    return allDogs.filter(dog => dog && dog.id && idSet.has(dog.id));
+    
+    // Create a map for efficient lookup
+    const dogMap = new Map(allDogs.map(dog => [dog.id, dog]));
+    
+    // Map the input IDs to dog objects, preserving the order of IDs
+    const orderedDogs = ids
+      .map(id => dogMap.get(id)) // Get dog object from map using the ID
+      .filter(dog => dog !== undefined); // Filter out any potential undefined if an ID wasn't found
+
+    return orderedDogs;
   },
 
   // No cache methods needed anymore

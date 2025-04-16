@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   Box,
   Typography,
@@ -42,10 +43,12 @@ const FavoritesPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   
+  // Get favorites state from Redux
   const { favorites, favoriteDogs, isLoading, error, match } = useSelector(
     (state) => state.favorites
   );
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  // Get auth state from Auth0
+  const { isAuthenticated, isLoading: isAuthLoading } = useAuth0();
   
   const [showClearDialog, setShowClearDialog] = useState(false);
   const [matchDialogOpen, setMatchDialogOpen] = useState(false);
@@ -59,20 +62,36 @@ const FavoritesPage = () => {
     initialDelay: 1500,
   });
 
-  // Load favorite dogs on component mount, only if authenticated
+  // Fetch favorite dogs when component mounts or dependencies change
   useEffect(() => {
-    // Only fetch if authenticated and there are favorites
-    if (isAuthenticated && favorites.length > 0) {
-      dispatch(getFavoriteDogs(favorites));
+    const fetchFavorites = () => {
+      if (favorites.length > 0) {
+        // Fetching logic remains the same, relying on the favorites slice thunk
+        dispatch(getFavoriteDogs(favorites)); 
+      } else {
+        // If no favorites, ensure local state is cleared (if using local state for dogs)
+        // setFavoriteDogs([]); // Example if local state was used
+        // setLoading(false); // Example if local state was used
+      }
+    };
+
+    // Only fetch if authenticated and Auth0 is not loading
+    if (!isAuthLoading && isAuthenticated) {
+      fetchFavorites();
+    } else if (!isAuthLoading && !isAuthenticated) {
+      // Optionally clear Redux favorites state if user logs out
+      // dispatch(clearFavorites()); // Uncomment if this is desired behavior
+      // Clear local state if used
     }
     
-    // Start animation after a slight delay
+    // Start animation after a slight delay, regardless of auth state
     const timer = setTimeout(() => {
       setAnimateItems(true);
     }, 300);
     
     return () => clearTimeout(timer);
-  }, [dispatch, favorites, isAuthenticated]);
+    // Add isAuthLoading to dependency array
+  }, [dispatch, favorites, isAuthenticated, isAuthLoading]);
 
   // Handle match generation
   const handleGenerateMatch = async () => {

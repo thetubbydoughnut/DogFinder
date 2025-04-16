@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   Box,
   Typography,
@@ -73,7 +74,7 @@ const SearchPage = () => {
   const { total, page, pageSize } = useSelector(selectPagination);
   const sortOption = useSelector(state => state.dogs.sortOption);
   const usingCachedData = useSelector(selectUsingCachedData);
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const { isAuthenticated, isLoading: isAuthLoading } = useAuth0();
 
   // Toggle filters display on mobile
   const toggleFilters = useCallback(() => {
@@ -97,7 +98,7 @@ const SearchPage = () => {
 
   // Fetch dogs on component mount and when search parameters change, only if authenticated
   useEffect(() => {
-    if (isAuthenticated) {
+    if (!isAuthLoading && isAuthenticated) {
       dispatch(fetchDogs({ 
         filters,
         page, 
@@ -105,7 +106,7 @@ const SearchPage = () => {
         sort: sortOption 
       }));
     }
-  }, [dispatch, filters, page, pageSize, sortOption, isAuthenticated]);
+  }, [dispatch, filters, page, pageSize, sortOption, isAuthenticated, isAuthLoading]);
 
   // Handle page change with useCallback
   const handlePageChange = useCallback((event, value) => {

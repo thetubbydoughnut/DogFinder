@@ -1,203 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   Box,
   Button,
-  TextField,
   Typography,
   Paper,
-  Alert,
-  CircularProgress,
-  Grid,
-  Container,
-  useTheme,
-  Tooltip,
-  Zoom,
-  Fade,
+  CircularProgress
 } from '@mui/material';
-import PetsIcon from '@mui/icons-material/Pets';
-import EmailIcon from '@mui/icons-material/Email';
-import PersonIcon from '@mui/icons-material/Person';
-import { login, clearError } from '../slice';
-
-// Validation schema for the login form
-const LoginSchema = Yup.object().shape({
-  name: Yup.string().required('Name is required'),
-  email: Yup.string().email('Invalid email').required('Email is required'),
-});
+import LoginIcon from '@mui/icons-material/Login';
 
 const LoginForm = () => {
-  const theme = useTheme();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { isAuthenticated, isLoading, error } = useSelector((state) => state.auth);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [showContent, setShowContent] = useState(false);
+  const { loginWithRedirect, isLoading, error } = useAuth0();
 
-  // Show content with animation after a short delay
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowContent(true);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Redirect to search page if already authenticated
-  useEffect(() => {
-    if (isAuthenticated && formSubmitted) {
-      navigate('/search');
+  const handleLogin = async () => {
+    try {
+      await loginWithRedirect();
+    } catch (err) {
+      // Errors during redirect initiation are less common but possible
+      console.error('Failed to initiate login redirect:', err);
     }
-  }, [isAuthenticated, navigate, formSubmitted]);
-
-  // Clear error when component unmounts
-  useEffect(() => {
-    return () => {
-      if (error) {
-        dispatch(clearError());
-      }
-    };
-  }, [dispatch, error]);
-
-  const handleSubmit = async (values) => {
-    setFormSubmitted(true);
-    await dispatch(login({ name: values.name, email: values.email }));
   };
 
   return (
-    <Fade in={showContent} timeout={800}>
-      <Box>
-        <Box 
-          sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            mb: 4,
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          <PetsIcon 
-            sx={{ 
-              fontSize: 40, 
-              color: theme.palette.primary.main,
-              mr: 2,
-              animation: 'bounce 2s infinite',
-              '@keyframes bounce': {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-10px)' },
-              },
-            }} 
-          />
-          <Typography variant="h4" component="h1" fontWeight="bold">
-            Fetch Dog Finder
-          </Typography>
-        </Box>
-
-        <Typography variant="h6" sx={{ mb: 3, color: theme.palette.text.secondary, position: 'relative', zIndex: 1 }}>
-          Find your perfect canine companion
+    <Paper 
+      elevation={4} 
+      sx={{ 
+        p: 4, 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        maxWidth: 400, 
+        mx: 'auto' 
+      }}
+    >
+      <Typography variant="h5" component="h1" gutterBottom sx={{ mb: 3 }}>
+        Welcome Back!
+      </Typography>
+      <Typography variant="body1" align="center" sx={{ mb: 4 }}>
+        Please log in or sign up to continue.
+      </Typography>
+      
+      {error && (
+        <Typography color="error" sx={{ mb: 2 }}>
+          Login Error: {error.message}
         </Typography>
+      )}
 
-        {error && (
-          <Alert severity="error" sx={{ mb: 3, position: 'relative', zIndex: 1 }}>
-            {error}
-          </Alert>
-        )}
-
-        <Formik
-          initialValues={{ name: '', email: '' }}
-          validationSchema={LoginSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ errors, touched, isValid, dirty }) => (
-            <Form>
-              <Box sx={{ mb: 3, position: 'relative' }}>
-                <Field
-                  as={TextField}
-                  fullWidth
-                  id="name"
-                  name="name"
-                  label="Name"
-                  variant="outlined"
-                  error={touched.name && Boolean(errors.name)}
-                  helperText={touched.name && errors.name}
-                  disabled={isLoading}
-                  InputProps={{
-                    startAdornment: (
-                      <PersonIcon sx={{ mr: 1, color: theme.palette.text.secondary }} />
-                    ),
-                  }}
-                />
-              </Box>
-
-              <Box sx={{ mb: 4, position: 'relative' }}>
-                <Tooltip 
-                  title="Please enter a valid email address" 
-                  placement="top"
-                  arrow
-                >
-                  <Box>
-                    <Field
-                      as={TextField}
-                      fullWidth
-                      id="email"
-                      name="email"
-                      label="Email"
-                      variant="outlined"
-                      error={touched.email && Boolean(errors.email)}
-                      helperText={touched.email && errors.email}
-                      disabled={isLoading}
-                      InputProps={{
-                        startAdornment: (
-                          <EmailIcon sx={{ mr: 1, color: theme.palette.text.secondary }} />
-                        ),
-                      }}
-                    />
-                  </Box>
-                </Tooltip>
-              </Box>
-
-              <Button
-                type="submit"
-                fullWidth
-                size="large"
-                variant="contained"
-                color="primary"
-                disabled={isLoading || !(dirty && isValid)}
-                sx={{
-                  py: 1.5,
-                  position: 'relative',
-                  zIndex: 1,
-                  fontWeight: 600,
-                }}
-              >
-                {isLoading ? (
-                  <CircularProgress size={24} color="inherit" />
-                ) : (
-                  'Sign In & Find Dogs'
-                )}
-              </Button>
-            </Form>
-          )}
-        </Formik>
-
-        <Typography 
-          variant="caption" 
-          sx={{ 
-            display: 'block', 
-            textAlign: 'center', 
-            mt: 4, 
-            color: theme.palette.text.secondary,
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          By signing in, you'll be able to browse available dogs,
-          save your favorites, and find your perfect match
-        </Typography>
-      </Box>
-    </Fade>
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        startIcon={isLoading ? <CircularProgress size={20} color="inherit" /> : <LoginIcon />}
+        onClick={handleLogin}
+        disabled={isLoading}
+        fullWidth
+      >
+        {isLoading ? 'Loading...' : 'Log In / Sign Up'}
+      </Button>
+    </Paper>
   );
 };
 

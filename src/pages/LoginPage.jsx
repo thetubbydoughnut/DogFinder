@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Container, Box, Paper, Typography, useTheme, Grid } from '@mui/material';
+import { Container, Box, Paper, Typography, useTheme, Grid, CircularProgress } from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets';
 import LoginForm from '../features/auth/components/LoginForm';
 
@@ -9,19 +9,27 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useTheme();
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated, isLoading } = useAuth0();
 
   // Redirect authenticated users
   useEffect(() => {
-    if (isAuthenticated) {
-      // Determine the redirect destination
+    if (!isLoading && isAuthenticated) {
+      // Auth0 handles redirect after login automatically based on original path
+      // We just need to navigate away from login page if user is already authenticated
       const from = location.state?.from?.pathname || '/search'; 
-      // Log the redirection
       console.log(`LoginPage: User already authenticated. Redirecting to: ${from}`);
-      navigate(from, { replace: true }); // Redirect to the original destination or /search
+      navigate(from, { replace: true });
     }
-    // Add location.state to dependencies to react to changes in location state
-  }, [isAuthenticated, navigate, location.state]);
+  }, [isAuthenticated, isLoading, navigate, location.state]);
+
+  // Display loading indicator while Auth0 checks state
+  if (isLoading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <CircularProgress size={60} />
+      </Box>
+    );
+  }
 
   return (
     <>

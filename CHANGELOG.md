@@ -2,6 +2,8 @@
 
 ### 4-16-2025
 
+- **FEAT**: Integrated Auth0 for user authentication, replacing the previous mock implementation. Requires `.env` file with Auth0 Domain and Client ID.
+- **FIX**: Refined `dogService.getDogsByIds` to explicitly preserve sort order from `searchDogs` results, ensuring consistent display after client-side sorting.
 - **CHORE**: Removed residual commented-out code related to the previous API/caching implementation in `dogService.js` and `dogs/slice.js`.
 - **FEAT**: Implemented automatic logout after 10 minutes of user inactivity (`useInactivityLogout` hook).
 - **FIX**: Corrected redirect logic to return users to their intended page after login, resolving issue where users were always sent to `/search` after navigating from a protected route to login.
@@ -19,4 +21,6 @@
 - **CHORE**: Removed empty `src/api` directory.
 - **CHORE**: Removed `CHANGELOG.md` from `.gitignore` to allow tracking.
 - **CHORE**: Disabled `no-restricted-globals` ESLint rule in `public/service-worker.js`.
-- **DOCS**: Created initial `CHANGELOG.md`. 
+- **DOCS**: Created initial `CHANGELOG.md`.
+- **FIX**: Ensure long email addresses don't overflow in the header user menu by applying text truncation.
+- **CHORE**: Removed remaining references to the old Fetch API URL/domain from `.env`, `public/index.html`, `public/service-worker.js`, `deployment-guide.md`, and footer link. 

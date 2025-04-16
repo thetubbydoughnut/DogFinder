@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   Box,
   Button,
@@ -51,7 +52,7 @@ const DogDetailsPage = () => {
   
   const { favorites } = useSelector((state) => state.favorites);
   const isFavorite = favorites.includes(id);
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated, isLoading: isAuthLoading } = useAuth0();
 
   useEffect(() => {
     const fetchDogDetails = async () => {
@@ -71,10 +72,10 @@ const DogDetailsPage = () => {
       }
     };
 
-    if (isAuthenticated) {
+    if (!isAuthLoading && isAuthenticated) {
       fetchDogDetails();
     }
-  }, [id, isAuthenticated]);
+  }, [id, isAuthenticated, isAuthLoading]);
 
   const handleToggleFavorite = () => {
     if (isFavorite) {
@@ -110,7 +111,7 @@ const DogDetailsPage = () => {
     return `https://placedog.net/800/500?id=${seed}`;
   };
 
-  if (loading) {
+  if (isAuthLoading || (loading && isAuthenticated)) {
     return (
       <Container maxWidth="lg" sx={{ pt: 3, pb: 5 }}>
         <Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">

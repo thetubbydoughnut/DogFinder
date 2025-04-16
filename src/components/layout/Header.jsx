@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link as RouterLink, useNavigate, useLocation } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   AppBar,
   Box,
@@ -36,7 +37,6 @@ import PersonIcon from '@mui/icons-material/Person';
 import CloseIcon from '@mui/icons-material/Close';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { logout } from '../../features/auth/slice';
 import { useTheme } from '../../context/ThemeContext';
 
 // Hide AppBar on scroll down, show on scroll up
@@ -54,12 +54,11 @@ function HideOnScroll(props) {
 const Header = (props) => {
   const muiTheme = useMuiTheme();
   const { mode, toggleTheme } = useTheme();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('md'));
   
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const { isAuthenticated, user, logout, isLoading } = useAuth0();
   const { favorites } = useSelector((state) => state.favorites);
   const favoriteCount = favorites.length;
   
@@ -88,8 +87,7 @@ const Header = (props) => {
   const handleLogout = async () => {
     handleUserMenuClose();
     setMobileMenuOpen(false);
-    await dispatch(logout());
-    navigate('/');
+    await logout({ logoutParams: { returnTo: window.location.origin } });
   };
   
   const handleNavigate = (path) => {
@@ -320,39 +318,26 @@ const Header = (props) => {
               {isAuthenticated && !isMobile && (
                 <Fade in={mounted} timeout={1200}>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Tooltip title="Account settings">
-                      <IconButton
-                        onClick={handleUserMenuOpen}
-                        size="small"
-                        sx={{ 
-                          ml: 2,
-                          transition: 'transform 0.2s',
-                          '&:hover': {
-                            transform: 'scale(1.1)',
-                          }
-                        }}
-                        aria-controls={userMenuOpen ? 'account-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={userMenuOpen ? 'true' : undefined}
-                      >
+                    <Tooltip title="Account Settings">
+                      <IconButton onClick={handleUserMenuOpen} size="small">
                         <Avatar 
                           sx={{ 
                             width: 40, 
-                            height: 40,
-                            bgcolor: muiTheme.palette.primary.main,
-                            fontWeight: 'bold',
-                          }}
+                            height: 40, 
+                            bgcolor: muiTheme.palette.primary.main, 
+                            fontSize: '1.1rem' 
+                          }} 
+                          alt={user?.name || 'User'}
+                          src={user?.picture}
                         >
-                          {user?.name?.charAt(0).toUpperCase()}
+                          {!user?.picture && user?.name ? user.name.charAt(0).toUpperCase() : <PersonIcon />}
                         </Avatar>
                       </IconButton>
                     </Tooltip>
                     <Menu
                       anchorEl={userMenuAnchor}
-                      id="account-menu"
                       open={userMenuOpen}
                       onClose={handleUserMenuClose}
-                      onClick={handleUserMenuClose}
                       PaperProps={{
                         elevation: 4,
                         sx: {
@@ -378,39 +363,36 @@ const Header = (props) => {
                       transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                       anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
-                      <MenuItem sx={{ py: 1.5 }}>
-                        <ListItemIcon>
-                          <PersonIcon fontSize="small" color="primary" />
-                        </ListItemIcon>
-                        <ListItemText 
-                          primary={user?.name}
-                          secondary={user?.email}
-                          primaryTypographyProps={{ fontWeight: 'medium' }}
-                          secondaryTypographyProps={{ fontSize: '0.75rem' }}
-                        />
-                      </MenuItem>
+                      <Box sx={{ p: 2, textAlign: 'center' }}>
+                        <Avatar 
+                          sx={{ width: 60, height: 60, margin: 'auto', mb: 1, bgcolor: muiTheme.palette.secondary.main }}
+                          alt={user?.name || 'User'}
+                          src={user?.picture}
+                        >
+                          {!user?.picture && user?.name ? user.name.charAt(0).toUpperCase() : <PersonIcon />}
+                        </Avatar>
+                        <Typography variant="subtitle1" fontWeight="bold">
+                          {user?.name}
+                        </Typography>
+                        <Typography 
+                          variant="body2" 
+                          color="text.secondary"
+                          sx={{
+                            maxWidth: '100%',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          {user?.email}
+                        </Typography>
+                      </Box>
                       <Divider />
-                      <MenuItem sx={{ py: 1 }}>
+                      <MenuItem onClick={handleLogout}>
                         <ListItemIcon>
-                          {mode === 'dark' ? (
-                            <Brightness7Icon fontSize="small" sx={{ color: '#FFC107' }} />
-                          ) : (
-                            <Brightness4Icon fontSize="small" sx={{ color: '#5C6BC0' }} />
-                          )}
+                          <LogoutIcon fontSize="small" />
                         </ListItemIcon>
-                        <Typography>{mode === 'dark' ? 'Light' : 'Dark'} Mode</Typography>
-                        <Switch 
-                          checked={mode === 'dark'}
-                          onChange={toggleTheme}
-                          size="small"
-                          sx={{ ml: 'auto' }}
-                        />
-                      </MenuItem>
-                      <MenuItem onClick={handleLogout} sx={{ py: 1.5 }}>
-                        <ListItemIcon>
-                          <LogoutIcon fontSize="small" color="error" />
-                        </ListItemIcon>
-                        <Typography>Logout</Typography>
+                        Logout
                       </MenuItem>
                     </Menu>
                   </Box>
@@ -502,7 +484,7 @@ const Header = (props) => {
         <Divider sx={{ mb: 2 }} />
         
         {/* User Profile Section */}
-        {user && (
+        {isAuthenticated && (
           <Box sx={{ mb: 3, px: 1 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
               <Avatar 
@@ -514,11 +496,11 @@ const Header = (props) => {
                   mr: 2
                 }}
               >
-                {user.name.charAt(0).toUpperCase()}
+                {user?.name?.charAt(0).toUpperCase()}
               </Avatar>
               <Box>
-                <Typography variant="body1" fontWeight="600">{user.name}</Typography>
-                <Typography variant="caption" color="text.secondary">{user.email}</Typography>
+                <Typography variant="body1" fontWeight="600">{user?.name}</Typography>
+                <Typography variant="caption" color="text.secondary">{user?.email}</Typography>
               </Box>
             </Box>
           </Box>

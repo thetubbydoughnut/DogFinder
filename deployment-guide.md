@@ -57,9 +57,21 @@ This guide outlines the steps to deploy your Dog Finder application to Vercel.
 - You can configure custom domains in the Vercel dashboard if needed
 - Each push to your repository will trigger a new deployment
 
+## Configuration
+
+The deployment utilizes Vercel's automatic configuration for Create React App projects. Key configurations include:
+
+- **Build Command:** `npm run build` or `yarn build`
+- **Output Directory:** `build`
+- **Install Command:** `npm install` or `yarn install`
+- **Environment Variables:** Auth0 credentials (`REACT_APP_AUTH0_DOMAIN`, `REACT_APP_AUTH0_CLIENT_ID`) should be configured in Vercel project settings for production builds.
+
+## Routing
+
+The `vercel.json` file ensures that all routes are correctly handled by the React Router setup:
+
 ## Important Notes
 
-- The application is configured to use the Fetch API base URL of `https://frontend-take-home-service.fetch.com`
 - The error boundary component will catch runtime errors in production and provide a friendly UI
 - All routes will be redirected to the main application due to the configuration in `vercel.json`
 

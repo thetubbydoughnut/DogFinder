@@ -51,6 +51,18 @@ self.addEventListener('fetch', event => {
 
             caches.open(CACHE_NAME)
               .then(cache => {
+                // Exclude requests to specific domains or with specific parameters if needed
+                // Example: Exclude API calls if they shouldn't be cached or handled offline
+                // Example: if (event.request.url.includes('/api/')) { return; }
+
+                // Don't intercept requests for non-GET methods or specific URLs like the old API
+                if (event.request.method !== 'GET' /* || 
+                    !event.request.url.includes('frontend-take-home-service.fetch.com') */) { 
+                  // Let the browser handle non-GET requests or excluded URLs normally
+                  // console.log('Service Worker: Skipping fetch for non-GET or excluded URL:', event.request.url);
+                  return;
+                }
+
                 // Don't cache API calls (they likely have auth requirements)
                 if (!event.request.url.includes('/api/') && 
                     !event.request.url.includes('frontend-take-home-service.fetch.com')) {

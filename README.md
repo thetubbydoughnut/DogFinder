@@ -2,11 +2,11 @@
 
 A web application that helps users search through a database of shelter dogs to find their perfect match for adoption. Users can browse available dogs, filter by various criteria, select favorites, and generate a match for adoption.
 
-**Note:** This version uses static mock data located in `public/mock-data/` derived from the Dog CEO API and does not connect to any live external API for core data. Image URLs point to the live Dog CEO API.
+**Note:** This version uses static mock data located in `public/mock-data/` derived from the Dog CEO API. Image URLs are dynamically generated placeholders using `placedog.net`. Authentication is handled via **Auth0**.
 
 ## Features
 
-- 🔐 Mock user authentication
+- 🔐 **Auth0** user authentication (replaces mock implementation)
 - ✨ Automatic logout after 10 minutes of inactivity
 - 🔍 Advanced dog search with multiple filters (breed, age, location) on mock data
 - 📄 Paginated and sortable results
@@ -25,7 +25,6 @@ A web application that helps users search through a database of shelter dogs to 
 - **Material-UI** - Component library for consistent and professional UI
 - **Redux Toolkit** - State management with simplified Redux setup
 - **React Router** - For application routing
-- **Axios** - For API communication
 - **Formik & Yup** - Form handling and validation
 
 ### Performance Optimizations
@@ -50,21 +49,38 @@ git clone https://github.com/thetubbydoughnut/FetchRewardsDogFinder
 cd FetchRewardsDogFinder
 ```
 
-2. Install dependencies:
+2. Create a `.env` file in the project root and add your Auth0 credentials:
+```dotenv
+REACT_APP_AUTH0_DOMAIN=YOUR_AUTH0_DOMAIN
+REACT_APP_AUTH0_CLIENT_ID=YOUR_AUTH0_CLIENT_ID
+```
+*(Replace placeholders with your actual Auth0 Application Domain and Client ID)*
+
+3. Install dependencies:
 ```bash
 npm install
 # or
 yarn install
 ```
 
-3. Start the development server:
+4. Start the development server:
 ```bash
 npm start
 # or
 yarn start
 ```
 
-4. Open your browser and navigate to `http://localhost:3000`
+5. Open your browser and navigate to `http://localhost:3000`
+
+## Testing
+
+To run the available tests:
+
+```bash
+npm test
+# or
+yarn test
+```
 
 ## Project Structure
 
@@ -85,8 +101,7 @@ src/
 │       ├── components/   # Favorites-specific components
 │       └── slice.js      # Favorites redux slice
 ├── services/             # API services
-│   ├── authService.js    # Authentication-related API calls
-│   └── dogService.js     # Dog-related API calls
+│   └── dogService.js     # Dog-related mock data service
 ├── hooks/                # Custom React hooks
 │   └── useInactivityLogout.js # Hook for auto-logout
 ├── store/                # Redux store setup
@@ -162,7 +177,9 @@ The build artifacts will be in the `build` directory.
 
 ## API Integration
 
-**This application currently uses static JSON data (`dogs.json`, `breeds.json`) located in `public/mock-data/`. This data was generated once using the Dog CEO API.** The application fetches these static files instead of interacting with a live API for dog or breed information. Authentication is also mocked.
+**This application currently uses static JSON data (`dogs.json`, `breeds.json`) located in `public/mock-data/` for all dog and breed information.** This data was originally sourced from the Dog CEO API. The application fetches these static files using `src/services/dogService.js`.
+
+**Authentication is now handled using the Auth0 React SDK (`@auth0/auth0-react`).** Ensure you have configured your Auth0 application settings (Callback URL: `http://localhost:3000`, Logout URL: `http://localhost:3000`, Allowed Web Origin: `http://localhost:3000` for local development) and provided the Domain and Client ID in the `.env` file.
 
 ## License
 
