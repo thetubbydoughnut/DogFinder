@@ -120,6 +120,10 @@ const LoginPage = () => {
                     position: 'relative',
                     overflow: 'hidden',
                     width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                     '&::after': {
                       content: '""',
                       position: 'absolute',
